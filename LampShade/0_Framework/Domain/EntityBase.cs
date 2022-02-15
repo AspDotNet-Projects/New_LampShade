@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _0_Framework
+namespace _0_Framework.Domain
 {
     public class EntityBase
     {
