@@ -6,11 +6,11 @@ using System.Runtime.InteropServices.ComTypes;
 namespace _0_Framework.Domain
 {
     /// <summary>
-    /// 
+    ///  where T:class --->>>>>> T hatman batyad class bashad
     /// </summary>
     /// <typeparam name="Tkey"></typeparam> is id 
     /// <typeparam name="T"></typeparam> is Table or property
-    public interface IRepository<Tkey,T>
+    public interface IRepository<Tkey,T> where T:class
     {
         T Get(Tkey id);
         List<T> Get();

@@ -1,41 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
+using _0_Framework.Repository;
 using ShopManagement.Application.Contract.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository
 {
-    public class ProductCategoryRepository:IProductCategoryRepository
+    /// <summary>
+    /// ProductCategoryRepository-->RepositoryBase
+    /// </summary>
+    public class ProductCategoryRepository:RepositoryBase<long,ProductCategory>, IProductCategoryRepository
     {
         private readonly ShopContext _shopContext;
 
-        public ProductCategoryRepository(ShopContext shopContext)
+        public ProductCategoryRepository(ShopContext shopContext) 
         {
             _shopContext = shopContext;
         }
 
-        public void Create(ProductCategory intity)
-        {
-            _shopContext.ProductCategories.Add(intity);
-        }
 
-        public ProductCategory Get(long id)
-        {
-            return _shopContext.ProductCategories.Find(id);
-        }
 
-        public List<ProductCategory> GetAll()
-        {
-            return _shopContext.ProductCategories.ToList();
-        }
 
-        public bool Exists(Expression<Func<ProductCategory, bool>> expression)
-        {
-            /// expression is shart
-            return _shopContext.ProductCategories.Any(expression);
-        }
+
+
+
+
 
         public EditeProductCategory GetDatails(long id)
         {
@@ -69,9 +58,6 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return query.OrderByDescending(x => x.Id).ToList();
         }
 
-        public void SaveChange()
-        {
-            _shopContext.SaveChanges();
-        }
+
     }
 }

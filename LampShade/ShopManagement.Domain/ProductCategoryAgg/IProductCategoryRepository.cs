@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using _0_Framework.Domain;
 
 namespace ShopManagement.Domain.ProductCategoryAgg
 {
-    public interface  IProductCategoryRepository
+    /// <summary>
+    ///  IProductCategoryRepository---->IRepository
+    /// </summary>
+    public interface  IProductCategoryRepository:IRepository<long,ProductCategory>
     {
-        void Create(ProductCategory intity);
-        ProductCategory Get(long id);
-        List<ProductCategory> GetAll();
-        bool Exists(Expression<Func<ProductCategory, bool>> expression);
         EditeProductCategory GetDatails(long id);
         List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel);
-        void SaveChange();
+
     }
 }
