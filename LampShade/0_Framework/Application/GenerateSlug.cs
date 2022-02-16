@@ -37,5 +37,10 @@ namespace _0_Framework.Application
 
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
+
+        public static void Testing()
+        {
+
+        }
     }
 }
