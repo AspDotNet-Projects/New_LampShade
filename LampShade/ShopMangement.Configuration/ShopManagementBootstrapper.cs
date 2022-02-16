@@ -14,7 +14,7 @@ namespace ShopMangement.Configuration
         /// wire up har majol dakhek khodesh
         /// </summary>
         /// <param name="services"></param>
-        public static void Confgure(IServiceCollection services,string connectionstring)
+        public static void Configure(IServiceCollection services,string connectionstring)
         {
             services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
