@@ -13,6 +13,12 @@ namespace _0_Framework.Repository
 
     {
         private readonly DbContext _context;
+
+        public RepositoryBase(DbContext context)
+        {
+            _context = context;
+        }
+
         public T Get(Tkey id)
         {
             return _context.Find<T>(id);

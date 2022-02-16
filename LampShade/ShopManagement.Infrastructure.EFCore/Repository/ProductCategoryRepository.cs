@@ -13,7 +13,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
     {
         private readonly ShopContext _shopContext;
 
-        public ProductCategoryRepository(ShopContext shopContext) 
+        public ProductCategoryRepository(ShopContext shopContext) :base(shopContext)
         {
             _shopContext = shopContext;
         }
