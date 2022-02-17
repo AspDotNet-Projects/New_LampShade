@@ -8,12 +8,24 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
     {
         public List<ProductCategoryViewModel> ProductCategories;
         private readonly IProductCategoryApplication _productCategories;
+        /// <summary>
+        /// jahat estefade dar Index.cshtml
+        /// </summary>
+        public ProductCategorySearchModel SearchModel;
 
         public IndexModel(IProductCategoryApplication productCategories)
         {
             _productCategories = productCategories;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="searchModel"></param>-->paramer vorodi jahat search hast ke zaman search ejra mishe
+        /// zaman load safhe searchModel Null hast var All barmigarde dar ----------> ProductCategoryRepository
+        /// -------      if (!string.IsNullOrWhiteSpace(searchModel.Name))
+        ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
+        /// 
         public void OnGet(ProductCategorySearchModel searchModel)
         {
 
