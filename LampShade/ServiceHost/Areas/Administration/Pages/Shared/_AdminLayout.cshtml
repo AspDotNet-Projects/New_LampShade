@@ -6,7 +6,7 @@
 
     <meta name="author" content="Coderthemes">
 
-    <link rel="shortcut icon" href="~/AdminThem/~/AdminThem/assets/images/favicon_1.ico">
+    <link rel="shortcut icon" href="~/AdminThem/assets/images/favicon_1.ico">
 
     <title>@ViewData["Title"] | Lampshade Shop</title>
     <meta name="keyword" content="" />
@@ -15,9 +15,9 @@
     <link href="~/AdminThem/assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Icons -->
-    <link href="~/AdminThem/assets/font-awesome/~/AdminThem/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/AdminThem/assets/ionicon/~/AdminThem/assets/css/ionicons.min.css" rel="stylesheet" />
-    <link href="~/AdminThem/assets/~/AdminThem/assets/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="~/AdminThem/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/AdminThem/assets/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/AdminThem/assets/css/material-design-iconic-font.min.css" rel="stylesheet">
 
     <!-- animate css -->
     <link href="~/AdminThem/assets/css/animate.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
     <link href="~/AdminThem/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
 
     <!-- Custom Files -->
-    <link href="~/AdminThem/assets/~/AdminThem/assets/css/helper.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminThem/assets/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminThem/assets/css/style.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -352,7 +352,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-1.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-1.jpg" alt="">
                             </div>
                             <span class="name">Chadengle</span>
                             <i class="fa fa-circle online"></i>
@@ -362,7 +362,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-2.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-2.jpg" alt="">
                             </div>
                             <span class="name">Tomaslau</span>
                             <i class="fa fa-circle online"></i>
@@ -372,7 +372,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-3.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-3.jpg" alt="">
                             </div>
                             <span class="name">Stillnotdavid</span>
                             <i class="fa fa-circle online"></i>
@@ -382,7 +382,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-4.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-4.jpg" alt="">
                             </div>
                             <span class="name">Kurafire</span>
                             <i class="fa fa-circle online"></i>
@@ -392,7 +392,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-5.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-5.jpg" alt="">
                             </div>
                             <span class="name">Shahedk</span>
                             <i class="fa fa-circle away"></i>
@@ -402,7 +402,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-6.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-6.jpg" alt="">
                             </div>
                             <span class="name">Adhamdannaway</span>
                             <i class="fa fa-circle away"></i>
@@ -412,7 +412,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-7.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-7.jpg" alt="">
                             </div>
                             <span class="name">Ok</span>
                             <i class="fa fa-circle away"></i>
@@ -422,7 +422,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-8.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-8.jpg" alt="">
                             </div>
                             <span class="name">Arashasghari</span>
                             <i class="fa fa-circle offline"></i>
@@ -432,7 +432,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-9.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-9.jpg" alt="">
                             </div>
                             <span class="name">Joshaustin</span>
                             <i class="fa fa-circle offline"></i>
@@ -442,7 +442,7 @@
                     <li class="list-group-item">
                         <a href="#">
                             <div class="avatar">
-                                <img src="images/users/avatar-10.jpg" alt="">
+                                <img src="~/AdminThem/assets/images/users/avatar-10.jpg" alt="">
                             </div>
                             <span class="name">Sortino</span>
                             <i class="fa fa-circle offline"></i>
@@ -502,18 +502,11 @@
 
     <!-- Todo -->
     <script src="~/AdminThem/assets/js/jquery.todo.js"></script>
+    
+@*/// Scripts jc in Indec --->productcategories*@
+@RenderSection("Scripts",false)
 
-    <!-- <script type="text/javascript"> -->
-    <!-- /* ============================================== -->
-    <!-- Counter Up -->
-    <!-- =============================================== */ -->
-    <!-- jQuery(document).ready(function($) { -->
-    <!-- $('.counter').counterUp({ -->
-    <!-- delay: 100, -->
-    <!-- time: 1200 -->
-    <!-- }); -->
-    <!-- }); -->
-    <!-- </script> -->
+
 
 </body>
 </html>

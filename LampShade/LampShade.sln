@@ -21,9 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.EFCore", "ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj", "{B9841583-A713-4089-BEE2-3E6CC3778E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopMangement.Configuration", "ShopMangement.Configuration\ShopMangement.Configuration.csproj", "{2C008592-C389-4F38-93E8-DF54E9CE4496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopMangement.Configuration", "ShopMangement.Configuration\ShopMangement.Configuration.csproj", "{2C008592-C389-4F38-93E8-DF54E9CE4496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{9B2A451D-62A3-4F0E-9105-5BA44585D703}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration.png = ..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration.png
+		..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration2.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
