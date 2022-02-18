@@ -6,7 +6,7 @@ using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructure.EFCore;
 using ShopManagement.Infrastructure.EFCore.Repository;
 
-namespace ShopMangement.Configuration
+namespace ShopManagement.Configuration
 {
     public class ShopManagementBootstrapper
     {
