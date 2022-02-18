@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contract.ProductCategory;
 
@@ -30,6 +31,21 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         {
 
             ProductCategories=_productCategories.Search(searchModel);
+        }
+        
+        /// <summary>
+        /// Baraye ShowModal
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult OnGetCreate()
+        {
+            return Partial("./Create", new CreateProductCategory());
+        }
+
+        public JsonResult OnPostCreate(CreateProductCategory command)
+        {
+            var result = _productCategories.Create(command);
+            return new JsonResult(result);
         }
     }
 }

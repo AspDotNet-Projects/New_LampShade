@@ -15,8 +15,8 @@
     <link href="~/AdminTheme/assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Icons -->
-    <link href="~/AdminTheme/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/AdminTheme/assets/css/ionicons.min.css" rel="stylesheet" />
+    @*//<link href="~/AdminTheme/assets/css/font-awesome.min.css" rel="stylesheet" />*@
+    @*<link href="~/AdminTheme/assets/css/ionicons.min.css" rel="stylesheet" />*@
     <link href="~/AdminTheme/assets/css/material-design-iconic-font.min.css" rel="stylesheet">
 
     <!-- animate css -->
@@ -136,12 +136,12 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="hidden-xs">
+                            @*<li class="hidden-xs">
                                 <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
                             </li>
                             <li class="hidden-xs">
                                 <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
-                            </li>
+                            </li>*@
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="~/AdminTheme/assets/images/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                 <ul class="dropdown-menu">
@@ -350,7 +350,7 @@
         <!-- End Right content here -->
         <!-- ============================================================== -->
         <!-- Right Sidebar -->
-        <div class="side-bar right-bar nicescroll">
+        <!--<div class="side-bar right-bar nicescroll">
             <h4 class="text-center">Chat</h4>
             <div class="contact-list nicescroll">
                 <ul class="list-group contacts-list">
@@ -456,15 +456,22 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>-->
         <!-- /Right-bar -->
 
     </div>
-    <!-- END wrapper -->
-    <!-- <script> -->
-    <!-- var resizefunc = []; -->
-    <!-- </script> -->
-    <!-- jQuery  -->
+
+    @*Number 1*@
+    <div id="MainModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content" id="ModalContent">
+
+
+
+            </div>
+        </div>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/AdminTheme/assets/js/bootstrap.min.js"></script>
     <script src="~/AdminTheme/assets/js/waves.js"></script>
@@ -504,15 +511,16 @@
     <script src="~/AdminTheme/assets/js/jquery.dashboard.js"></script>
 
     <!-- Chat -->
-    <script src="~/AdminTheme/assets/js/jquery.chat.js"></script>
+    <!--<script src="~/AdminTheme/assets/js/jquery.chat.js"></script>-->
 
     <!-- Todo -->
     <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
-    <script src="~/AdminTheme/assets/js/site.js"></script>
+    
+    @*//marboot be Modal CreateCAtegory*@
+      <script src="~/AdminTheme/assets/js/site.js"></script>
 
     <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
     <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
