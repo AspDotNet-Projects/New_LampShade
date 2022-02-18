@@ -25,10 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Configuratio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{9B2A451D-62A3-4F0E-9105-5BA44585D703}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyHelp", "MyHelp", "{C59E757E-3665-4628-9610-4EBEAACB86BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helps-Pic", "Helps-Pic", "{9FFF3E52-CD44-43D8-AD17-B36BC5567FDA}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration.png = ..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration.png
-		..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\آموزش و پروزش\Errore in Create Migration2.png
+		..\..\..\..\..\Desktop\Help\Errore in Create Migration.png = ..\..\..\..\..\Desktop\Help\Errore in Create Migration.png
+		..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png
 	EndProjectSection
 EndProject
 Global
@@ -78,6 +80,7 @@ Global
 		{28B69A5D-9C52-452B-8D1F-117FD66B9C8E} = {6C5E1BDF-221E-420E-89CD-BCC77C2B9B48}
 		{B9841583-A713-4089-BEE2-3E6CC3778E4D} = {28B69A5D-9C52-452B-8D1F-117FD66B9C8E}
 		{2C008592-C389-4F38-93E8-DF54E9CE4496} = {28B69A5D-9C52-452B-8D1F-117FD66B9C8E}
+		{9FFF3E52-CD44-43D8-AD17-B36BC5567FDA} = {C59E757E-3665-4628-9610-4EBEAACB86BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD2174D-2A27-4104-900B-70545EB4546A}
