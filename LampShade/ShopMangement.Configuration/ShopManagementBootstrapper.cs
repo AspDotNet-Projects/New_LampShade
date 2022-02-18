@@ -16,6 +16,7 @@ namespace ShopManagement.Configuration
         /// <param name="services"></param>
         public static void Configure(IServiceCollection services,string connectionstring)
         {
+            ////
             services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionstring));
