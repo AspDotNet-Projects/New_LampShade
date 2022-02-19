@@ -25,6 +25,7 @@ SinglePage.LoadModal = function () {
             //حالا هش تغییر میکنه در خطوط پایین تر ما گفنیم که اکه هش تغییر کنه 
             //حالا شو مودال رو صدا بزن
             $("#ModalContent").html(htmlPage);
+            //این چهار خط باعث میشه که کلاینت ساید بشه ولیدیتور هست
             const container = document.getElementById("ModalContent");
             const forms = container.getElementsByTagName("form");
             const newForm = forms[forms.length - 1];
