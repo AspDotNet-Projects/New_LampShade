@@ -66,8 +66,10 @@
                                     <td>@item.Name</td>
                                     <td>@item.CreationDate</td>
                                     <td>
+                                        @*href="#showmodal=@Url.Page("./Index","Edit",new {id=@item.Id})"*@
+                                        @*mige be Page Index boro va fun Edit ro seda bezan va Id ro ham begir*@
                                         <a class="btn btn-warning pull-right m-rl-5"
-                                           href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
+                                           href="#showmodal=@Url.Page("./Index", "Edit", new {id = @item.Id})">
                                             <i class="fa fa-edit"></i> ویرایش
                                         </a>
                                     </td>

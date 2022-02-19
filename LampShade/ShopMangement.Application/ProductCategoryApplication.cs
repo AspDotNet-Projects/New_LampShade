@@ -54,7 +54,7 @@ namespace ShopManagement.Application
             productcategory.Edite(Command.Name,Command.Description,Command.Picture
             ,Command.PictureAlt,Command.PictureTitle,Command.Keywords
             ,Command.MetaDescription,Slug);
-
+            _productCategoryRepository.SaveChange();
 
             return operationresult.Succedded();
 

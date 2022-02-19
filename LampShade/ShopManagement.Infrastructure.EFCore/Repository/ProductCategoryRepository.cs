@@ -31,6 +31,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return _shopContext.ProductCategories.Select(x => new EditeProductCategory()
                 {
                     Id = x.Id,
+                    Name = x.Name,
                     Description = x.Description,
                     Picture = x.Picture,
                     PictureAlt = x.PictureAlt,
