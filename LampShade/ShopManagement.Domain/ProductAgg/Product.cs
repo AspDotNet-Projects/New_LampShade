@@ -12,6 +12,7 @@ namespace ShopManagement.Domain.ProductAgg
     {
         public string Name { get; private set; }
         public string Code { get; private set; }
+        public double UnitPrice { get; private set; }
         public string ShortDescription { get; private set; }
         public string Description { get; private set; }
         public string Picture { get; private set; }
@@ -24,12 +25,13 @@ namespace ShopManagement.Domain.ProductAgg
         public string MetaDescription { get; private set; }
         public ProductCategory Category { get; private set; }
 
-        public Product(string name, string code, string shortDescription, string description, 
-            string picture, string pictureAlt, string pictureTitle, long categoryId, 
-            string slug, string keywords, string metaDescription, ProductCategory category)
+        public Product(string name, string code, double unitPrice, string shortDescription, 
+            string description, string picture, string pictureAlt, string pictureTitle, 
+            long categoryId, string slug, string keywords, string metaDescription)
         {
             Name = name;
             Code = code;
+            UnitPrice = unitPrice;
             ShortDescription = shortDescription;
             Description = description;
             Picture = picture;
@@ -39,11 +41,12 @@ namespace ShopManagement.Domain.ProductAgg
             Slug = slug;
             Keywords = keywords;
             MetaDescription = metaDescription;
-            Category = category;
+            IsInStock = true;
         }
-        public void Edite(string name, string code, string shortDescription, string description,
-            string picture, string pictureAlt, string pictureTitle, long categoryId,
-            string slug, string keywords, string metaDescription, ProductCategory category)
+
+        public void Edite(string name, string code, double unitPrice, string shortDescription,
+            string description, string picture, string pictureAlt, string pictureTitle,
+            long categoryId, string slug, string keywords, string metaDescription)
         {
             Name = name;
             Code = code;
@@ -56,7 +59,7 @@ namespace ShopManagement.Domain.ProductAgg
             Slug = slug;
             Keywords = keywords;
             MetaDescription = metaDescription;
-            Category = category;
+            
         }
 
         public void InStock()

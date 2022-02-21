@@ -51,7 +51,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         public IActionResult OnGetEdit(long id)
         {
             var productCategory = _productCategories.GetDatails(id);
-            return Partial("Edit", productCategory);
+            return Partial("EditProduct", productCategory);
         }
 
         public JsonResult OnPostEdit(EditeProductCategory command)
