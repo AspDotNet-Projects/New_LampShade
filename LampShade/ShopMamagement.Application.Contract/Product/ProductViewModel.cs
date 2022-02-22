@@ -10,6 +10,6 @@
         public string Picture { get; set; }
         public string Category { get; set; }
         public string CreationDate { get; set; }
-
+        public long CategoryId { get; set; }
     }
 }
