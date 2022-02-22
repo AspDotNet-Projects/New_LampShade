@@ -1,22 +1,27 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using ShopManagement.Application.Contract.Product;
 using ShopManagement.Application.Contract.ProductCategory;
 
-namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
+namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 {
     public class IndexModel : PageModel
     {
-        public List<ProductCategoryViewModel> ProductCategories;
-        private readonly IProductCategoryApplication _productCategories;
+        public List<ProductViewModel> Products;
+        private readonly IProductApplication _productApplication;
+        private readonly IProductCategoryApplication _productCategoryApplication;
+        public SelectList Productcategories;
         /// <summary>
         /// jahat estefade dar Index.cshtml
         /// </summary>
-        public ProductCategorySearchModel SearchModel;
+        public ProductSearchModel SearchModel;
 
-        public IndexModel(IProductCategoryApplication productCategories)
+        public IndexModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
         {
-            _productCategories = productCategories;
+            _productApplication = productApplication;
+            _productCategoryApplication = productCategoryApplication;
         }
 
         /// <summary>
@@ -27,12 +32,13 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         /// -------      if (!string.IsNullOrWhiteSpace(searchModel.Name))
         ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
         /// 
-        public void OnGet(ProductCategorySearchModel searchModel)
+        public void OnGet(ProductSearchModel searchModel)
         {
+            Productcategories = new SelectList(_productCategoryApplication.GetProductcategory_selectlist(), "Id", "Name");
 
-            ProductCategories = _productCategories.Search(searchModel);
+            Products = _productApplication.Search(searchModel);
         }
-
+        
         /// <summary>
         /// Baraye ShowModal
         /// </summary>
@@ -42,21 +48,21 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             return Partial("./Create", new CreateProductCategory());
         }
 
-        public JsonResult OnPostCreate(CreateProductCategory command)
+        public JsonResult OnPostCreate(CreateProduct command)
         {
-            var result = _productCategories.Create(command);
+            var result = _productApplication.Create(command);
             return new JsonResult(result);
         }
 
         public IActionResult OnGetEdit(long id)
         {
-            var productCategory = _productCategories.GetDatails(id);
+            var productCategory = _productApplication.Getdetails(id);
             return Partial("./Edit", productCategory);
         }
 
-        public JsonResult OnPostEdit(EditeProductCategory command)
-        {
-            var result = _productCategories.Edite(command);
+        public JsonResult OnPostEdit(EditProduct command)
+            {
+            var result = _productApplication.Edit(command);
             return new JsonResult(result);
         }
     }

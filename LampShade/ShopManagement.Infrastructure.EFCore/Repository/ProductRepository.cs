@@ -30,7 +30,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 PictureTitle = x.PictureTitle,
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
-                Slug = x.Slug
+                Slug = x.Slug,
+                
 
             }).FirstOrDefault(x=>x.Id==id);
         }
@@ -46,7 +47,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 CategoryId=x.CategoryId,
                 Code = x.Code,
                 Picture = x.Picture,
-                UnitPrice = x.UnitPrice
+                UnitPrice = x.UnitPrice,
+                CreationDate = x.CreationDate.ToString()
             });
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query=query.Where(x => x.Name.Contains(searchModel.Name));

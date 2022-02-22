@@ -15,6 +15,6 @@ namespace ShopManagement.Application.Contract.ProductCategory
         EditeProductCategory GetDatails(long id);
         List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel);
 
-        
+        List<ProductCategoryViewModel> GetProductcategory_selectlist();
     }
 }

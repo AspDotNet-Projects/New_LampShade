@@ -11,7 +11,8 @@ namespace ShopManagement.Domain.ProductCategoryAgg
     /// </summary>
     public interface  IProductCategoryRepository:IRepository<long,ProductCategory>
     {
-        EditeProductCategory GetDatails(long id);
+        List<ProductCategoryViewModel> GetProductCategories_selectlist();
+       EditeProductCategory GetDatails(long id);
         List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel);
 
     }
