@@ -31,6 +31,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
                 Slug = x.Slug,
+                CategoryId = x.CategoryId,
+                
+                
                 
 
             }).FirstOrDefault(x=>x.Id==id);

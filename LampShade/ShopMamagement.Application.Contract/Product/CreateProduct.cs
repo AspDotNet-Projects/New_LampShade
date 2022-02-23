@@ -1,4 +1,7 @@
-﻿namespace ShopManagement.Application.Contract.Product
+﻿using System.Collections.Generic;
+using ShopManagement.Application.Contract.ProductCategory;
+
+namespace ShopManagement.Application.Contract.Product
 {
     public class CreateProduct
     {
@@ -14,5 +17,7 @@
         public string Slug { get; set; }
         public string Keywords { get; set; }
         public string MetaDescription { get; set; }
+        //جهت مفداری دهی لیست بازشو در فرم ایجاد محصول
+        public List<ProductCategoryViewModel> Categories { get; set; }
     }
 }
