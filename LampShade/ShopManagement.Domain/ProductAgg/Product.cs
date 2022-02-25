@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Domain;
 using ShopManagement.Domain.ProductCategoryAgg;
+using ShopManagement.Domain.ProductPictureAgg;
 
 namespace ShopManagement.Domain.ProductAgg
 {
@@ -24,6 +25,7 @@ namespace ShopManagement.Domain.ProductAgg
         public string Keywords { get; private set; }
         public string MetaDescription { get; private set; }
         public ProductCategory Category { get; private set; }
+        public List<ProductPicture> ProductPictures { get; private set; }
 
         public Product(string name, string code, double unitPrice, string shortDescription, 
             string description, string picture, string pictureAlt, string pictureTitle, 
@@ -42,6 +44,7 @@ namespace ShopManagement.Domain.ProductAgg
             Keywords = keywords;
             MetaDescription = metaDescription;
             IsInStock = true;
+            ProductPictures = new List<ProductPicture>();
         }
 
         public void Edite(string name, string code, double unitPrice, string shortDescription,
