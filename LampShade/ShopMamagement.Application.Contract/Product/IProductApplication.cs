@@ -13,6 +13,7 @@ namespace ShopManagement.Application.Contract.Product
 
         EditProduct Getdetails(long id);
 
+        List<ProductViewModel> GetProducts();
         List<ProductViewModel> Search(ProductSearchModel searchModel);
 
     }
