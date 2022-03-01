@@ -10,6 +10,12 @@ namespace ShopManagement.Application
     public class ProductPictureApplication:IProductPictureApplication
     {
         private readonly IProductPictureRepository _productPictureRepository;
+
+        public ProductPictureApplication(IProductPictureRepository productPictureRepository)
+        {
+            _productPictureRepository = productPictureRepository;
+        }
+
         public OperationResult Create(CreateProductPicture command)
         {
             var operation = new OperationResult();
@@ -71,7 +77,7 @@ namespace ShopManagement.Application
 
         public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)
         {
-            return _productPictureRepository.Search(searchModel).ToList();
+            return _productPictureRepository.Search(searchModel);
         }
     }
 }

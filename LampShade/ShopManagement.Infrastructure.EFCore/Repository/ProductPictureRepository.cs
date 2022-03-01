@@ -34,19 +34,22 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)
         {
-            var Query = _context.ProductPictures.Include(x => x.Product)
-                .Select(x => new ProductPictureViewModel()
+            var query = _context.ProductPictures
+                .Include(x => x.Product)
+                .Select(x => new ProductPictureViewModel
                 {
                     Id = x.Id,
-                    ProductId = x.ProductId,
-                    Picture = x.Picture,
+                    Product = x.Product.Name,
                     CreationDate = x.CreationDate.ToString(),
-                    Product = x.Product.Name
+                    Picture = x.Picture,
+                    ProductId = x.ProductId,
+                    IsRemoved = x.IsRemoved
                 });
-            if (Query != null)
-                Query = Query.Where(x => x.ProductId == searchModel.PorductId);
 
-            return Query.OrderByDescending(x => x.Id).ToList();
+            if (searchModel.ProductId != 0)
+                query = query.Where(x => x.ProductId == searchModel.ProductId);
+
+            return query.OrderByDescending(x => x.Id).ToList();
         }
     }
 }

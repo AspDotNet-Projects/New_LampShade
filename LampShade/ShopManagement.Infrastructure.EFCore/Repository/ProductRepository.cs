@@ -41,7 +41,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductViewModel> GetProducts()
         {
-            return _context.Products.Select(x=>new ProductViewModel()
+            return _context.Products.Select(x=>new ProductViewModel
             {
                 Id = x.Id,
                 Name = x.Name
@@ -51,7 +51,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
         public List<ProductViewModel> search(ProductSearchModel searchModel)
         {
             var query = _context.Products.Include(x=>x.Category )
-                .Select(x => new ProductViewModel()
+                .Select(x => new ProductViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
