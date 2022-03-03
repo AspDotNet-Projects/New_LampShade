@@ -18,7 +18,7 @@ namespace ShopManagement.Infrastructure.EFCore.Mapping
             builder.Property(x => x.Title).HasMaxLength(255);
             builder.Property(x => x.Text).HasMaxLength(255);
             builder.Property(x => x.BtnText).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.Picture).HasMaxLength(16);
+            builder.Property(x => x.Btncolor).HasMaxLength(16);
 
         }
     }

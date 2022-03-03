@@ -32,7 +32,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Text = x.Text,
                 BtnText = x.BtnText,
                 Btncolor = x.Btncolor,
-                Heading = x.Heading
+                Heading = x.Heading,
+               
             }).FirstOrDefault(x => x.ID == id);
         }
 
@@ -43,7 +44,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                     ID = x.Id,
                     Picture = x.Picture,
                     Heading = x.Heading,
-                    Title = x.Title
+                    Title = x.Title,
+                    IsRemoved = x.IsRemoved,
+                    CreationDate = x.CreationDate.ToString()
                 })
                 .OrderByDescending(x=>x.ID)
                 .ToList();    
