@@ -30,6 +30,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 PictureAlt = x.PictureAlt,
                 Title = x.Title,
                 Text = x.Text,
+                Link = x.Link,
                 BtnText = x.BtnText,
                 Btncolor = x.Btncolor,
                 Heading = x.Heading,

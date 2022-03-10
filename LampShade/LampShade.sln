@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helps-Pic", "Helps-Pic", "{
 		..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_LampSahdeQuery", "01_LampSahdeQuery\01_LampSahdeQuery.csproj", "{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

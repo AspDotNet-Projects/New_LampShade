@@ -19,7 +19,7 @@ namespace ShopManagement.Application
             var operation = new OperationResult();
             var Slide = new Slide( command.Picture, command.PictureAlt
                 , command.PictureTitle, command.Heading, command.Title, 
-                command.Text,command.BtnText, command.Btncolor);
+                command.Text,command.Link,command.BtnText, command.Btncolor);
             _slideRepository.Create(Slide);
             _slideRepository.SaveChange();
            return operation.Succedded();
@@ -32,7 +32,7 @@ namespace ShopManagement.Application
             if (slide == null)
                 operation.Failed(ApplicationMesseges.RecoredNotFound);
             slide.Edit(command.Picture,command.PictureAlt,command.PictureTitle
-            ,command.Heading,command.Title,command.Text,command.BtnText,command.Btncolor);
+            ,command.Heading,command.Title,command.Text,command.Link,command.BtnText,command.Btncolor);
             _slideRepository.SaveChange();
             return operation.Succedded();
         }

@@ -1,6 +1,6 @@
-﻿namespace ShopManagement.Application.Contract.Slide
+﻿namespace _01_LampSahdeQuery.Contracts
 {
-    public class CreateSlide
+    public class SlideQueryModel
     {
         public string Picture { get; set; }
         public string PictureAlt { get; set; }
