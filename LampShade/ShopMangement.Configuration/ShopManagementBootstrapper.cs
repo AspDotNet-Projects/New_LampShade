@@ -1,5 +1,6 @@
 ﻿using System;
 using _01_LampSahdeQuery.Contracts;
+using _01_LampSahdeQuery.Contracts.Slide;
 using _01_LampSahdeQuery.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
