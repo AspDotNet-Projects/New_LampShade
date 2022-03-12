@@ -41,6 +41,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DM.Domain", "DM.Domain", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountMangement.Domain", "DiscountMangement.Domain\DiscountMangement.Domain.csproj", "{7FD6D296-1B66-4871-BEC0-49E65714FF6C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DM.Application", "DM.Application", "{D79CBA56-7226-4C78-8790-EE56E4FBEA4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Application.Contract", "DiscountManagement.Application.Contract\DiscountManagement.Application.Contract.csproj", "{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,10 @@ Global
 		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,8 @@ Global
 		{9FFF3E52-CD44-43D8-AD17-B36BC5567FDA} = {C59E757E-3665-4628-9610-4EBEAACB86BB}
 		{C059B577-E8D8-4C0D-A957-7DEA272609EE} = {93C5574D-9065-44D5-B6A9-570E5B284FCC}
 		{7FD6D296-1B66-4871-BEC0-49E65714FF6C} = {C059B577-E8D8-4C0D-A957-7DEA272609EE}
+		{D79CBA56-7226-4C78-8790-EE56E4FBEA4B} = {93C5574D-9065-44D5-B6A9-570E5B284FCC}
+		{B9DDC6BC-F6DE-4368-930B-3EB29A9AFEED} = {D79CBA56-7226-4C78-8790-EE56E4FBEA4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD2174D-2A27-4104-900B-70545EB4546A}
