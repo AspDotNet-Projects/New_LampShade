@@ -33,7 +33,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helps-Pic", "Helps-Pic", "{
 		..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_LampSahdeQuery", "01_LampSahdeQuery\01_LampSahdeQuery.csproj", "{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_LampSahdeQuery", "01_LampSahdeQuery\01_LampSahdeQuery.csproj", "{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscountManagement", "DiscountManagement", "{93C5574D-9065-44D5-B6A9-570E5B284FCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DM.Domain", "DM.Domain", "{C059B577-E8D8-4C0D-A957-7DEA272609EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountMangement.Domain", "DiscountMangement.Domain\DiscountMangement.Domain.csproj", "{7FD6D296-1B66-4871-BEC0-49E65714FF6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +79,10 @@ Global
 		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD6D296-1B66-4871-BEC0-49E65714FF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +97,8 @@ Global
 		{B9841583-A713-4089-BEE2-3E6CC3778E4D} = {28B69A5D-9C52-452B-8D1F-117FD66B9C8E}
 		{2C008592-C389-4F38-93E8-DF54E9CE4496} = {28B69A5D-9C52-452B-8D1F-117FD66B9C8E}
 		{9FFF3E52-CD44-43D8-AD17-B36BC5567FDA} = {C59E757E-3665-4628-9610-4EBEAACB86BB}
+		{C059B577-E8D8-4C0D-A957-7DEA272609EE} = {93C5574D-9065-44D5-B6A9-570E5B284FCC}
+		{7FD6D296-1B66-4871-BEC0-49E65714FF6C} = {C059B577-E8D8-4C0D-A957-7DEA272609EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD2174D-2A27-4104-900B-70545EB4546A}
