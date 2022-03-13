@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using _0_Framework.Application;
 using _0_Framework.Repository;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountMangement.Domain.CustomerDiscountAgg;
@@ -43,9 +44,9 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
            {
                Id = x.Id,
                DiscountRate = x.DiscountRate,
-               StartDate = x.StartDate.ToString(),
+               StartDate = x.StartDate.ToFarsi(),
                StartDateGr = x.StartDate,
-               EndDate = x.EndDate.ToString(),
+               EndDate = x.EndDate.ToFarsi(),
                EndDateGr = x.EndDate,
                Reason = x.Reason
 
@@ -54,13 +55,13 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                query = query.Where(x => x.ProductId == search.ProductId);
            if (!string.IsNullOrWhiteSpace(search.StartDate))
            {
-               var startdate = DateTime.Now;
-               query = query.Where(x => x.StartDateGr > startdate);
+               //ToGeorgianDateTime() Convert to Miladi date
+                query = query.Where(x => x.StartDateGr > search.StartDate.ToGeorgianDateTime());
            }
            if (!string.IsNullOrWhiteSpace(search.EndDate))
            {
-               var enddate = DateTime.Now;
-               query = query.Where(x => x.EndDateGr< enddate);
+               
+               query = query.Where(x => x.EndDateGr< search.EndDate.ToGeorgianDateTime());
            }
 
            var discounts = query.OrderByDescending(x => x.Id).ToList();

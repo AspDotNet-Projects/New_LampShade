@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _0_Framework.Application;
 using _0_Framework.Repository;
 using ShopManagement.Application.Contract.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -51,7 +52,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             {
                 Id = x.Id,
                 Name = x.Name,
-                CreationDate = x.CreationDate.ToString(),
+                CreationDate = x.CreationDate.ToFarsi(),
                 Picture = x.Picture
             });
             //baraye zamani ke search khali bood va batyad all search ya ba name bashad
