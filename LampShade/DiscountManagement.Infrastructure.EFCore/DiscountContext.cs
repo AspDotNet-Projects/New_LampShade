@@ -1,4 +1,5 @@
 ﻿using System;
+using DiscountManagement.Infrastructure.EFCore.Mapping;
 using DiscountMangement.Domain.CustomerDiscountAgg;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace DiscountManagement.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var assembly = typeof(CustomerDiscount).Assembly;
+            var assembly = typeof(CustomerDiscountMapping).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
             base.OnModelCreating(modelBuilder);
         }
