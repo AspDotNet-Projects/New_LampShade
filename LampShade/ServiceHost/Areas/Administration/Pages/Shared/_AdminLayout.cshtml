@@ -32,6 +32,8 @@
     <link href="~/AdminTheme/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet" />
 
     <!-- Custom Files -->
+
+    <link href="~/AdminTheme/assets/css/persian-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminTheme/assets/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -137,11 +139,11 @@
                                 </ul>
                             </li>
                             @*<li class="hidden-xs">
-                                <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
-                            </li>
-                            <li class="hidden-xs">
-                                <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
-                            </li>*@
+                                    <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
+                                </li>*@
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="~/AdminTheme/assets/images/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                 <ul class="dropdown-menu">
@@ -158,14 +160,14 @@
             </div>
         </div>
         <!-- Top Bar End -->
-    <!-- ========== Left Sidebar Start ========== -->
-    
+        <!-- ========== Left Sidebar Start ========== -->
 
-    <partial name="_Menu"/>
-    
-    
 
-    <!-- Left Sidebar End -->
+        <partial name="_Menu" />
+
+
+
+        <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -309,10 +311,10 @@
             </div>
         </div>
     </div>
-    
- @*Behtare az Akharin noskhe ke dar lib hast estefase kard*@
+
+    @*Behtare az Akharin noskhe ke dar lib hast estefase kard*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
- 
+
     <script src="~/AdminTheme/assets/js/bootstrap.min.js"></script>
     <script src="~/AdminTheme/assets/js/waves.js"></script>
     <script src="~/AdminTheme/assets/js/wow.min.js"></script>
@@ -352,26 +354,36 @@
 
     <!-- Chat -->
     <!--<script src="~/AdminTheme/assets/js/jquery.chat.js"></script>-->
-
     <!-- Todo -->
     <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
-    
 
-    @*//Aavlin kar dar validate*@ 
+
+    @*//Aavlin kar dar validate*@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    
+
     @*//marboot be Modal CreateCAtegory*@
-      <script src="~/AdminTheme/assets/js/site.js"></script>
+    <script src="~/AdminTheme/assets/js/site.js"></script>
 
     <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
     <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
 
 
 
+
     @*/// Scripts jc in Indec --->productcategories*@
     @RenderSection("Scripts", false)
 
+<script>
+    //کلاس های که
+    //PersianDateInput
+    //رو داردند
+    $('.PersianDateInput').persianDatepicker({
+       
+        format: 'YYYY/MM/DD',
+        autoClose:true
+    });
+</script>
 
 
 </body>

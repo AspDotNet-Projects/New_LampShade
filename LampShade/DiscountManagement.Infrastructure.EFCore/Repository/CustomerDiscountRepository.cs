@@ -37,7 +37,7 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public List<CustomerDiscountViewModel> Search(CostomerDiscountSearchModel search)
+        public List<CustomerDiscountViewModel> Search(CustomerDiscountSearchModel search)
         {
             var product = _shopContext.Products.Select(x => new {x.Id, x.Name}).ToList();
            var query=_context.CustomerDiscounts.Select(x=>new CustomerDiscountViewModel
@@ -48,7 +48,8 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                StartDateGr = x.StartDate,
                EndDate = x.EndDate.ToFarsi(),
                EndDateGr = x.EndDate,
-               Reason = x.Reason
+               Reason = x.Reason,
+               CreationDate = x.CreationDate.ToFarsi()
 
            });
            if (search.ProductId > 0)

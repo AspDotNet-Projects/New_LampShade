@@ -1,4 +1,6 @@
-﻿namespace DiscountManagement.Application.Contract.CustomerDiscount
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace DiscountManagement.Application.Contract.CustomerDiscount
 {
     /// <summary>
     /// تعریف تخفیف برای مشتری
@@ -10,5 +12,7 @@
         public string StartDate { get;  set; }
         public string EndDate { get;  set; }
         public string Reason { get;  set; }
+        public SelectList Products { get; set; }
+
     }
 }
