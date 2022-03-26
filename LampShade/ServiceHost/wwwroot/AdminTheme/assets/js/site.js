@@ -52,7 +52,9 @@ $(document).ready(function () {
     $("#MainModal").on("shown.bs.modal",
         function () {
             window.location.hash = "##";
-            $('.persianDateInput').persianDatepicker({
+            //برای اینکه تاریخ به صورت خودکار در فیلد پر شود
+            $('.PersianDateInput').persianDatepicker({
+
                 format: 'YYYY/MM/DD',
                 autoClose: true
             });
