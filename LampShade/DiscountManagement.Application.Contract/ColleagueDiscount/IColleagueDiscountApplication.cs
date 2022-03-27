@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using System.Collections.Generic;
 
 namespace DiscountManagement.Application.Contract.ColleagueDiscount
 {
@@ -9,6 +10,6 @@ namespace DiscountManagement.Application.Contract.ColleagueDiscount
         OperationResult Remove(long id);
         OperationResult Restore(long id);
         EditColleagueDiscount GetDetails(long id);
-        ColleagueDiscountSearchModel Search(ColleagueDiscountSearchModel searchModel);
+        List<ColleagueDiscountViewModel> Search(ColleagueDiscountSearchModel searchModel);
     }
 }
