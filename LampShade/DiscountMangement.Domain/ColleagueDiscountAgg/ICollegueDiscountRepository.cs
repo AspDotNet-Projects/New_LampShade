@@ -2,7 +2,7 @@
 
 namespace DiscountMangement.Domain.ColleagueDiscountAgg
 {
-    public interface ICollegueRepository:IRepository<long,Colleague>
+    public interface ICollegueDiscountRepository:IRepository<long,ColleagueDiscount>
     {
     }
 }

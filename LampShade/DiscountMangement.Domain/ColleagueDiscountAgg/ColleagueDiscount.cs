@@ -7,13 +7,13 @@ using _0_Framework.Domain;
 
 namespace DiscountMangement.Domain.ColleagueDiscountAgg
 {
-    public class Colleague : EntityBase
+    public class ColleagueDiscount : EntityBase
     {
         public long  ProductId { get;private set; }
         public int DiscountRate { get; private set; }
         public bool IsRemove { get; private set; }
 
-        public Colleague(long productId, int discountRate)
+        public ColleagueDiscount(long productId, int discountRate)
         {
             ProductId = productId;
             DiscountRate = discountRate;
