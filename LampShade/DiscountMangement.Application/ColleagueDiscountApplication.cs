@@ -7,7 +7,7 @@ namespace DiscountManagement.Application
 {
     public class ColleagueDiscountApplication : IColleagueDiscountApplication
     {
-        private readonly ICollegueDiscountRepository _colleagueDiscountRepository;
+        private readonly IColleagueDiscountRepository _colleagueDiscountRepository;
 
         
 

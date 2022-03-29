@@ -9,7 +9,7 @@ using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EFCore.Repository
 {
-    public class ColleagueDiscountRepository:RepositoryBase<long,ColleagueDiscount>, ICollegueDiscountRepository
+    public class ColleagueDiscountRepository:RepositoryBase<long,ColleagueDiscount>, IColleagueDiscountRepository
 
     {
         private readonly DiscountContext _context;
