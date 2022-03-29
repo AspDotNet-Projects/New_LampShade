@@ -1,15 +1,15 @@
 ﻿@page
-@model Areas.Administration.Pages.Discounts.CustomerDiscounts.IndexModel
+@model Areas.Administration.Pages.Discounts.ColleagueDiscounts.IndexModel
 @{
     Layout = "Shared/_AdminLayout";
-    ViewData["title"] = "مدیریت تخفیفات مشتریان";
+    ViewData["title"] = "مدیریت تخفیفات همکاری";
 }
 
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">تعریف تخفیف مشتری</a>
+            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">تعریف تخفیف همکاری</a>
         </p>
     </div>
 </div>
@@ -18,21 +18,11 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">جستجو در محصولات همکاری</h3>
+                <h3 class="panel-title">جستجو در محصولات همکاران</h3>
             </div>
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
                     @*//Search By*@
-                    <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.StartDate"></label>
-                        @*-----------------PersianDateInput for PersianDatePicker-----------------------------------------*@
-                        <input class="form-control PersianDateInput" asp-for="SearchModel.StartDate">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.EndDate"></label>
-                        @*-----------------PersianDateInput for PersianDatePicker-----------------------------------------*@
-                        <input class="form-control PersianDateInput" asp-for="SearchModel.EndDate">
-                    </div>
                     <div class="form-group">
                         <label class="sr-only" asp-for="SearchModel.ProductId"></label>
                         <select class="form-control"  asp-for="SearchModel.ProductId" asp-items="Model.Products">
@@ -54,7 +44,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">لیست تخفیفات مشتریات (@Model.CustomerDiscounts.Count)</h3>
+                <h3 class="panel-title">لیست تخفیفات همکاران (@Model.ColleagueDiscounts.Count)</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -65,29 +55,33 @@
                                     <th>#</th>
                                     <th>محصول</th>
                                     <th>درصد تخفیف</th>
-                                    <th>تاریخ شروع</th>
-                                    <th>تاریخ پایان</th>
-                                    <th>علت تخفیف</th>
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.CustomerDiscounts)
+                            @foreach (var item in Model.ColleagueDiscounts)
                             {
                                 <tr>
                                     <td>@item.Id</td>
                                     <td>@item.Product</td>
                                     <td>@item.DiscountRate</td>
-                                    <td>@item.StartDate</td>
-                                    <td>@item.EndDate</td>
-                                    <td>@item.Reason</td>
                                     <td>@item.CreationDate</td>
                                     <td>
                                         <a class="btn btn-warning btn-rounded waves-effect waves-light m-b-5"
                                            href="#showmodal=@Url.Page("./Index", "Edit", new {id = @item.Id})">
                                             <i class="fa fa-edit"></i> ویرایش
                                         </a>
+                                        @if (item.IsRemoved)
+                                        {
+                                            <a class="btn btn-danger btn-rounded waves-effect waves-light m-b-5" asp-page="./Index" asp-route-id="@item.Id"
+                                               asp-page-handler="Restore">فعال سازی</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-success btn-rounded waves-effect waves-light m-b-5" asp-page="./Index" asp-route-id="@item.Id"
+                                               asp-page-handler="Remove">غیر فعال </a>
+                                        }
                                     </td>
                                 </tr>
 

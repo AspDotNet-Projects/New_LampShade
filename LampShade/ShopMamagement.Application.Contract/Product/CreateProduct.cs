@@ -22,7 +22,7 @@ namespace ShopManagement.Application.Contract.Product
         public string PictureTitle { get;  set; }
 
         //for int or long data
-        [Range(1,10000,ErrorMessage = ValidationMesseges.IsRequired)]
+        [Range(1,1000000,ErrorMessage = ValidationMesseges.IsRequired)]
         public long CategoryId { get;  set; }
         public string Slug { get; set; }
         public string Keywords { get; set; }

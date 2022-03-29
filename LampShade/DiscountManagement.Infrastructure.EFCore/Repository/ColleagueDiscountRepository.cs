@@ -37,17 +37,18 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
             var query = _context.ColleagueDiscounts.Select(x => new ColleagueDiscountViewModel
             {
                 Id = x.Id,
+                CreationDate = x.CreationDate.ToFarsi(),
+                DiscountRate = x.DiscountRate,
                 ProductId = x.ProductId,
-                CrearionDate = x.CreationDate.ToFarsi(),
-                DiscountRate = x.DiscountRate
-
+                IsRemoved = x.IsRemove
             });
+
             if (searchModel.ProductId > 0)
                 query = query.Where(x => x.ProductId == searchModel.ProductId);
 
             var discounts = query.OrderByDescending(x => x.Id).ToList();
-            discounts.ForEach(discounts =>
-                discounts.Pruduct = products.FirstOrDefault(x => x.Id == discounts.ProductId)?.Name);
+            discounts.ForEach(discount =>
+                discount.Product = products.FirstOrDefault(x => x.Id == discount.ProductId)?.Name);
             return discounts;
         }
     }

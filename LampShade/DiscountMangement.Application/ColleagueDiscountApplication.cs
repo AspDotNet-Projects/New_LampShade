@@ -9,7 +9,11 @@ namespace DiscountManagement.Application
     {
         private readonly IColleagueDiscountRepository _colleagueDiscountRepository;
 
-        
+        public ColleagueDiscountApplication(IColleagueDiscountRepository colleagueDiscountRepository)
+        {
+            _colleagueDiscountRepository = colleagueDiscountRepository;
+        }
+
 
         public OperationResult Define(DefineColleagueDiscount command)
         {
