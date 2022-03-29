@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiscountManagement.Application.Contract\DiscountManagement.Application.Contract.csproj" />
+    <ProjectReference Include="..\DiscountManagement.Infrastructure.EFCore\DiscountManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\DiscountMangement.Domain\DiscountMangement.Domain.csproj" />
   </ItemGroup>
 
