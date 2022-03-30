@@ -30,7 +30,8 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                     DiscountRate = x.DiscountRate,
                     StartDate = x.StartDate.ToString(),
                     EndDate = x.EndDate.ToString(),
-                    Reason = x.Reason
+                    Reason = x.Reason,
+                    ProductId = x.ProductId
 
 
                 })

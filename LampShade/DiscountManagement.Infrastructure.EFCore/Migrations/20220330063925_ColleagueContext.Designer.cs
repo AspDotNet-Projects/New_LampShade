@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiscountManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(DiscountContext))]
-    [Migration("20220326061431_customerDiscount")]
-    partial class customerDiscount
+    [Migration("20220330063925_ColleagueContext")]
+    partial class ColleagueContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,30 @@ namespace DiscountManagement.Infrastructure.EFCore.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("DiscountMangement.Domain.ColleagueDiscountAgg.ColleagueDiscount", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DiscountRate")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ColleagueDiscounts");
+                });
 
             modelBuilder.Entity("DiscountMangement.Domain.CustomerDiscountAgg.CustomerDiscount", b =>
                 {
@@ -41,7 +65,8 @@ namespace DiscountManagement.Infrastructure.EFCore.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Reason")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
