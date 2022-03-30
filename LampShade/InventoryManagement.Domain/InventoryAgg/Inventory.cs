@@ -28,7 +28,7 @@ namespace InventoryManagement.Domain.InventoryAgg
         /// محاسبه مقدار فعلی با محاسبه سرجمع خروجی ها -سرجمع ورودی ها
         /// </summary>
         /// <returns></returns>
-        private long CalculateCurrentCount()
+        public long CalculateCurrentCount()
         {
             ///x=>x.Operation Equals == 1
             var plus = Operations.Where(x => x.Operation).Sum(x => x.Count);
