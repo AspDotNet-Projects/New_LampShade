@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagement.Application.Contract.Inventory
 {
-    public class DecreaseInvemtory
+    public class ReduceInventory
     {
         //برای اینکه کاربر یا اپراتور بتونه مقدار رو کم بکنه
         public long ProdductId { get; set; }

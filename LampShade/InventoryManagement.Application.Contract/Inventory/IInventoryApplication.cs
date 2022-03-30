@@ -15,8 +15,14 @@ namespace InventoryManagement.Application.Contract.Inventory
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        OperationResult Decrease(List<DecreaseInvemtory> command);
+        OperationResult Reduce(List<ReduceInventory> command);
 
+        /// <summary>
+        /// زمانی که کاربر می خواد یک کالا رو کاهش بده
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        OperationResult Reduce(ReduceInventory command);
         /// <summary>
         /// 
         /// </summary>
