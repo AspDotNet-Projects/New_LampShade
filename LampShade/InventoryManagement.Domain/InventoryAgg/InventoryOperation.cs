@@ -32,6 +32,7 @@ namespace InventoryManagement.Domain.InventoryAgg
         public long OrderId  { get; private set; }
         public long InventoryId { get; private set; }
         public Inventory Inventory { get;private set; }
+        static InventoryOperation() { }
 
         public InventoryOperation(bool operation, long count, long operationId,
             long currentCount, string description, long orderId, long inventoryId)
