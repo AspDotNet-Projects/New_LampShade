@@ -2,6 +2,7 @@
 {
     public class ReduceInventory
     {
+        public long InventoryId { get; set; }
         //برای اینکه کاربر یا اپراتور بتونه مقدار رو کم بکنه
         public long ProdductId { get; set; }
         public long Count { get;  set; }

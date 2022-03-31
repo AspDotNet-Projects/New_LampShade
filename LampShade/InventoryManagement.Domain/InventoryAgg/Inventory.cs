@@ -22,7 +22,12 @@ namespace InventoryManagement.Domain.InventoryAgg
             /// وجود ندارد و در واقع مثل این که در انبار فقی یک قفسه تعریف کرده باشیم
             InStock = false;
         }
-
+        public void Edit(long productId, double unitePrice)
+        {
+            ProductId = productId;
+            UnitePrice = unitePrice;
+            
+        }
 
         /// <summary>
         /// محاسبه مقدار فعلی با محاسبه سرجمع خروجی ها -سرجمع ورودی ها
