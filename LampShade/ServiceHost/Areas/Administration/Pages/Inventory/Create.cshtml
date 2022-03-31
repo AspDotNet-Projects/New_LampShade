@@ -1,0 +1,47 @@
+﻿@model InventoryManagement.Application.Contract.Inventory.CreateInventory
+@{
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">ایجاد انبار جدید</h4>
+</div>
+@*//jahat estefad dar site.js --->data-ajax="true"*@
+<form asp-page="./Index" asp-page-handler="Create"
+      method="post"
+      data-ajax="true"
+      data-callback=""
+      data-action="Refresh"
+      enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ProductId" class="control-label"> انتخاب محصول</label>
+                    @* برای اینکه از تکنولوژی ام وی سی در کانترکت کریت استفاده نکنیم و وابستگی ایجاد نکنیم *@
+                    @* از این روش استفاده کردیم *@
+                    <select class="form-control" asp-for="ProductId" 
+                            asp-items='new SelectList(Model.Products,"Id","Name")'>
+                        <option value="0">انتخاب محصول</option>
+                    </select>
+                    <span asp-validation-for="Products" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UnitePrice" class="control-label">قیمت واحد</label>
+                    @*dar jqueery site.js makeslug vojod dare va baese poor shodan khodkare Slug az name mishe*@
+                    <input type="text" class="form-control" asp-for="UnitePrice">
+                    <span asp-validation-for="UnitePrice" class="error"></span>
+                </div>
+            </div>
+            
+        </div>
+        @* در هر کلاس رو رو کلاس ام دی 6 بیشتر جا نمیگیره *@
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
+        <button type="submit" class="btn btn-info waves-effect waves-light">تعریف</button>
+    </div>
+</form>
