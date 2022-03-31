@@ -14,5 +14,6 @@ namespace InventoryManagement.Domain.InventoryAgg
         /// <returns></returns>
         Inventory GetBy(long productid);
         List<InventoryViewModel> Search(InventorySearchModel searchModel);
+        List<InventoryOperationViewModel> GetOperationLog(long inventoryid);
     }
 }

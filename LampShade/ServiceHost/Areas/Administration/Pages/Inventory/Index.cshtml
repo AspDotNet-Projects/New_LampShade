@@ -64,6 +64,7 @@
                                     <th>محصول</th>
                                     <th>قیمت</th>
                                     <th>موجودی انبار</th>
+                                    <th>تاریخ ایجاد</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
@@ -75,6 +76,7 @@
                                     <td>@item.Product</td>
                                     <td>@item.UnitePrice</td>
                                     <td>@item.CurrentCount</td>
+                                    <td>@item.CreationDate</td>
                                     <td>
                                         <a class="btn btn-warning btn-rounded waves-effect waves-light m-b-5"
                                            href="#showmodal=@Url.Page("./Index", "Edit", new {id = @item.Id})">
@@ -87,6 +89,10 @@
                                         <a class="btn btn-danger btn-rounded waves-effect waves-light m-b-5"
                                            href="#showmodal=@Url.Page("./Index", "Reduce", new {id = @item.Id})">
                                             <i class="fa fa-minus"></i> کاهش موجودی
+                                        </a>
+                                        <a class="btn btn-primary btn-rounded waves-effect waves-light m-b-5"
+                                           href="#showmodal=@Url.Page("./Index", "Log", new {id = @item.Id})">
+                                            <i class="fa fa-recycle"></i> مشاهده گردش انبار
                                         </a>
                                     </td>
                                 </tr>

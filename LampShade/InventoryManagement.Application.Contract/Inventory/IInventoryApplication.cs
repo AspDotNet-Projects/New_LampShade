@@ -30,5 +30,6 @@ namespace InventoryManagement.Application.Contract.Inventory
         /// <returns></returns>
         EditInventory GetDetails(long id);
         List<InventoryViewModel> Search(InventorySearchModel searchModel);
+        List<InventoryOperationViewModel> GetOperationLog(long inventoryid);
     }
 }
