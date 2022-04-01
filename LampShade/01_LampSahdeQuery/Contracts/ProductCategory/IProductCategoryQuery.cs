@@ -9,5 +9,6 @@ namespace _01_LampSahdeQuery.Contracts.ProductCategory
     public interface IProductCategoryQuery
     {
         List<ProductCategoryQueryModel> getProductCategories();
+        List<ProductCategoryQueryModel> GetProductCategoriesWithProducts();
     }
 }
