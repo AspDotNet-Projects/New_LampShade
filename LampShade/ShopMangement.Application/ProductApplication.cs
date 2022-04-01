@@ -23,7 +23,7 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
 
             var slug = command.Slug.Slugify();
-            var product = new Product(command.Name,command.Code,command.UnitPrice,
+            var product = new Product(command.Name,command.Code,
                 command.ShortDescription,command.Description,command.Picture,
                 command.PictureAlt,command.PictureTitle,command.CategoryId,
                 slug, command.Keywords,command.MetaDescription);
@@ -44,7 +44,7 @@ namespace ShopManagement.Application
             if (_productRepository.Exists(x => x.Name == command.Name && x.Id==command.Id))
                 operation.Failed(ApplicationMesseges.DuplicatedRecored);
             var slug = command.Slug.Slugify();
-            product.Edite(command.Name, command.Code, command.UnitPrice,
+            product.Edite(command.Name, command.Code, 
                 command.ShortDescription, command.Description, command.Picture,
                 command.PictureAlt, command.PictureTitle, command.CategoryId,
                 slug, command.Keywords, command.MetaDescription);
@@ -53,31 +53,9 @@ namespace ShopManagement.Application
 
         }
 
-        public OperationResult InStock(long id)
-        {
-            var operation = new OperationResult();
-            var product = _productRepository.Get(id);
 
-            if (product == null)
-                operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            product.InStock();
-            _productRepository.SaveChange();
-            return operation.Succedded();
-        }
 
-        public OperationResult NotInStock(long id)
-        {
-            var operation = new OperationResult();
-            var product = _productRepository.Get(id);
-
-            if (product == null)
-                operation.Failed(ApplicationMesseges.RecoredNotFound);
-
-            product.NotInStock();
-            _productRepository.SaveChange();
-            return operation.Succedded();
-        }
 
         public EditProduct Getdetails(long id)
         {
