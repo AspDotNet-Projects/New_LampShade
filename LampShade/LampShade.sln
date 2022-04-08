@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helps-Pic", "Helps-Pic", "{
 		..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png = ..\..\..\..\..\Desktop\Help\Errore in Create Migration2.png
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_LampSahdeQuery", "01_LampSahdeQuery\01_LampSahdeQuery.csproj", "{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_LampShadeQuery", "01_LampSahdeQuery\01_LampShadeQuery.csproj", "{0C83F1A7-B56A-425C-94B5-74E6F5F5AE6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscountManagement", "DiscountManagement", "{93C5574D-9065-44D5-B6A9-570E5B284FCC}"
 EndProject
@@ -69,7 +69,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Configuration", "InventoryManagement.Configuration\InventoryManagement.Configuration.csproj", "{713C1E5F-4DDE-409A-BF91-9EE439E37C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Applicataion", "InventoryManagement.Applicataion\InventoryManagement.Applicataion.csproj", "{353234FD-7E7A-4023-B1F2-83C6935978F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Applicataion", "InventoryManagement.Applicataion\InventoryManagement.Applicataion.csproj", "{353234FD-7E7A-4023-B1F2-83C6935978F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

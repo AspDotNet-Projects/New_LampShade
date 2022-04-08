@@ -41,9 +41,10 @@ namespace _01_LampSahdeQuery.Query
                     Name = x.Name,
                     Products = MapProducts(x.Products)
                 }).ToList();
+            
         }
 
-        private List<ProductQueryModel> MapProducts(List<Product> products)
+        private static List<ProductQueryModel> MapProducts(List<Product> products)
         {
             var result = new List<ProductQueryModel>();
             foreach (var Product in products)
