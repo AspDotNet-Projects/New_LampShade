@@ -60,20 +60,27 @@ namespace _01_LampSahdeQuery.Query
             {
                 foreach (var product in category.Products)
                 {
-                    var price = inventory.FirstOrDefault(x => x.ProductId == product.Id).UnitePrice;
-                    product.Price = price.ToMoney();
-                    var discount= discounts.FirstOrDefault(x => x.ProductId == product.Id);
-                    if (discount != null)
+                    var productinventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+                    
+                    if (productinventory != null)
                     {
-                        int discountRate = discount.DiscountRate;
-                        product.DiscountRate = discountRate;
-                        //برای نمایش خط روی مبلغ اگر تخفیف داشت
-                        product.HasDiscouont = discountRate > 0;
-                        //مقدار تخفیف
-                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        var price = productinventory.UnitePrice;
+                        product.Price = price.ToMoney();
 
-                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                        var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                        if (discount != null)
+                        {
+                            int discountRate = discount.DiscountRate;
+                            product.DiscountRate = discountRate;
+                            //برای نمایش خط روی مبلغ اگر تخفیف داشت
+                            product.HasDiscouont = discountRate > 0;
+                            //مقدار تخفیف
+                            var discountAmount = Math.Round((price * discountRate) / 100);
+
+                            product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                        }
                     }
+                   
                    
 
                 }
