@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using _0_Framework.Application;
 using _01_LampSahdeQuery.Contracts.Product;
 using _01_LampSahdeQuery.Contracts.ProductCategory;
+using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
@@ -15,11 +17,13 @@ namespace _01_LampSahdeQuery.Query
     {
         private readonly ShopContext _shopContext;
         private readonly InventoryContext _inventorContext;
+        private readonly DiscountContext _discountContext;
 
-        public ProductCategoryQuery(ShopContext shopContext, InventoryContext inventorContext)
+        public ProductCategoryQuery(ShopContext shopContext, InventoryContext inventorContext, DiscountContext discountContext)
         {
             _shopContext = shopContext;
             _inventorContext = inventorContext;
+            _discountContext = discountContext;
         }
 
         public List<ProductCategoryQueryModel> getProductCategories()
@@ -38,11 +42,11 @@ namespace _01_LampSahdeQuery.Query
         public List<ProductCategoryQueryModel> GetProductCategoriesWithProducts()
         {
             var inventory = _inventorContext.Inventory.Select(x => new
-            {
-                x.ProductId,
-                x.UnitePrice,
+            { x.ProductId, x.UnitePrice,}).ToList();
 
-            }).ToList();
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x=>x.StartDate<DateTime.Now && x.EndDate>DateTime.Now)
+                .Select(x => new {x.DiscountRate, x.ProductId}).ToList();
             var  categoris=_shopContext.ProductCategories.Include(x => x.Products)
                 .ThenInclude(x => x.Category)
                 .Select(x => new ProductCategoryQueryModel
@@ -56,10 +60,23 @@ namespace _01_LampSahdeQuery.Query
             {
                 foreach (var product in category.Products)
                 {
-                    product.Price = inventory.FirstOrDefault(x => x.ProductId == product.Id)
-                        ?.UnitePrice.ToMoney();
+                    var price = inventory.FirstOrDefault(x => x.ProductId == product.Id).UnitePrice;
+                    product.Price = price.ToMoney();
+                    var discount= discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                    if (discount != null)
+                    {
+                        int discountRate = discount.DiscountRate;
+                        product.DiscountRate = discountRate;
+                        //برای نمایش خط روی مبلغ اگر تخفیف داشت
+                        product.HasDiscouont = discountRate > 0;
+                        //مقدار تخفیف
+                        var discountAmount = Math.Round((price * discountRate) / 100);
+
+                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                    }
+                   
+
                 }
-                
             }
             return categoris;
 
@@ -74,7 +91,8 @@ namespace _01_LampSahdeQuery.Query
                 Category = Product.Category.Name,
                 Picture = Product.Picture,
                 PictureAlt = Product.PictureAlt,
-                PictureTitle = Product.PictureTitle
+                PictureTitle = Product.PictureTitle,
+
             }).ToList();
 
 

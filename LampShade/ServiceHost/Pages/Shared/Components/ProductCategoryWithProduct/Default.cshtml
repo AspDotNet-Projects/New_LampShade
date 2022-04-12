@@ -53,14 +53,19 @@
                             ]'>
                                         @foreach (var product in category.Products)
                                         {
-                                            <div class="col">
+
+
+<div class="col">
                                                 <div class="single-grid-product">
                                                     <div class="single-grid-product__image">
-                                                        
+                                                        @if (product.HasDiscouont)
+                                                        {
                                                             <div class="single-grid-product__label">
                                                                 <span class="sale">-@product.DiscountRate%</span>
                                                             </div>
-                                                      
+                                                        }
+
+
                                                         <a asp-page="/Product" asp-route-id="@product.Slug">
                                                             <img src="@product.Picture" title="@product.PictureTitle" class="img-fluid"
                                                                  alt="@product.PictureAlt">
@@ -87,10 +92,16 @@
                                                         </h3>
                                                         <p class="single-grid-product__price">
                                                             
-                                                                <span class="discounted-price">@product.PriceWithDiscount تومان</span>
-                                                                <span class="main-price discounted">@product.Price تومان</span>
-                                                            
+                                                            @if(@product.HasDiscouont){
+                                                            <span class="discounted-price">@product.PriceWithDiscount تومان</span>
+                                                            <span class="main-price discounted">@product.Price تومان</span>
+                                                            }
+                                                            else{
                                                                 <span class="main-price">@product.Price تومان</span>
+                                                            }
+
+
+                                                           
                                                            
                                                         </p>
                                                     </div>
