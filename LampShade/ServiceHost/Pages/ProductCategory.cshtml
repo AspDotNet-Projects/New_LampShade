@@ -90,19 +90,11 @@
                                                   
                                                    }
                                                     <a href="single-product.html">
-                                                        <img src="@product.Price"  class="img-fluid"
+                                                        <img src="@product.Picture"  class="img-fluid"
                                                              alt="@product.PictureTitle" title="@product.PictureTitle">
                                                      </a>
 
-                                                    <div class="hover-icons">
-                                                        <a href="javascript:void(0)">
-                                                            <i class="ion-bag"></i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" data-toggle="modal"
-                                                           data-target="#quick-view-modal-container">
-                                                            <i class="ion-android-open"></i>
-                                                        </a>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="single-grid-product__content">
                                                     <div class="single-grid-product__category-rating">
@@ -127,15 +119,19 @@
 
                                                             <span class="discounted-price">@product.PriceWithDiscount تومان</span>
                                                             <span class="main-price discounted">@product.Price تومان</span>
-                                                        
+
                                                         }
                                                         else
                                                         {
                                                             <span class="main-price">@product.Price تومان</span>
                                                         }
                                                     </p>
-                                                        <div class="product-countdown" data-countdown="2020/06/10"></div>
-                                                    </div>
+                                                    @if (@product.HasDiscouont)
+                                                    {
+                                                        <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>
+
+                                                    }
+                                                </div>
                                             </div>
                                             <!--=======  End of product grid view  =======-->
 

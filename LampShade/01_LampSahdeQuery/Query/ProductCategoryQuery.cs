@@ -32,7 +32,7 @@ namespace _01_LampSahdeQuery.Query
 
             var discounts = _discountContext.CustomerDiscounts
                 .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
-                .Select(x => new { x.DiscountRate, x.ProductId }).ToList();
+                .Select(x => new { x.DiscountRate, x.ProductId ,x.EndDate}).ToList();
             var categoriy = _shopContext.ProductCategories.Include(x => x.Products)
                 .ThenInclude(x => x.Category)
                 .Select(x => new ProductCategoryQueryModel
@@ -42,7 +42,8 @@ namespace _01_LampSahdeQuery.Query
                     Products = MapProducts(x.Products),
                     Description = x.Description,
                     MetaDescription = x.MetaDescription,
-                    Keywords = x.Keywords
+                    Keywords = x.Keywords,
+                    Slug = x.Slug
                 }).FirstOrDefault(x=>x.Slug==slug);
 
             
@@ -66,6 +67,7 @@ namespace _01_LampSahdeQuery.Query
                             var discountAmount = Math.Round((price * discountRate) / 100);
 
                             product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                            product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
                         }
                     }
 
@@ -149,6 +151,7 @@ namespace _01_LampSahdeQuery.Query
                 Picture = Product.Picture,
                 PictureAlt = Product.PictureAlt,
                 PictureTitle = Product.PictureTitle,
+              
 
             }).ToList();
 
