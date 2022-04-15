@@ -1,16 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using _01_LampSahdeQuery.Contracts.ProductCategory;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
 {
     public class ProductCategoryModel : PageModel
     {
-        public void OnGet()
+        public ProductCategoryQueryModel ProductCategory;
+        private readonly IProductCategoryQuery _productCategoryQuery;
+
+        public ProductCategoryModel(IProductCategoryQuery productCategoryQuery)
         {
+            _productCategoryQuery = productCategoryQuery;
+        }
+
+        public void OnGet(string id)
+        {
+            ProductCategory = _productCategoryQuery.GetProductCategoryWithProductsBy(id);
         }
     }
 }
