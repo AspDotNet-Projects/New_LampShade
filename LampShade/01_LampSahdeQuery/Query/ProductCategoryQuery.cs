@@ -44,7 +44,7 @@ namespace _01_LampSahdeQuery.Query
                     MetaDescription = x.MetaDescription,
                     Keywords = x.Keywords,
                     Slug = x.Slug
-                }).FirstOrDefault(x=>x.Slug==slug);
+                }).AsNoTracking().FirstOrDefault(x=>x.Slug==slug);
 
             
                 foreach (var product in categoriy.Products)
@@ -62,7 +62,7 @@ namespace _01_LampSahdeQuery.Query
                             int discountRate = discount.DiscountRate;
                             product.DiscountRate = discountRate;
                             //برای نمایش خط روی مبلغ اگر تخفیف داشت
-                            product.HasDiscouont = discountRate > 0;
+                            product.HasDiscount = discountRate > 0;
                             //مقدار تخفیف
                             var discountAmount = Math.Round((price * discountRate) / 100);
 
@@ -88,7 +88,7 @@ namespace _01_LampSahdeQuery.Query
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Slug = x.Slug
-            }).ToList();
+            }).AsNoTracking().ToList();
         }
 
         public List<ProductCategoryQueryModel> GetProductCategoriesWithProducts()
@@ -106,7 +106,7 @@ namespace _01_LampSahdeQuery.Query
                     Id = x.Id,
                     Name = x.Name,
                     Products = MapProducts(x.Products)
-                }).ToList();
+                }).AsNoTracking().ToList();
 
             foreach (var category in categoris)
             {
@@ -125,7 +125,7 @@ namespace _01_LampSahdeQuery.Query
                             int discountRate = discount.DiscountRate;
                             product.DiscountRate = discountRate;
                             //برای نمایش خط روی مبلغ اگر تخفیف داشت
-                            product.HasDiscouont = discountRate > 0;
+                            product.HasDiscount = discountRate > 0;
                             //مقدار تخفیف
                             var discountAmount = Math.Round((price * discountRate) / 100);
 

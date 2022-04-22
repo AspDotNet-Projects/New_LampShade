@@ -82,7 +82,7 @@
                                             <!--=======  product grid view  =======-->
                                             <div class="single-grid-product grid-view-product">
                                                 <div class="single-grid-product__image">
-                                                   @if (@product.HasDiscouont)
+                                                   @if (@product.HasDiscount)
                                                    {
                                                        <div class="single-grid-product__label">
                                                            <span class="sale">-@product.DiscountRate%</span>
@@ -114,7 +114,7 @@
                                                         <a asp-page="/ProductDetails">@product.Name</a>
                                                     </h3>
                                                     <p class="single-grid-product__price">
-                                                        @if (@product.HasDiscouont)
+                                                        @if (@product.HasDiscount)
                                                         {
 
                                                             <span class="discounted-price">@product.PriceWithDiscount تومان</span>
@@ -126,7 +126,7 @@
                                                             <span class="main-price">@product.Price تومان</span>
                                                         }
                                                     </p>
-                                                    @if (@product.HasDiscouont)
+                                                    @if (@product.HasDiscount)
                                                             {
                                                         //کلاس شمارنده تخفیفات
                                                         <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>

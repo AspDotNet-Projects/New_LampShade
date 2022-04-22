@@ -48,7 +48,7 @@
                                 <div class="single-grid-product">
                                     <div class="single-grid-product__image">
                                         <div class="single-grid-product__label">
-                                            @if (@product.HasDiscouont)
+                                            @if (@product.HasDiscount)
                                             {
                                             <span class="sale">-@product.DiscountRate%</span>
 
@@ -76,7 +76,7 @@
                                             <a href="single-product.html">@product.Name</a>
                                         </h3>
                                         <p class="single-grid-product__price">
-                                            @if (@product.HasDiscouont)
+                                            @if (@product.HasDiscount)
                                             {
                                             <span class="discounted-price">@product.PriceWithDiscount تومان</span>
                                             <span class="main-price discounted">@product.Price تومان</span>

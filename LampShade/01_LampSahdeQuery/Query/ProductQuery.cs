@@ -43,7 +43,7 @@ namespace _01_LampShadeQuery.Query
                     PictureAlt = Product.PictureAlt,
                     PictureTitle = Product.PictureTitle,
                     //Take(6) ==>6 charachter end
-                }).OrderByDescending(x=>x.Id).Take(6).ToList();
+                }).AsNoTracking().OrderByDescending(x=>x.Id).Take(6).ToList();
             foreach (var product in products)
             {
                 
@@ -60,7 +60,7 @@ namespace _01_LampShadeQuery.Query
                         int discountRate = discount.DiscountRate;
                         product.DiscountRate = discountRate;
                         //برای نمایش خط روی مبلغ اگر تخفیف داشت
-                        product.HasDiscouont = discountRate > 0;
+                        product.HasDiscount = discountRate > 0;
                         //مقدار تخفیف
                         var discountAmount = Math.Round((price * discountRate) / 100);
 
@@ -74,5 +74,62 @@ namespace _01_LampShadeQuery.Query
 
             return products;
         }
+
+        public List<ProductQueryModel> Search(string value)
+        {
+            var inventory = _inventorContext.Inventory.Select(x =>
+                new { x.ProductId, x.UnitePrice }).ToList();
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Select(x => new { x.DiscountRate, x.ProductId, x.EndDate }).ToList();
+
+            var query = _shopContext.Products
+                .Include(x => x.Category)
+                .Select(product => new ProductQueryModel
+                {
+                    Id = product.Id,
+                    Category = product.Category.Name,
+                    CategorySlug = product.Category.Slug,
+                    Name = product.Name,
+                    Picture = product.Picture,
+                    PictureAlt = product.PictureAlt,
+                    PictureTitle = product.PictureTitle,
+                    ShortDescription = product.ShortDescription,
+                    Slug = product.Slug
+                }).AsNoTracking();
+
+            if (!string.IsNullOrWhiteSpace(value))
+                query = query.Where(x => x.Name.Contains(value) || x.ShortDescription.Contains(value));
+            var products = query.OrderByDescending(x => x.Id).ToList();
+                foreach (var product in products)
+                {
+                    var productinventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+
+                    if (productinventory != null)
+                    {
+                        var price = productinventory.UnitePrice;
+                        product.Price = price.ToMoney();
+
+                        var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                        if (discount != null)
+                        {
+                            int discountRate = discount.DiscountRate;
+                            product.DiscountRate = discountRate;
+                            //برای نمایش خط روی مبلغ اگر تخفیف داشت
+                            product.HasDiscount = discountRate > 0;
+                            //مقدار تخفیف
+                            var discountAmount = Math.Round((price * discountRate) / 100);
+
+                            product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                        }
+                    }
+
+
+
+               
+            }
+            return products;
+        }
+
     }
 }

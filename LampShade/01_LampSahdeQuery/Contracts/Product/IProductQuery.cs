@@ -7,5 +7,6 @@ namespace _01_LampShadeQuery.Contracts.Product
     {
         //آخرین محصولات
         List<ProductQueryModel> GetLatestArrivals();
+        List<ProductQueryModel> Search(string value);
     }
 }
