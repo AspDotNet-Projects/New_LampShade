@@ -66,7 +66,11 @@ $(document).ready(function () {
     //که در فرم ایحاد گروه محصول دیتا ای جکس رو ترو کردیم
     $(document).on("submit",
         'form[data-ajax="true"]',
+    //    function (e)
+    //ما داریم به ورودی یک آتچکت می دیم
         function (e) {
+            //اگه اتفاقی بیافته و فرم اجرا نشه این خط باعث میشه کل فرم اجرا نشه
+            //و درواقع مقادیر پیش فرض فرم را کمسل میککنه
             e.preventDefault();
             //اون فرم رو بگیر
             var form = $(this);
@@ -76,26 +80,39 @@ $(document).ready(function () {
             //asp-page="./Index" asp-page-handler="Create"
             //یعنی رویدادپست برای آن باید نوشت
             const url = form.attr("action");
-            const data = form.serializeArray();
             //اتفاقی که قرار است بعد ارز ارسال فرم رخ می دهد
             var action = form.attr("data-action");
 
+            //اگه متد گت بود
+            //const data = form.serializeArray();
+            //به فرم تمام تکست نگاه کن
             if (method === "get") {
+                //ما تا اینجا فثط تکست ارسال می کردیم 
+                //اگه بخواهیم شی هم ارسال کنیم یا همان فایل آپلود را ازسال کنیم
+                //دیگر نمی توانیم از
+                //form.serializeArray();
+                //استفاده کنیم
                 const data = form.serializeArray();
                 $.get(url,
                     data,
                     function (data) {
                         CallBackHandler(data, action, form);
                     });
-            } else {
+            }
+            ///اگه متد گت نبود یعنی پست بود این کارها  رو بکن
+            else {
+                //که در وقع یک فرم می گیرد با تمام آیتم ها    
                 var formData = new FormData(this);
                 $.ajax({
                     url: url,
                     type: "post",
+                    //چهار خط زیر برای ارسال اطلاعات به جز تکست به فرم هست
                     data: formData,
                     enctype: "multipart/form-data",
                     dataType: "json",
+                    //که دیتای که میگیره رو پردازش نکنه
                     processData: false,
+                    //که هیچ ایرادی به دیتای ارسالی نگیرید
                     contentType: false,
                     success: function (data) {
                         CallBackHandler(data, action, form);
