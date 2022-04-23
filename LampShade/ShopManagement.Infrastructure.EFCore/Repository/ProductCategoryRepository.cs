@@ -46,6 +46,11 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 .FirstOrDefault(x => x.Id == id);
         }
 
+        public string GetSlugById(long id)
+        {
+            return _shopContext.ProductCategories.Select(x => new {x.Id, x.Slug}).FirstOrDefault(x => x.Id == id).Slug;
+        }
+
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
         {
             var query = _shopContext.ProductCategories.Select(x => new ProductCategoryViewModel()

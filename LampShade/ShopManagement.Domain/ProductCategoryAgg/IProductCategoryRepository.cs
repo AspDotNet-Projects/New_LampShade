@@ -10,10 +10,11 @@ namespace ShopManagement.Domain.ProductCategoryAgg
     ///  IProductCategoryRepository---->IRepository
     /// </summary>
     public interface  IProductCategoryRepository:IRepository<long,ProductCategory>
-    {
-        List<ProductCategoryViewModel> GetProductCategories_selectlist();
+    { 
+       List<ProductCategoryViewModel> GetProductCategories_selectlist();
        EditeProductCategory GetDatails(long id);
-        List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel);
+       string GetSlugById(long id);
+       List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel);
 
     }
 }
