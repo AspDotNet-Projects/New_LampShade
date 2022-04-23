@@ -9,6 +9,8 @@ namespace ShopManagement.Application.Contract.ProductCategory
         [Required(ErrorMessage = ValidationMesseges.IsRequired)]
         public string Name { get;  set; }
         public string Description { get;  set; }
+        [Required(ErrorMessage = ValidationMesseges.IsRequired)]
+        [MaxFileSize(3*1024,ErrorMessage = ValidationMesseges.MaxFileSize)]
         public IFormFile Picture { get;  set; }
         public string PictureAlt { get; set; }
         public string PictureTitle { get;  set; }

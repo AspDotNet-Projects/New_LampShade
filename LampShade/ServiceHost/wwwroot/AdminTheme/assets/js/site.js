@@ -233,9 +233,13 @@ function handleAjaxCall(method, url, data) {
     }
 }
 
+///ولیدیشن سمت کلایننت که دقییقا این متد باید همین نام باشه
 jQuery.validator.addMethod("maxFileSize",
     function (value, element, params) {
         var size = element.files[0].size;
+        //برای تبدیل به مگابایت
+        //debugger;
+        //اگه بخواهیم در جی کوئری یک تریس انجام بریم از این طریق میشه انجام داد.
         var maxSize = 3 * 1024 * 1024;
         if (size > maxSize)
             return false;
