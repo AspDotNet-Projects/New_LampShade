@@ -43,7 +43,9 @@ namespace ShopManagement.Domain.ProductCategoryAgg
         {
             Name = name;
             Description = description;
-            Picture = picture;
+            ///برای زمانی که می خواهد ویرایش کنه و فیلدی به جز عکس هست و مقدار عکی را خالی رها میکنه
+            if(!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Keywords = keywords;

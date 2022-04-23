@@ -24,9 +24,13 @@ namespace _0_Framework.Application
         {
             //بیدیل ولیو به آبجکت 
             var file = value as IFormFile;
-            if (file != null) return true;
+            if (file == null) return true;
             //به این معنی اگر کوچکتر با مساوی بود ترو برگردون در غیر اینصورت فالس
             return file.Length <= _maxFileSize;
+
+
+
+
         }
 
         /// <summary>
