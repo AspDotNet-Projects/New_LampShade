@@ -240,7 +240,7 @@ jQuery.validator.addMethod("maxFileSize",
         //برای تبدیل به مگابایت
         //debugger;
         //اگه بخواهیم در جی کوئری یک تریس انجام بریم از این طریق میشه انجام داد.
-        var maxSize = 3 * 1024 * 1024;
+        var maxSize = 3 * 1024 *1024;
         if (size > maxSize)
             return false;
         else {
@@ -249,15 +249,19 @@ jQuery.validator.addMethod("maxFileSize",
     });
 jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
 
-//jQuery.validator.addMethod("maxFileSize",
-//    function (value, element, params) {
-//        var size = element.files[0].size;
-//        var maxSize = 3 * 1024 * 1024;
-//        debugger;
-//        if (size > maxSize)
-//            return false;
-//        else {
-//            return true;
-//        }
-//    });
-//jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
+
+jQuery.validator.addMethod("fileExtentionlimite",
+    function (value, element, params) {
+        var extention = "jpg|jpeg|png";
+        var extentionfile = value.split(".").pop();
+        var FileTypeInSearch = extention.includes(extentionfile);
+        /*debugger;*/
+        if (FileTypeInSearch === false)
+            return false;
+        else {
+            return true;
+        }
+    });
+jQuery.validator.unobtrusive.adapters.addBool("fileExtentionlimite");
+
+
