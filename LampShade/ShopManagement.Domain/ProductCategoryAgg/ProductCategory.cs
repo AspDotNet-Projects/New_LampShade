@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _0_Framework;
 using _0_Framework.Domain;
+using Microsoft.AspNetCore.Http;
 using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductCategoryAgg
@@ -44,7 +45,7 @@ namespace ShopManagement.Domain.ProductCategoryAgg
             Name = name;
             Description = description;
             ///برای زمانی که می خواهد ویرایش کنه و فیلدی به جز عکس هست و مقدار عکی را خالی رها میکنه
-            if(!string.IsNullOrWhiteSpace(picture))
+            if (!string.IsNullOrWhiteSpace(picture))
                 Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;

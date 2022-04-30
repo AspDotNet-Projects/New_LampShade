@@ -8,6 +8,7 @@ namespace ShopManagement.Domain.ProductPictureAgg
     {
         
         EditProductPicture GetDatails(long id);
+        ProductPicture GetWithProductAngCategory(long id);
         List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel);
     }
 }

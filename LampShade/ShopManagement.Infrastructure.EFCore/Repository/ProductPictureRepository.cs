@@ -26,11 +26,19 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             {
                 Id = x.Id,
                 ProductId = x.ProductId,
-                Picture = x.Picture,
                 PictureTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt
 
             }).FirstOrDefault(x => x.Id == id);
+        }
+
+        public ProductPicture GetWithProductAngCategory(long id)
+        {
+            //جویت بین سه جدول
+            return _context.ProductPictures.Include(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .FirstOrDefault(x => x.Id == id);
+
         }
 
         public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)

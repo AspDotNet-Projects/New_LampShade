@@ -28,9 +28,10 @@ namespace ShopManagement.Application
             
                 var Slug = Command.Slug.Slugify();
 
-            var picturePath = $"{Command.Slug}";
-            var fileName = _fileUploader.Upload(Command.Picture, picturePath);
-            var productcategory = new ProductCategory(Command.Name, Command.Description, fileName, Command.PictureAlt, Command.PictureTitle, Command.Keywords, Command.MetaDescription
+                var picturePath = $"{Command.Slug}";
+                var pictureName = _fileUploader.Upload(Command.Picture, picturePath);
+
+                var productcategory = new ProductCategory(Command.Name, Command.Description, pictureName, Command.PictureAlt, Command.PictureTitle, Command.Keywords, Command.MetaDescription
                     , Slug);
                 _productCategoryRepository.Create(productcategory);
                 _productCategoryRepository.SaveChange();
@@ -55,9 +56,9 @@ namespace ShopManagement.Application
             var Slug=Command.Slug.Slugify();
 
             var picturePath = $"{Command.Slug}";
-            var fileName = _fileUploader.Upload(Command.Picture, picturePath);
-            productcategory.Edite(Command.Name,Command.Description,fileName
-            ,Command.PictureAlt,Command.PictureTitle,Command.Keywords
+            var pictureName = _fileUploader.Upload(Command.Picture, picturePath);
+            productcategory.Edite(Command.Name,Command.Description, pictureName
+            , Command.PictureAlt,Command.PictureTitle,Command.Keywords
             ,Command.MetaDescription,Slug);
             _productCategoryRepository.SaveChange();
 
