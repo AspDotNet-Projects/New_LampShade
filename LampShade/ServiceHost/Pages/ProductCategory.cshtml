@@ -1,4 +1,6 @@
-﻿@page
+﻿@*جهت اینکه در آدرس بار اسلاگ که دادیم به غنوان ای دی اینجا به عنوان آدرس استفاده کرده باشسم*@
+@*این به  این معنی است که آی دی اجباری است و در متد گت باید به عنوان وروودی دریافت شود*@
+@page "{id}"
 @model ServiceHost.Pages.ProductCategoryModel
 @{
     ViewData["Title"] = "گروه محصولات";
@@ -12,7 +14,7 @@
                     <!--=======  breadcrumb content  =======-->
                     <div class="breadcrumb-content">
                         <h2 class="breadcrumb-content__title">@Model.ProductCategory.Name</h2>
-                       <h3>@Model.ProductCategory.Description</h3>
+                        <h3>@Model.ProductCategory.Description</h3>
                         <ul class="breadcrumb-content__page-map">
                             <li><a asp-page="./Index">صفحه اصلی</a></li>
                             <li class="active">@Model.ProductCategory.Name</li>
@@ -78,67 +80,67 @@
                                         {
 
 
-<div class="col-12 col-lg-4 col-md-4 col-sm-6">
-                                            <!--=======  product grid view  =======-->
-                                            <div class="single-grid-product grid-view-product">
-                                                <div class="single-grid-product__image">
-                                                   @if (@product.HasDiscount)
-                                                   {
-                                                       <div class="single-grid-product__label">
-                                                           <span class="sale">-@product.DiscountRate%</span>
-                                                       </div>
-                                                  
-                                                   }
-                                                    <a href="single-product.html">
-                                                        <img src="~/ProductPictures/@product.Picture"  class="img-fluid"
-                                                             alt="@product.PictureTitle" title="@product.PictureTitle">
-                                                     </a>
-
-                                                    
-                                                </div>
-                                                <div class="single-grid-product__content">
-                                                    <div class="single-grid-product__category-rating">
-                                                        <span class="category">
-                                                            <a href="shop-left-sidebar.html">Decor</a>
-                                                        </span>
-                                                        <span class="rating">
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star-outline"></i>
-                                                        </span>
-                                                    </div>
-
-                                                    <h3 class="single-grid-product__title">
-                                                        <a asp-page="/ProductDetails">@product.Name</a>
-                                                    </h3>
-                                                    <p class="single-grid-product__price">
+                                            <div class="col-12 col-lg-4 col-md-4 col-sm-6">
+                                                <!--=======  product grid view  =======-->
+                                                <div class="single-grid-product grid-view-product">
+                                                    <div class="single-grid-product__image">
                                                         @if (@product.HasDiscount)
                                                         {
-
-                                                            <span class="discounted-price">@product.PriceWithDiscount تومان</span>
-                                                            <span class="main-price discounted">@product.Price تومان</span>
+                                                            <div class="single-grid-product__label">
+                                                                <span class="sale">-@product.DiscountRate%</span>
+                                                            </div>
 
                                                         }
-                                                        else
-                                                        {
-                                                            <span class="main-price">@product.Price تومان</span>
-                                                        }
-                                                    </p>
-                                                    @if (@product.HasDiscount)
+                                                        <a asp-page="/product" asp-route-id="@product.Slug">
+                                                            <img src="~/ProductPictures/@product.Picture" class="img-fluid"
+                                                                 alt="@product.PictureTitle" title="@product.PictureTitle">
+                                                        </a>
+
+
+                                                    </div>
+                                                    <div class="single-grid-product__content">
+                                                        <div class="single-grid-product__category-rating">
+                                                            <span class="category">
+                                                                <a asp-page="/productCategory" asp-route-id="@Model.ProductCategory.Slug">@Model.ProductCategory.Name</a>
+                                                            </span>
+                                                            <span class="rating">
+                                                                <i class="ion-android-star active"></i>
+                                                                <i class="ion-android-star active"></i>
+                                                                <i class="ion-android-star active"></i>
+                                                                <i class="ion-android-star active"></i>
+                                                                <i class="ion-android-star-outline"></i>
+                                                            </span>
+                                                        </div>
+
+                                                        <h3 class="single-grid-product__title">
+                                                            <a asp-page="/product" asp-route-id="@product.Slug">@product.Name</a>
+                                                        </h3>
+                                                        <p class="single-grid-product__price">
+                                                            @if (@product.HasDiscount)
                                                             {
-                                                        //کلاس شمارنده تخفیفات
-                                                        <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>
 
-                                                    }
+                                                                <span class="discounted-price">@product.PriceWithDiscount تومان</span>
+                                                                <span class="main-price discounted">@product.Price تومان</span>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="main-price">@product.Price تومان</span>
+                                                            }
+                                                        </p>
+                                                        @if (@product.HasDiscount)
+                                                        {
+                                                            //کلاس شمارنده تخفیفات
+                                                            <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>
+
+                                                        }
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!--=======  End of product grid view  =======-->
+                                                <!--=======  End of product grid view  =======-->
 
-                                        </div>
+                                            </div>
                                         }
-                                        
+
 
 
                                     </div>
