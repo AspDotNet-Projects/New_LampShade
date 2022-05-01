@@ -7,6 +7,7 @@ using _01_LampShadeQuery.Contracts.Product;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_LampShadeQuery.Query
@@ -25,7 +26,7 @@ namespace _01_LampShadeQuery.Query
             _discountContext = discountContext;
         }
 
-        public ProductQueryModel GetProductDetails(string slug)
+        public ProductQueryModel GetDetails(string slug)
         {
             var inventory = _inventorContext.Inventory.Select(x => new { x.ProductId, x.UnitePrice, x.InStock }).ToList();
 
@@ -51,6 +52,7 @@ namespace _01_LampShadeQuery.Query
                     Keywords = x.Keywords,
                     MetaDescription = x.MetaDescription,
                     ShortDescription = x.ShortDescription,
+                    Pictures = MapProductPinctures(x.ProductPictures)
                     
                 }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
@@ -80,6 +82,19 @@ namespace _01_LampShadeQuery.Query
 
 
             return product;
+        }
+
+        //این متد حتما باید استاتیک باشد
+        private static List<ProductPictureQueryModel> MapProductPinctures(List<ProductPicture> pictures)
+        {
+            return pictures.Select(x => new ProductPictureQueryModel
+            {
+                IsRemoved = x.IsRemoved,
+                Picture = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                ProductId = x.ProductId
+            }).Where(x => x.IsRemoved == false).ToList();
         }
 
         public List<ProductQueryModel> GetLatestArrivals()

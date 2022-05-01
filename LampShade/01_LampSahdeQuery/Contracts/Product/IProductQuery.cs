@@ -5,7 +5,7 @@ namespace _01_LampShadeQuery.Contracts.Product
 {
     public interface IProductQuery
     {
-        ProductQueryModel GetProductDetails(string slug);
+        ProductQueryModel GetDetails(string slug);
         //آخرین محصولات
         List<ProductQueryModel> GetLatestArrivals();
         List<ProductQueryModel> Search(string value);

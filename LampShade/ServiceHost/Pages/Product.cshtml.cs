@@ -16,7 +16,7 @@ namespace ServiceHost.Pages
 
         public void OnGet(string id)
         {
-            Product = _productQuery.GetProductDetails(id);
+            Product = _productQuery.GetDetails(id);
         }
     }
 }
