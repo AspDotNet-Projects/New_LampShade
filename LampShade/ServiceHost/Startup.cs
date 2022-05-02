@@ -1,4 +1,5 @@
 using _0_Framework.Application;
+using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopManagement.Configuration;
+
 
 namespace ServiceHost
 {
@@ -26,6 +28,7 @@ namespace ServiceHost
             ShopManagementBootstrapper.Configure(services, connectionstring);
             DiscountManagementBootstrapper.Configure(services,connectionstring);
             InventoryManagementBootstrapper.Configur(services,connectionstring);
+            CommentManagementBootstrapper.Configur(services, connectionstring);
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddRazorPages();
         }

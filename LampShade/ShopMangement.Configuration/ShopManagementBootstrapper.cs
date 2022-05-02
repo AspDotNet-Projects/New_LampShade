@@ -1,6 +1,4 @@
-﻿using System;
-using _01_LampSahdeQuery.Contracts;
-using _01_LampSahdeQuery.Contracts.ProductCategory;
+﻿using _01_LampSahdeQuery.Contracts.ProductCategory;
 using _01_LampSahdeQuery.Contracts.Slide;
 using _01_LampSahdeQuery.Query;
 using _01_LampShadeQuery.Contracts.Product;
