@@ -4,27 +4,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contract.Slide;
 
-namespace ServiceHost.Areas.Administration.Pages.Comment.ProductComment
+namespace ServiceHost.Areas.Administration.Pages.Comment.Comment
 {
     public class IndexModel : PageModel
     {
         [TempData]
         public string Message { get; set; }
 
-        public ProductCommentSearchModel SearchModel;
-        public List<ProductCommentViewModel> productComments;
+        public CommentSearchModel SearchModel;
+        public List<CommentViewModel> productComments;
 
-        private readonly IProductCommentApplication _productCommentApplication;
+        private readonly ICommentApplication _commentApplication;
 
-        public IndexModel(IProductCommentApplication productcommentapplication)
+        public IndexModel(ICommentApplication productcommentapplication)
         {
-            _productCommentApplication = productcommentapplication;
+            _commentApplication = productcommentapplication;
         }
 
 
-        public void OnGet(ProductCommentSearchModel searchModel)
+        public void OnGet(CommentSearchModel searchModel)
         {
-            productComments = _productCommentApplication.Search(searchModel);
+            productComments = _commentApplication.Search(searchModel);
         }
 
         public IActionResult OnGetCreate()
@@ -37,7 +37,7 @@ namespace ServiceHost.Areas.Administration.Pages.Comment.ProductComment
 
         public IActionResult OnGetCancel(long id)
         {
-           var result = _productCommentApplication.Cancel(id);
+           var result = _commentApplication.Cancel(id);
            if (result.IsSuccedded)
                return RedirectToPage("./Index");
            Message = result.Messege;
@@ -48,7 +48,7 @@ namespace ServiceHost.Areas.Administration.Pages.Comment.ProductComment
 
         public IActionResult OnGetConfirm(long id)
         {
-            var result = _productCommentApplication.Confirm(id);
+            var result = _commentApplication.Confirm(id);
             if (result.IsSuccedded)
                 return RedirectToPage("./Index");
             Message = result.Messege;

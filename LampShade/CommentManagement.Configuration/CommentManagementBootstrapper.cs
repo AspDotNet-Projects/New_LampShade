@@ -12,8 +12,8 @@ namespace CommentManagement.Configuration
     {
         public static void Configur(IServiceCollection services, string connectionstring)
         {
-            services.AddTransient<IProductCommentRepository, ProductCommentRepository>();
-            services.AddTransient<IProductCommentApplication, ProductCommentApplication>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<ICommentApplication, CommentApplication>();
 
             services.AddDbContext<CommentContext>(x => x.UseSqlServer(connectionstring));
         }

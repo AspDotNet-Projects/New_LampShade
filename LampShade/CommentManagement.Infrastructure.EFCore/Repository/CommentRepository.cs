@@ -4,31 +4,32 @@ using _0_Framework.Application;
 using _0_Framework.Repository;
 using CommentManagement.Application.Contract.ProductComment;
 using CommentManagement.Domain.ProductCommentAgg;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace CommentManagement.Infrastructure.EFCore.Repository
 {
-    public class ProductCommentRepository :RepositoryBase<long,ProductComment>,IProductCommentRepository
+    public class CommentRepository :RepositoryBase<long,Comment>,ICommentRepository
     {
         private readonly CommentContext _context;
-        public ProductCommentRepository(CommentContext context) : base(context)
+        public CommentRepository(CommentContext context) : base(context)
         {
             _context = context;
         }
 
-        public List<ProductCommentViewModel> Search(ProductCommentSearchModel searchModel)
+        public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
-            var query= _context.ProductComments.Include(x => x.Product)
-                .Select(x => new ProductCommentViewModel
+            var query= _context.Comments
+                .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Message = x.Message,
-                    ProductId = x.ProductId,
                     Email = x.Email,
+                    Website = x.Website,
+                    Message = x.Message,
                     IsCanceled = x.IsCanceled,
                     IsConfirm = x.IsConfirmed,
-                    ProductName = x.Product.Name,
+                    OwnerRecoredId = x.OwnerRecordId,
+                    Type = x.Type,
                     CommentDate = x.CreationDate.ToFarsi()
                 });
             if(!string.IsNullOrWhiteSpace(searchModel.Name))

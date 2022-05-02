@@ -3,12 +3,12 @@ using _0_Framework.Application;
 
 namespace CommentManagement.Application.Contract.ProductComment
 {
-    public interface IProductCommentApplication
+    public interface ICommentApplication
     {
-        OperationResult Add(AddProductComment command);
+        OperationResult Add(AddComment command);
         OperationResult Confirm(long id);
         OperationResult Cancel(long id);
-        List<ProductCommentViewModel> Search(ProductCommentSearchModel searchModel);
+        List<CommentViewModel> Search(CommentSearchModel searchModel);
 
 
 

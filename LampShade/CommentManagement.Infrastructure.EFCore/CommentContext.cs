@@ -7,7 +7,7 @@ namespace CommentManagement.Infrastructure.EFCore
     public class CommentContext:DbContext
 
     {
-        public DbSet<ProductComment>  ProductComments{ get; set; }
+        public DbSet<Comment>  Comments{ get; set; }
 
 
         public CommentContext(DbContextOptions<CommentContext> options) : base(options)
@@ -18,7 +18,7 @@ namespace CommentManagement.Infrastructure.EFCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            var assembly = typeof(ProductCommentMapping).Assembly;
+            var assembly = typeof(CommentMapping).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
             base.OnModelCreating(modelBuilder);
         }

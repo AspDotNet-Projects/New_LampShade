@@ -5,34 +5,35 @@ using CommentManagement.Domain.ProductCommentAgg;
 
 namespace CommentManagement.Application
 {
-    public class ProductCommentApplication : IProductCommentApplication
+    public class CommentApplication : ICommentApplication
     {
-        private readonly IProductCommentRepository _productCommentRepository;
+        private readonly ICommentRepository _commentRepository;
 
-        public ProductCommentApplication(IProductCommentRepository productCommentRepository)
+        public CommentApplication(ICommentRepository commentRepository)
         {
-            _productCommentRepository = productCommentRepository;
+            _commentRepository = commentRepository;
         }
 
-        public OperationResult Add(AddProductComment command)
+        public OperationResult Add(AddComment command)
         {
             var operation = new OperationResult();
-            var comment = new ProductComment(command.Name, command.Email, command.Message, command.ProductId);
-            _productCommentRepository.Create(comment);
-            _productCommentRepository.SaveChange();
+            var comment = new Comment(command.Name, command.Email,command.Website,
+                command.Message, command.OwnerRecordId,command.Type,command.ParentId);
+            _commentRepository.Create(comment);
+            _commentRepository.SaveChange();
             return operation.Succedded();
         }
 
         public OperationResult Confirm(long id)
         {
             var operation = new OperationResult();
-            var comment = _productCommentRepository.Get(id);
+            var comment = _commentRepository.Get(id);
             
             if (comment == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
             comment.Confirm();
-            _productCommentRepository.SaveChange();
+            _commentRepository.SaveChange();
             return operation.Succedded();
 
         }
@@ -40,19 +41,19 @@ namespace CommentManagement.Application
         public OperationResult Cancel(long id)
         {
             var operation = new OperationResult();
-            var comment = _productCommentRepository.Get(id);
+            var comment = _commentRepository.Get(id);
 
             if (comment == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
             comment.Cancel();
-            _productCommentRepository.SaveChange();
+            _commentRepository.SaveChange();
             return operation.Succedded();
         }
 
-        public List<ProductCommentViewModel> Search(ProductCommentSearchModel searchModel)
+        public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
-            return _productCommentRepository.Search(searchModel);
+            return _commentRepository.Search(searchModel);
         }
     }
 }

@@ -4,8 +4,8 @@ using CommentManagement.Application.Contract.ProductComment;
 
 namespace CommentManagement.Domain.ProductCommentAgg
 {
-    public interface  IProductCommentRepository: IRepository<long,ProductComment>
+    public interface  ICommentRepository: IRepository<long,Comment>
     {
-        List<ProductCommentViewModel> Search(ProductCommentSearchModel searchModel);
+        List<CommentViewModel> Search(CommentSearchModel searchModel);
     }
 }
