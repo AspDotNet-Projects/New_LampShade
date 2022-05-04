@@ -1,4 +1,5 @@
 using _0_Framework.Application;
+using BlogMangement.Infrastructure.Configuration;
 using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Configuration;
@@ -29,6 +30,8 @@ namespace ServiceHost
             DiscountManagementBootstrapper.Configure(services,connectionstring);
             InventoryManagementBootstrapper.Configur(services,connectionstring);
             CommentManagementBootstrapper.Configur(services, connectionstring);
+            BlogManagementBootstrapper.Configure(services, connectionstring);
+
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddRazorPages();
         }
