@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _0_Framework.Application;
 using _0_Framework.Repository;
 using BlogManagement.Application.Contracts.ArticleCategory;
 using BlogManagement.Domain.ArticleCategoryAgg;
@@ -21,11 +22,15 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
                 {
                 Id = x.Id,
                 Name = x.Name,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
                 Description = x.Description,
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
                 CanonicalAddress = x.CanonicalAddress,
-                ShowOrder = x.ShowOrder
+                ShowOrder = x.ShowOrder,
+                Slug = x.Slug
+
 
                 }).FirstOrDefault(x => x.Id==id);
         }
@@ -38,7 +43,8 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
                 Name = x.Name,
                 Description = x.Description,
                 ShowOrder = x.ShowOrder,
-                Picture = x.Picture
+                Picture = x.Picture,
+                CreationDate = x.CreationDate.ToFarsi()
             });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
