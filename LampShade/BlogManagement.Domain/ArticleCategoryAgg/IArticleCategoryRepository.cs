@@ -8,6 +8,7 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
     {
 
 
+       
         EditArticleCategory GetDetails(long id);
         /// <summary>
         /// در اینجا ما دامین را با اپلیکیشن کانترکت مرتبط میکنیم که
@@ -19,6 +20,8 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
         /// <param name="searchModel"></param>
         /// <returns></returns>
         List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel);
+
+        List<ArticleCategoryViewModel> GetAarticleCategories();
         string GetSlugById(long id);
     }
 }

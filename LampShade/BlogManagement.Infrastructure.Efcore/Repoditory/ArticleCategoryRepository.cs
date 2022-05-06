@@ -53,6 +53,15 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
 
         }
 
+        public List<ArticleCategoryViewModel> GetAarticleCategories()
+        {
+            return _context.ArticleCategories.Select(x => new ArticleCategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+        }
+
         public string GetSlugById(long id)
         {
             return _context.ArticleCategories

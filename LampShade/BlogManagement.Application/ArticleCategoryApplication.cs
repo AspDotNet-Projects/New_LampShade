@@ -64,7 +64,11 @@ namespace BlogManagement.Application
             return operation.Succedded();
         }
 
-        
+        public List<ArticleCategoryViewModel> GetArticleCategories()
+        {
+            return _articleCategoryRepository.GetAarticleCategories();
+        }
+
 
         public List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel)
         {
