@@ -5,7 +5,7 @@ namespace BlogManagement.Application.Contracts.Article
 {
     public interface IArticleApplication
     {
-        OperationResult Creaate(CreateArticle commnak);
+        OperationResult Create(CreateArticle commnad);
         OperationResult Edit(EditArticle command);
         EditArticle Getdetails(long id);
         List<ArticleViewModel> Search(ArticleSearchModel searchModel);

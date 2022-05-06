@@ -30,7 +30,6 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
                 Slug = x.Slug,
                 MetaDescription = x.MetaDescription,
                 PublishDate = x.PublishDate.ToFarsi(),
-                Picture = x.Picture,
                 PictureTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
                 Keywords = x.Keywords,
@@ -38,6 +37,12 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
                 CategoryId = x.CategoryId
 
             }).FirstOrDefault(x => x.Id == id);
+        }
+
+        public Article GetWithCatgegory(long id)
+        {
+            return _context.Articles.Include(x => x.Category)
+                .FirstOrDefault(x => x.CategoryId == id);
         }
 
         public List<ArticleViewModel> Search(ArticleSearchModel searchModel)

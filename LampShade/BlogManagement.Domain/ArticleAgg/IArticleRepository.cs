@@ -11,6 +11,7 @@ namespace BlogManagement.Domain.ArticleAgg
     public interface IArticleRepository:IRepository<long,Article>
     {
         EditArticle Getdetails(long id);
+        Article GetWithCatgegory(long id);
         List<ArticleViewModel> Search(ArticleSearchModel searchModel);
     }
 }

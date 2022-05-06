@@ -19,5 +19,6 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
         /// <param name="searchModel"></param>
         /// <returns></returns>
         List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel);
+        string GetSlugById(long id);
     }
 }
