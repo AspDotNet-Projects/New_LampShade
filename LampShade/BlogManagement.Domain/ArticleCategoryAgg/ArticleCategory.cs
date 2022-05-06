@@ -1,5 +1,7 @@
-﻿using System.Collections.Specialized;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using _0_Framework.Domain;
+using BlogManagement.Domain.ArticleAgg;
 
 namespace BlogManagement.Domain.ArticleCategoryAgg
 {
@@ -31,6 +33,8 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
         /// به این ترتیب که یا پیج آ به بی یا پیج بی به آ کنونیکال می کنیم
         /// </summary>
         public string CanonicalAddress{ get; private set; }
+
+        public List<Article> Articles { get; private set; }
 
         public ArticleCategory(string name, string picture, 
             string pictureAlt, string pictureTitle, string description, 
