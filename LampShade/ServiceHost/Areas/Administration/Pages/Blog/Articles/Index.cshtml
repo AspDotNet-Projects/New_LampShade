@@ -67,7 +67,7 @@
                                 @foreach (var item in Model.Articles)
                                 {
                                 <tr>
-                                    <td>@item.ID</td>
+                                    <td>@item.Id</td>
                                     <td>
                                         <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 60px" />
                                     </td>
@@ -78,7 +78,7 @@
                                     <td>
                                         @*href="#showmodal=@Url.Page("./Index","EditProduct",new {id=@item.Id})"*@
                                         @*mige be Page Index boro va fun EditProduct ro seda bezan va Id ro ham begir*@
-                                        <a class = "btn btn-warning pull-right m-rl-5" asp-page = "./Edit" asp-route-id="@item.ID" >
+                                        <a class = "btn btn-warning pull-right m-rl-5" asp-page = "./Edit" asp-route-id="@item.Id" >
                                             <i class = "fa fa-edit" ></i> ویرایش
                                         </a>
                                     </td>

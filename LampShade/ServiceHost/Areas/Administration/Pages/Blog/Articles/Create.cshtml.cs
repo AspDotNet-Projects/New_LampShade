@@ -8,16 +8,16 @@ namespace ServiceHost.Areas.Administration.Pages.Blog.Articles
 {
     public class CreateModel : PageModel
     {
-        public SelectList ArticleCategories;
         public CreateArticle Command;
+        public SelectList ArticleCategories;
 
-        private readonly IArticleCategoryApplication _articleCategoryApplication;
         private readonly IArticleApplication _articleApplication;
+        private readonly IArticleCategoryApplication _articleCategoryApplication;
 
-        public CreateModel(IArticleCategoryApplication articleCategoryApplication, IArticleApplication articleApplication)
+        public CreateModel(IArticleApplication articleApplication, IArticleCategoryApplication articleCategoryApplication)
         {
-            _articleCategoryApplication = articleCategoryApplication;
             _articleApplication = articleApplication;
+            _articleCategoryApplication = articleCategoryApplication;
         }
 
         public void OnGet()

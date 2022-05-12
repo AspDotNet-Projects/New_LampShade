@@ -3,21 +3,22 @@ using BlogManagement.Application.Contracts.ArticleCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace ServiceHost.Areas.Administration.Pages.Blog.Articles
 {
     public class EditModel : PageModel
     {
-        public SelectList ArticleCategories;
         public EditArticle Command;
+        public SelectList ArticleCategories;
 
-        private readonly IArticleCategoryApplication _articleCategoryApplication;
         private readonly IArticleApplication _articleApplication;
+        private readonly IArticleCategoryApplication _articleCategoryApplication;
 
-        public EditModel(IArticleCategoryApplication articleCategoryApplication, IArticleApplication articleApplication)
+        public EditModel(IArticleApplication articleApplication, IArticleCategoryApplication articleCategoryApplication)
         {
-            _articleCategoryApplication = articleCategoryApplication;
             _articleApplication = articleApplication;
+            _articleCategoryApplication = articleCategoryApplication;
         }
 
         public void OnGet(long id)

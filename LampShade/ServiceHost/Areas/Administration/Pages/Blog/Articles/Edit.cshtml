@@ -2,26 +2,21 @@
 @model ServiceHost.Areas.Administration.Pages.Blog.Articles.EditModel
 @{
     Layout = "Shared/_AdminLayout";
-    ViewData["Title"] = "ویرایش مقاله ";
+    ViewData["Title"] = "ویرایش مقاله";
 }
-
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">ویرایش مقاله :@Model.Command.Title</h3>
+                <h3 class="panel-title">ویرایش مقاله: @Model.Command.Title</h3>
             </div>
             <div class="panel-body">
-                <form method="post"
-                      enctype="multipart/form-data">
-
+                <form method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label asp-for="Command.Title" class="control-label">نام</label>
-
-                                @*dar jqueery site.js makeslug vojod dare va baese poor shodan khodkare Slug az name mishe*@
                                 <input type="text" class="form-control" asp-for="Command.Title" onchange="makeSlug('Title', 'Slug')">
                                 <span asp-validation-for="Command.Title" class="error"></span>
                             </div>
@@ -36,7 +31,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label asp-for="Command.PublishDate" class="control-label">تاریخ انتشار</label>
-                                <input  class="form-control PersianDateInput" asp-for="Command.PublishDate">
+                                <input class="form-control PersianDateInput" asp-for="Command.PublishDate">
                                 <span asp-validation-for="Command.PublishDate" class="error"></span>
                             </div>
                         </div>
@@ -45,22 +40,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Command.Picture" class="control-label">عکس</label>
-                                @*<input type="file" class="form-control" asp-for="Picture" accept="image/*">*@
                                 <input type="file" class="form-control" asp-for="Command.Picture" accept="image/*">
                                 <span asp-validation-for="Command.Picture" class="error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            @*<div class="form-group">
-                                //sr-only
-                                //یعنی فقط اینجاس و باید باشه و نیاز یه نمایش نداره*@
-                            <label class="sr-only" asp-for="Command.CategoryId">گروه مقاله</label>
-                            <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ArticleCategories">
-                                <option value="0">گروه مقاله ...</option>
-                            </select>
+                            <div class="form-group">
+                                <label asp-for="Command.CategoryId">گروه مقاله</label>
+                                <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ArticleCategories">
+                                    <option value="0">گروه مقاله ...</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -91,7 +83,7 @@
                         <div class="col-md-12">
                             <div class="form-group no-margin">
                                 <label asp-for="Command.Description" class="control-label">توضیحات</label>
-                                <textarea class="form-control" id="BodyContent"  asp-for="Command.Description"></textarea>
+                                <textarea class="form-control" id="BodyContent" asp-for="Command.Description"></textarea>
                                 <span asp-validation-for="Command.Description" class="error"></span>
                             </div>
                         </div>
@@ -124,17 +116,11 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" value="Command.Id"asp-for="Command.Id"/>
+                    <input type="hidden" asp-for="@Model.Command.Id" value="@Model.Command.Id" />
                     <button type="submit" class="btn btn-success waves-effect waves-light m-b-5">ویرایش</button>
                     <a asp-page="./Index" class="btn btn-dark waves-effect waves-light m-b-5">بازگشت</a>
-
-
                 </form>
-
-
             </div>
-            @*panel-body*@
         </div>
     </div>
 </div>
-

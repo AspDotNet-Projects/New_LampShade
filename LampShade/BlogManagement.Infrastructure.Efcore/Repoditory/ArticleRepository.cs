@@ -42,14 +42,14 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
         public Article GetWithCatgegory(long id)
         {
             return _context.Articles.Include(x => x.Category)
-                .FirstOrDefault(x => x.CategoryId == id);
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public List<ArticleViewModel> Search(ArticleSearchModel searchModel)
         {
            var query=_context.Articles.Select(x=>new ArticleViewModel
            {
-               ID = x.Id,
+               Id = x.Id,
                Category = x.Category.Name,
                Picture = x.Picture,
                PublishDate = x.PublishDate.ToFarsi(),
@@ -62,7 +62,7 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
            if (searchModel.CategoryId > 0)
                query = query.Where(x => x.CategoryId == searchModel.CategoryId);
 
-           return query.OrderByDescending(x => x.ID).ToList();
+           return query.OrderByDescending(x => x.Id).ToList();
         }
     }
 }
