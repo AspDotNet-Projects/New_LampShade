@@ -78,7 +78,7 @@
                                     <td>
                                         @*href="#showmodal=@Url.Page("./Index","EditProduct",new {id=@item.Id})"*@
                                         @*mige be Page Index boro va fun EditProduct ro seda bezan va Id ro ham begir*@
-                                        <a class = "btn btn-warning pull-right m-rl-5" asp-page = "./Edit" >
+                                        <a class = "btn btn-warning pull-right m-rl-5" asp-page = "./Edit" asp-route-id="@item.ID" >
                                             <i class = "fa fa-edit" ></i> ویرایش
                                         </a>
                                     </td>
