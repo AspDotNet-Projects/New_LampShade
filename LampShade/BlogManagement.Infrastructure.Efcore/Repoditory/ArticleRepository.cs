@@ -53,7 +53,9 @@ namespace BlogManagement.Infrastructure.Efcore.Repoditory
                Category = x.Category.Name,
                Picture = x.Picture,
                PublishDate = x.PublishDate.ToFarsi(),
-               ShortDescription = x.ShortDescription,
+               ///Math.Min
+               /// این تابع دو مقدار میگریه  و کوچکترین رو برمیگردونه
+               ShortDescription = x.ShortDescription.Substring(0,Math.Min(x.ShortDescription.Length,50))+"...",
                Title = x.Title
 
            });
