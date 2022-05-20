@@ -42,34 +42,29 @@
                                     @foreach (var article in Model)
                                     {
                                         <div class="col">
-                                            <!--=======  single slider post  =======-->
                                             <div class="single-slider-post">
                                                 <div class="single-slider-post__image">
-                                                    <a  asp-page="Aticle" asp-route-id="@article.Slug">
+                                                    <a asp-page="/Article" asp-route-id="@article.Slug">
                                                         <img src="~/ProductPictures/@article.Picture"
                                                              class="img-fluid" alt="@article.PictureAlt" title="@article.PictureTitle">
                                                     </a>
                                                     <div class="single-slider-post__date-sticker">
                                                         <span class="month">@article.PublishDate</span>
-                                                        
                                                     </div>
                                                 </div>
                                                 <div class="single-slider-post__content">
                                                     <h3 class="title">
-                                                        <a  asp-page="Aticle" asp-route-id="@article.Slug">
+                                                        <a asp-page="/Article" asp-route-id="@article.Slug">
                                                             @article.Title
                                                         </a>
                                                     </h3>
                                                     @*<p class="post-meta">by <a href="#">HasTech</a></p>*@
-                                                    <p class="short-desc">
-                                                       @article.ShortDescription
-                                                    </p>
-                                                    <a asp-page="Aticle" asp-route-id="@article.Slug" class="blog-post-link">
-                                                       ادامه مطلب ...
+                                                    <p class="short-desc">@article.ShortDescription</p>
+                                                    <a asp-page="/Article" asp-route-id="@article.Slug" class="blog-post-link">
+                                                        ادامه مطلب
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!--=======  End of single slider post  =======-->
                                         </div>
                                     }
 

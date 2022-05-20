@@ -27,6 +27,28 @@ namespace _01_LampShadeQuery.Query
                 .Where(x=>x.PublishDate<=DateTime.Now)
                 .Select(x => new ArticleQueryModel
                 {
+                   
+                    CategoryId = x.CategoryId,
+
+                    PublishDate = x.PublishDate.ToFarsi(),
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Slug = x.Slug,
+                    Keywords = x.Keywords,
+                    MetaDescription = x.MetaDescription,
+                    ShortDescription = x.ShortDescription,
+                    Title = x.Title
+                }).ToList();
+        }
+
+        public ArticleQueryModel GetArticleDetails(string slug)
+        {
+            return _blogContext.Articles
+                .Include(x => x.Category)
+                .Where(x => x.PublishDate <= DateTime.Now)
+                .Select(x => new ArticleQueryModel
+                {
                     Id = x.Id,
                     CategoryId = x.CategoryId,
                     CategoryName = x.Category.Name,
@@ -42,7 +64,7 @@ namespace _01_LampShadeQuery.Query
                     MetaDescription = x.MetaDescription,
                     ShortDescription = x.ShortDescription,
                     Title = x.Title
-                }).ToList();
+                }).FirstOrDefault(x=>x.Slug==slug);
         }
     }
 }
