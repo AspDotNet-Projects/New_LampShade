@@ -44,7 +44,7 @@ namespace _01_LampShadeQuery.Query
 
         public ArticleQueryModel GetArticleDetails(string slug)
         {
-            return _blogContext.Articles
+            var article= _blogContext.Articles
                 .Include(x => x.Category)
                 .Where(x => x.PublishDate <= DateTime.Now)
                 .Select(x => new ArticleQueryModel
@@ -65,6 +65,11 @@ namespace _01_LampShadeQuery.Query
                     ShortDescription = x.ShortDescription,
                     Title = x.Title
                 }).FirstOrDefault(x=>x.Slug==slug);
+
+
+                ///در واقع جدا کننده است
+            article.KeywordsList = article.Keywords.Split(",").ToList();
+            return article;
         }
     }
 }
