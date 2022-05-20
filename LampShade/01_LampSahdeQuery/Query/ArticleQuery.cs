@@ -68,7 +68,8 @@ namespace _01_LampShadeQuery.Query
 
 
                 ///در واقع جدا کننده است
-            article.KeywordsList = article.Keywords.Split(",").ToList();
+            if(!string.IsNullOrWhiteSpace(article.Keywords))
+                article.KeywordsList = article.Keywords.Split(",").ToList();
             return article;
         }
     }

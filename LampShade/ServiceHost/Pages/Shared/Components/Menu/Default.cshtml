@@ -1,4 +1,7 @@
 ﻿
+@model _01_LampShadeQuery.MemuModel
+@{
+}
 <div class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -20,30 +23,26 @@
                                 </li>
 
                                 <li class="menu-item-has-children">
-                                    <a href="blog-left-sidebar.html">محصولات</a>
+                                    <a >محصولات</a>
                                     <ul class="sub-menu">
-
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
+                                        @foreach (var category in @Model.ProductCategories)
+                                        {
+                                            <li>
+                                                <a asp-page="/ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="blog-left-sidebar.html">مقالات</a>
+                                    <a >مقالات</a>
                                     <ul class="sub-menu">
 
-                                        <li>
-                                            <a href="blog-left-sidebar.html">گروه یک</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-left-sidebar.html">گروه دو</a>
-                                        </li>
+                                        @foreach (var category in @Model.articleCategories)
+                                        {
+                                            <li>
+                                                <a asp-page="/ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                        }
 
                                     </ul>
                                 </li>

@@ -1,4 +1,6 @@
-﻿@page
+﻿@*//"{id}"*@
+@*برای اینکه آدرس دهی درست باشه*@
+@page "{id}"
 @model ServiceHost.Pages.ArticleModel
 @{
     ViewData["Title"] = "صفحه مقاله";
@@ -53,7 +55,7 @@
                                         <div class="post-meta">
                                             <p>
                                                 <span>
-                                                <i class="fa fa-calendar"></i> نوشته شده در تاریخ: <a href="#">
+                                                    <i class="fa fa-calendar"></i> نوشته شده در تاریخ: <a href="#">
                                                         @Model.Article.PublishDate
                                                     </a>
                                                 </span>
@@ -72,7 +74,7 @@
                                         <!--=======  End of Post media  =======-->
                                         <!--=======  Post content  =======-->
 
-                                        <div class = "post-content" >
+                                        <div class="post-content">
                                             @*برای تفسیر کدهای اچ تی ام ال و نمایش آنها به نجوی که ذخیر ه شده اند//*@
                                             @Html.Raw(@Model.Article.Description)
                                         </div>
@@ -85,13 +87,13 @@
                                             <ul>
                                                 @foreach (var tag in @Model.Article.KeywordsList)
                                                 {
-                                                <li>
-                                                    @*asp-page="/Search" asp-route-value="@tag"*@
-                                                    @*در واقع شبیه به سرچ کردن و مقدار هر تگ را به عنوان ویواس می دیم به سرچ*@
-                                                    <a asp-page="/Search" asp-route-value="@tag">@tag</a>
-                                                </li>
+                                                    <li>
+                                                        @*asp-page="/Search" asp-route-value="@tag"*@
+                                                        @*در واقع شبیه به سرچ کردن و مقدار هر تگ را به عنوان ویواس می دیم به سرچ*@
+                                                        <a asp-page="/Search" asp-route-value="@tag">@tag</a>
+                                                    </li>
                                                 }
-                                               
+
                                             </ul>
                                         </div>
 
@@ -299,7 +301,7 @@
                                                     </a>
                                                 </li>
                                             }
-                                            
+
 
 
                                         </ul>
@@ -308,26 +310,26 @@
                                     <div class="single-sidebar-widget">
 
                                         <h4 class="single-sidebar-widget__title">Recent Posts</h4>
-                                        <div class = "block-container" >
+                                        <div class="block-container">
                                             @foreach (var article in @Model.LatestArticle)
                                             {
-                                                <div class = "single-block d-flex" >
-                                                    <div class = "image" >
-                                                        <a asp-page="/Article" asp-route-id="@article.Slug" >
-                                                            <img src = "~/ProductPictures/@article.Picture"
-                                                                 class = "img-fluid" alt = "@article.PictureAlt" title="@article.PictureTitle" >
+                                                <div class="single-block d-flex">
+                                                    <div class="image">
+                                                        <a asp-page="/Article" asp-route-id="@article.Slug">
+                                                            <img src="~/ProductPictures/@article.Picture"
+                                                                 class="img-fluid" alt="@article.PictureAlt" title="@article.PictureTitle">
                                                         </a>
                                                     </div>
-                                                    <div class = "content" >
+                                                    <div class="content">
                                                         <p>
-                                                            <a asp-page="/Article" asp-route-id="@article.Slug" >
-                                                               @article.Title
+                                                            <a asp-page="/Article" asp-route-id="@article.Slug">
+                                                                @article.Title
                                                             </a> <span>@article.PublishDate</span>
                                                         </p>
                                                     </div>
                                                 </div>
                                             }
-                                            
+
 
 
                                             <!--=======  End of single block  =======-->
@@ -338,7 +340,6 @@
                                     </div>
                                     <!--=======  End of single sidebar widget  =======-->
                                     <!--=======  single sidebar widget  =======-->
-
                                     <!--=======  End of single sidebar widget  =======-->
                                     <!--=======  single sidebar widget  =======-->
                                     <div class="single-sidebar-widget">
@@ -349,11 +350,11 @@
                                                 <li>
                                                     @*asp-page="/Search" asp-route-value="@tag"*@
                                                     @*در واقع شبیه به سرچ کردن و مقدار هر تگ را به عنوان ویواس می دیم به سرچ*@
-                                                    <a asp-page = "/Search" asp-route-value = "@tag" >@tag</a>
+                                                    <a asp-page="/Search" asp-route-value="@tag">@tag</a>
                                                 </li>
                                             }
-                                           
-                                           
+
+
 
                                         </ul>
                                     </div>
