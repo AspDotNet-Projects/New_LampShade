@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using _01_LampShadeQuery.Contracts.Article;
 using _01_LampShadeQuery.Contracts.ArticleCategory;
+using CommentManagement.Application.Contract.ProductComment;
+using CommentManagement.Infrastructure.EFCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
@@ -12,11 +15,12 @@ namespace ServiceHost.Pages
         public List<ArticleCategoryQueryModel> ArticleCategories;
         private readonly IArticleQuery _articleQuery;
         private readonly IArticleCategoryQuery _articleCategoryQuery;
-
-        public ArticleModel(IArticleQuery articleQuery, IArticleCategoryQuery articleCategoryQuery)
+        private readonly ICommentApplication _commentApplication;
+        public ArticleModel(IArticleQuery articleQuery, IArticleCategoryQuery articleCategoryQuery, ICommentApplication commentApplication)
         {
             _articleQuery = articleQuery;
             _articleCategoryQuery = articleCategoryQuery;
+            _commentApplication = commentApplication;
         }
 
         public void OnGet(string id)
@@ -25,6 +29,12 @@ namespace ServiceHost.Pages
             LatestArticle = _articleQuery.LatestArticle();
             ArticleCategories = _articleCategoryQuery.GetArticleCategories();
 
+        }
+        public IActionResult OnPost(AddComment command, string ArticleSlug)
+        {
+            command.Type = CommentType.Article;
+            var result = _commentApplication.Add(command);
+            return RedirectToPage("/Article", new { Id = ArticleSlug });
         }
     }
 }

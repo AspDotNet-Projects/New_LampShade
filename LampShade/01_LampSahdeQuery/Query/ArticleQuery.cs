@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
 using _01_LampShadeQuery.Contracts.Article;
+using _01_LampShadeQuery.Contracts.Comment;
 using BlogManagement.Infrastructure.Efcore;
+using CommentManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace _01_LampShadeQuery.Query
@@ -14,10 +16,12 @@ namespace _01_LampShadeQuery.Query
     {
         // رو اینجکت کردیمBlogContext  
         private readonly BlogContext _blogContext;
+        private readonly CommentContext _commentContext;
 
-        public ArticleQuery(BlogContext blogContext)
+        public ArticleQuery(BlogContext blogContext, CommentContext commentContext)
         {
             _blogContext = blogContext;
+            _commentContext = commentContext;
         }
 
         public List<ArticleQueryModel> LatestArticle()
@@ -65,10 +69,21 @@ namespace _01_LampShadeQuery.Query
                     ShortDescription = x.ShortDescription,
                     Title = x.Title
                 }).FirstOrDefault(x=>x.Slug==slug);
-
+            article.Comments = _commentContext.Comments
+                .Where(x => !x.IsCanceled)
+                .Where(x => x.IsConfirmed)
+                .Where(x => x.Type == CommentType.Article)
+                .Where(x => x.OwnerRecordId == article.Id)
+                .Select(x => new CommentQueryModel()
+                {
+                    Id = x.Id,
+                    Message = x.Message,
+                    Name = x.Name,
+                    CreationDate = x.CreationDate.ToFarsi()
+                }).OrderByDescending(x => x.Id).ToList();
 
                 ///در واقع جدا کننده است
-            if(!string.IsNullOrWhiteSpace(article.Keywords))
+            if (!string.IsNullOrWhiteSpace(article.Keywords))
                 article.KeywordsList = article.Keywords.Split(",").ToList();
             return article;
         }
