@@ -68,7 +68,7 @@ namespace _01_LampShadeQuery.Query
                     Title = x.Title
                 }).FirstOrDefault(x=>x.Slug==slug);
 
-            article.Comments = _commentContext.Comments
+            var  comments= _commentContext.Comments
                 .Where(x => !x.IsCanceled)
                 .Where(x => x.IsConfirmed)
                 .Where(x => x.Type == CommentType.Article)
@@ -78,9 +78,23 @@ namespace _01_LampShadeQuery.Query
                     Id = x.Id,
                     Message = x.Message,
                     Name = x.Name,
+                    ParentId = x.ParentId,
                     CreationDate = x.CreationDate.ToFarsi()
                 }).OrderByDescending(x => x.Id).ToList();
 
+
+
+
+            //برای اینککه پاسخ به کامنت ها را بیاریم
+            foreach (var comment in comments)
+            {
+                if (comment.ParentId > 0)
+                    comment.parentName = comments.FirstOrDefault(x => x.Id == comment.ParentId)?.Name;
+            }
+
+
+
+            article.Comments = comments;
                 ///در واقع جدا کننده است
             if (!string.IsNullOrWhiteSpace(article.Keywords))
                 article.KeywordsList = article.Keywords.Split(",").ToList();

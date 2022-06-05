@@ -143,30 +143,34 @@
 
                                         <div class="comment-container">
                                             <!--=======  single comment  =======-->
-                                            @foreach(var Comment in @Model.Article.Comments)
-                                            { 
-                                                <div class="single-comment">
+                                            @foreach (var comment in Model.Article.Comments)
+                                            {
+                                                <div class="single-comment" id="comment-@comment.Id">
                                                     <span class="reply-btn">
-                                                        <a href="#" onclick="">پاسخ</a>
+                                                        <a href="#postComment" onclick='$("#commentParentId").val(@comment.Id)'>پاسخ</a>
                                                     </span>
-
                                                     <div class="image">
-                                                        <img src="~/Theme/assets/img/usericon.png" height="50" width="50" alt="@Model.Article.Title" title="@Model.Article.Title">
+                                                        <img src="~/Theme/assets/img/blog/comment-icon.png" alt="" width="50" height="50">
                                                     </div>
                                                     <div class="content">
                                                         <h3 class="user">
-                                                            @Comment.Name <span class="comment-time">
-                                                               @Comment.CreationDate
+                                                            @comment.Name <span class="comment-time">
+                                                                @comment.CreationDate
                                                             </span>
                                                         </h3>
-                                                        <p class="comment-text">@Comment.Message</p>
+                                                        @if (comment.ParentId > 0)
+                                                        {
+                                                            <p>
+                                                                <span>در پاسخ به: </span><a href="#comment-@comment.ParentId">@comment.parentName</a>
+                                                            </p>
+                                                        }
+                                                        <p class="comment-text">@comment.Message</p>
                                                     </div>
-
                                                 </div>
                                             }
-                                          
 
-                                            
+
+
 
 
                                         </div>
@@ -182,7 +186,7 @@
 
                                             <!--=======  comment form  =======-->
 
-                                            <div class="comment-form">
+                                            <div class="comment-form" id="postComment">
                                                 <form method="post">
                                                     <div class="row">
                                                         <div class="col-lg-12">
@@ -210,8 +214,8 @@
                                                             </div>
                                                         </div>
                                                         <input type="hidden" name="ownerRecordId" value="@Model.Article.Id" />
-                                                        <input type="hidden" name="articleslug" value="@Model.Article.Slug" />
-
+                                                        <input type="hidden" name="articleSlug" value="@Model.Article.Slug" />
+                                                        <input type="hidden" name="parentId" id="commentParentId" value="" />
                                                         <div class="col-lg-12">
                                                             <button type="submit" class="comment-btn" name="submit">
                                                                 ارسال
