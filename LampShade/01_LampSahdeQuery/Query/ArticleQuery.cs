@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using _0_Framework.Application;
 using _01_LampShadeQuery.Contracts.Article;
 using _01_LampShadeQuery.Contracts.Comment;
@@ -69,6 +67,7 @@ namespace _01_LampShadeQuery.Query
                     ShortDescription = x.ShortDescription,
                     Title = x.Title
                 }).FirstOrDefault(x=>x.Slug==slug);
+
             article.Comments = _commentContext.Comments
                 .Where(x => !x.IsCanceled)
                 .Where(x => x.IsConfirmed)
