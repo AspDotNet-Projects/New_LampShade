@@ -55,6 +55,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>نوع کامنت</th>
                                     <th>نام</th>
                                     <th>ایمیل</th>
                                     <th>پیام</th>
@@ -68,6 +69,14 @@
                             {
                                 <tr>
                                     <td>@item.Id</td>
+                                    @if (@item.Type == 1)
+                                    {
+                                        <td>محصولات</td>
+                                    }
+                                    else
+                                    {
+                                        <td>مقالات</td>
+                                    }
                                     <td>@item.Name</td>
                                     <td>@item.Email</td>
                                     <td>@item.CommentDate</td>
@@ -99,7 +108,7 @@
                                             <a class="btn btn-success btn-rounded waves-effect waves-light m-b-5" asp-page="./Index" asp-route-id="@item.Id"
                                                asp-page-handler="Confirm">تایید</a>
                                         }
-                                        
+
 
                                     </td>
                                 </tr>
