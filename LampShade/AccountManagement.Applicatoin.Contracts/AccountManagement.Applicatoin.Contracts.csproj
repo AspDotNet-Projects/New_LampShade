@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\0_Framework\0_Framework.csproj" />
-    <ProjectReference Include="..\AccountManagement.Applicatoin.Contracts\AccountManagement.Applicatoin.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
