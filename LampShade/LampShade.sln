@@ -115,6 +115,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication_Authorizatio
 		..\..\..\..\..\Desktop\Authentication&Authorization.png = ..\..\..\..\..\Desktop\Authentication&Authorization.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountManagement", "AccountManagement", "{8B262EFB-BD09-442C-8858-85133DF891D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AM.Domain", "AM.Domain", "{F212BB82-89F8-40A3-A6C7-E7B2973A3235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Domain", "AccountManagement.Domain\AccountManagement.Domain.csproj", "{4D30C025-8801-430F-8CB3-97E7C3E45AB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -233,6 +239,10 @@ Global
 		{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D30C025-8801-430F-8CB3-97E7C3E45AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D30C025-8801-430F-8CB3-97E7C3E45AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D30C025-8801-430F-8CB3-97E7C3E45AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D30C025-8801-430F-8CB3-97E7C3E45AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,6 +290,8 @@ Global
 		{81FFFFF8-2C9C-4C9A-90DB-2D2598D38A6C} = {D5D9896D-F4CF-417E-B8DC-1E484600486E}
 		{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21} = {D5D9896D-F4CF-417E-B8DC-1E484600486E}
 		{FC06C851-4D29-41BD-ABBB-D57054C2647B} = {C59E757E-3665-4628-9610-4EBEAACB86BB}
+		{F212BB82-89F8-40A3-A6C7-E7B2973A3235} = {8B262EFB-BD09-442C-8858-85133DF891D2}
+		{4D30C025-8801-430F-8CB3-97E7C3E45AB0} = {F212BB82-89F8-40A3-A6C7-E7B2973A3235}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD2174D-2A27-4104-900B-70545EB4546A}
