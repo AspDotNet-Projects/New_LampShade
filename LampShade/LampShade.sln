@@ -26,6 +26,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{53AF7AE1-40D7-4D2A-8685-F12B60B13E49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyHelp", "MyHelp", "{C59E757E-3665-4628-9610-4EBEAACB86BB}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Desktop\Authentication&Authorization.png = ..\..\..\..\..\Desktop\Authentication&Authorization.png
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helps-Pic", "Helps-Pic", "{9FFF3E52-CD44-43D8-AD17-B36BC5567FDA}"
 	ProjectSection(SolutionItems) = preProject
@@ -106,6 +109,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogManagement.Infrastructure.Efcore", "BlogManagement.Infrastructure.Efcore\BlogManagement.Infrastructure.Efcore.csproj", "{81FFFFF8-2C9C-4C9A-90DB-2D2598D38A6C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogManagement.Infrastructure.Configuration", "BlogMangement.Infrastructure.Configuration\BlogManagement.Infrastructure.Configuration.csproj", "{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication_Authorization", "Authentication_Authorization", "{FC06C851-4D29-41BD-ABBB-D57054C2647B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Desktop\Authentication&Authorization.png = ..\..\..\..\..\Desktop\Authentication&Authorization.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -271,6 +279,7 @@ Global
 		{D5D9896D-F4CF-417E-B8DC-1E484600486E} = {C36A6C95-03BD-4963-9832-07260C638383}
 		{81FFFFF8-2C9C-4C9A-90DB-2D2598D38A6C} = {D5D9896D-F4CF-417E-B8DC-1E484600486E}
 		{86608D31-1DFA-4FF4-8FD0-865A1EDE4D21} = {D5D9896D-F4CF-417E-B8DC-1E484600486E}
+		{FC06C851-4D29-41BD-ABBB-D57054C2647B} = {C59E757E-3665-4628-9610-4EBEAACB86BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD2174D-2A27-4104-900B-70545EB4546A}
