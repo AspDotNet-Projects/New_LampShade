@@ -1,4 +1,5 @@
 using _0_Framework.Application;
+using AccountManagement.Configuration;
 using BlogMangement.Infrastructure.Configuration;
 using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
@@ -32,6 +33,7 @@ namespace ServiceHost
             InventoryManagementBootstrapper.Configur(services,connectionstring);
             CommentManagementBootstrapper.Configur(services, connectionstring);
             BlogManagementBootstrapper.Configure(services, connectionstring);
+            AccountManagementBootstrapper.Configure(services,connectionstring);
 
             //»—«? «?‰òÂ œ— Â‰ê«„ «Ã—« Ê ·Êœ ‘œ‰ ’›ÕÂ keyword, metadescription „ﬁ«œ?— øøø ”Ê«· Å— ‰‘Êœ òœ “?— —« »Â ﬁ”„  startup «÷«›Â „? ò‰?„
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
