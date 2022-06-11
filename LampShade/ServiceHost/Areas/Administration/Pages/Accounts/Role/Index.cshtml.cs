@@ -1,46 +1,39 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using AccountManagement.Applicatoin.Contracts.Account;
-using AccountManagement.Applicatoin.Contracts.Role;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
+namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
 {
     public class IndexModel : PageModel
     {
         [TempData] 
         public string Messege { get; set; }
         public List<AccountViewModel> Accounts;
-        
+        private readonly IAccountApplication _accountApplication;
         public SelectList Roles;
 
-        private readonly IAccountApplication _accountApplication;
-        private readonly IRoleApplication _roleApplication;
 
         public AccountSearchModel SearchModel;
 
-        public IndexModel(IAccountApplication accountApplication, IRoleApplication roleApplication)
+        public IndexModel(IAccountApplication accountApplication)
         {
+           
             _accountApplication = accountApplication;
-            _roleApplication = roleApplication;
         }
 
 
         public void OnGet(AccountSearchModel searchModel)
         {
+           
 
-            Roles =new SelectList(_roleApplication.List(),"Id","Name");
             Accounts = _accountApplication.Search(searchModel);
         }
 
         public IActionResult OnGetCreate()
         {
-            var command = new CreateAccount
-            {
-                Roles = _roleApplication.List()
-            };
+            var command = new CreateAccount();
             return Partial("./Create", command);
         }
 
@@ -52,10 +45,8 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
 
         public IActionResult OnGetEdit(long id)
         {
-
-            
             var account = _accountApplication.GetDetails(id);
-            account.Roles =_roleApplication.List();
+            
             return Partial("./Edit", account);
         }
 
