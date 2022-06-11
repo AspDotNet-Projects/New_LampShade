@@ -45,7 +45,7 @@ namespace AccountManagement.Application
             if (account == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            if (_acountRepositroy.Exists(x => x.Username == command.Username || x.Mobile == command.Mobile && x.Id==command.Id ))
+            if (_acountRepositroy.Exists(x => (x.Username == command.Username || x.Mobile == command.Mobile) && x.Id !=command.Id ))
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
 
 
