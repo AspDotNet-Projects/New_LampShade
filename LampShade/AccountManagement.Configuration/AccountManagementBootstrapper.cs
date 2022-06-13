@@ -1,6 +1,8 @@
 ﻿using AccountManagement.Application;
 using AccountManagement.Applicatoin.Contracts.Account;
+using AccountManagement.Applicatoin.Contracts.Role;
 using AccountManagement.Domain.AccountAgg;
+using AccountManagement.Domain.RoleAgg;
 using AccountManagement.Infrastructure.EFCore;
 using AccountManagement.Infrastructure.EFCore.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,11 @@ namespace AccountManagement.Configuration
         {
             services.AddTransient<IAccountApplication, AccountApplication>();
             services.AddTransient<IAccountRepository,AccountRepository>();
+            
+            
+            services.AddTransient<IRoleApplication,RoleApplication>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
+
 
 
             services.AddDbContext<AccountContext>(x => x.UseSqlServer(connectionstring));
