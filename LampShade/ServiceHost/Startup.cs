@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _0_Framework.Application;
 using AccountManagement.Configuration;
 using BlogMangement.Infrastructure.Configuration;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using ShopManagement.Configuration;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using _0_Framework.Infrastructure;
 
 namespace ServiceHost
 {
@@ -64,8 +66,24 @@ namespace ServiceHost
                     o.AccessDeniedPath = new PathString("/AccessDenied");
                 });
 
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("AdminArea",
+                    builder => builder.RequireRole(new List<string> {Roles.Administrator, Roles.SystemUser}));
+                option.AddPolicy("Shop",
+                    builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+
+            });
+
+            services.AddRazorPages()
+                .AddRazorPagesOptions(option=>
+                {
+                    option.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+                    option.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
 
 
+                });
+                
 
 
         }

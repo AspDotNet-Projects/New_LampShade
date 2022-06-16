@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using _0_Framework.Application;
-using _0_Framework.Repository;
+using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountMangement.Domain.CustomerDiscountAgg;
 using ShopManagement.Infrastructure.EFCore;
