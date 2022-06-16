@@ -4,8 +4,10 @@ using BlogMangement.Infrastructure.Configuration;
 using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,7 @@ namespace ServiceHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             var connectionstring = Configuration.GetConnectionString("LampShadeDb");
             ShopManagementBootstrapper.Configure(services, connectionstring);
             DiscountManagementBootstrapper.Configure(services,connectionstring);
@@ -40,9 +43,31 @@ namespace ServiceHost
 
             //baraaye inke yekbar sakhte beshe
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
-
             services.AddTransient<IFileUploader, FileUploader>();
+            services.AddTransient<IAuthHelper, AuthHelper>();
             services.AddRazorPages();
+
+
+
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+                {
+                    o.LoginPath = new PathString("/Account");
+                    o.LogoutPath = new PathString("/Account");
+                    o.AccessDeniedPath = new PathString("/AccessDenied");
+                });
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,14 +83,21 @@ namespace ServiceHost
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            //????? ???? ???
 
+            //1
+            app.UseAuthentication();
+            //2
             app.UseHttpsRedirection();
+            //3
             app.UseStaticFiles();
-
+            //4
+            app.UseCookiePolicy();
+            //5
             app.UseRouting();
-
+            //6
             app.UseAuthorization();
-
+            //7
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
