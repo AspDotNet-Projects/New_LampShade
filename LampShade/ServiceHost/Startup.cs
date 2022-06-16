@@ -85,23 +85,24 @@ namespace ServiceHost
             }
             //????? ???? ???
 
-            //1
             app.UseAuthentication();
-            //2
+
             app.UseHttpsRedirection();
-            //3
+
             app.UseStaticFiles();
-            //4
+
             app.UseCookiePolicy();
-            //5
+
             app.UseRouting();
-            //6
+
             app.UseAuthorization();
-            //7
+
+            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-               
+                endpoints.MapControllers();
             });
         }
     }

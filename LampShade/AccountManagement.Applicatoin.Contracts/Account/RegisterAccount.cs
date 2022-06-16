@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace AccountManagement.Applicatoin.Contracts.Account
 {
-    public class CreateAccount
+    public class RegisterAccount
     {
         [Required(ErrorMessage = ValidationMesseges.IsRequired)]
         public string Fullname { get;  set; }
@@ -20,10 +20,16 @@ namespace AccountManagement.Applicatoin.Contracts.Account
         [Required(ErrorMessage = ValidationMesseges.IsRequired)]
         public string Mobile { get;  set; }
 
-        [Range(1,int.MaxValue,ErrorMessage = ValidationMesseges.IsRequired)]
+       
         public long RoleId { get;  set; }
 
         public List<RoleViewModel> Roles { get; set; }
+
+
+        [FileExtentionLimitation(new string[] { ".jpeg", ".jpg", ".png" }, ErrorMessage = ValidationMesseges.InValidFileFormat)]
+        [MaxFileSize(3 * 1024, ErrorMessage = ValidationMesseges.MaxFileSize)]
         public IFormFile ProfilePhoto { get;  set; }
+
+
     }
 }

@@ -38,6 +38,17 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            @* کلاس ام دی 12 یعنی یک سطر کامل *@
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="ProfilePhoto" class="control-label">عکس کاربر</label>
+                    @*<input type="file" class="form-control" asp-for="Picture" accept="image/*">*@
+                    <input type="file" class="form-control" asp-for="ProfilePhoto" accept="image/*">
+                    <span asp-validation-for="ProfilePhoto" class="error"></span>
+                </div>
+            </div>
+        </div>  @*row*@
         @* در هر کلاس رو رو کلاس ام دی 6 بیشتر جا نمیگیره *@
         <div class="row">
 
@@ -54,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" asp-for="Id" value="@Model.Id"/>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>

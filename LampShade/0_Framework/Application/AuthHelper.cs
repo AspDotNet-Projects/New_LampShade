@@ -62,6 +62,9 @@ namespace _0_Framework.Application
 
         public string CurrentAccountRole()
         {
+            //در این شرط میگیم که اگه 
+            //authenticated 
+            //بود نقش اونو دربیار و در قالب استرینگ برگردونه
             if (IsAuthenticated())
                 return _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
             return null;
