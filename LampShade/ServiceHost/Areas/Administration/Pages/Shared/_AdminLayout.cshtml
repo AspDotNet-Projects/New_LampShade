@@ -34,6 +34,9 @@
     <!-- Custom Files -->
 
     <link href="~/AdminTheme/assets/css/persian-datepicker.min.css" rel="stylesheet" type="text/css" />
+    @*با این میشه کاستوم  سی اس اس لود کرد.*@
+    @*هر جایی که از این استفاده کنیم اونو صدا میزنه و نمیرزاره در کل فرم لود بشه برای مثال در ادیت رول هست این سی اس سا*@
+    @RenderSection("CSS", false)
     <link href="~/AdminTheme/assets/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -371,7 +374,8 @@
 
 
 
-    @*/// Scripts jc in Indec --->productcategories*@
+@*/// Scripts jc in Indec --->productcategories*@
+@*این خط باعث میشه هرجایی که بخواهیم لود بشه*@
     @RenderSection("Scripts", false)
 
 <script>

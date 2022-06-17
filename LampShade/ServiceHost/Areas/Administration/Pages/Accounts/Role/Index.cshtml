@@ -2,6 +2,7 @@
 @model ServiceHost.Areas.Administration.Pages.Accounts.Role.IndexModel
 @{
 }
+
 @{
     Layout = "Shared/_AdminLayout";
     ViewData["title"] = "مدیریت نقش ها";
@@ -11,14 +12,12 @@
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">ایجاد نقش جدید</a>
+            <a class="btn btn-success btn-lg" asp-page="Create">ایجاد نقش جدید</a>
         </p>
     </div>
 </div>
 
-
-
-<div class="row" >
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -32,28 +31,24 @@
                                 <tr>
                                     <th>#</th>
                                     <th>نام</th>
-                                    <th>تاریخ ایجاد</th>
+                                    <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.Roles)
-                            {
-                                <tr>
-                                    <td>@item.Id</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.CreationDate</td>
-                                    <td>
-                                        <a class="btn btn-warning btn-default waves-effect waves-light m-b-5"
-                                           href="#showmodal=@Url.Page("./Index", "Edit", new {id = @item.Id})">
-                                            <i class="fa fa-edit"></i> ویرایش
-                                        </a>
-                                    </td>
-                                </tr>
-
-                            }
-
-
+                                @foreach (var item in Model.Roles)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.CreationDate</td>
+                                        <td>
+                                            <a class="btn btn-warning waves-effect waves-light m-b-5" asp-page="Edit" asp-route-id="@item.Id">
+                                                <i class="fa fa-edit"></i> ویرایش
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -62,7 +57,6 @@
         </div>
     </div>
 </div>
-@*//for DateTable Design*@
 @section Scripts {
     <script src="~/AdminTheme/assets/datatables/jquery.dataTables.min.js"></script>
     <script src="~/AdminTheme/assets/datatables/dataTables.bootstrap.js"></script>
