@@ -99,7 +99,7 @@ namespace AccountManagement.Application
                 return operation.Failed(ApplicationMesseges.WrongUserPass);
 
             var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Username,
-                account.Fullname, account.Mobile);    
+                account.Fullname, account.Mobile,account.ProfilePhoto);    
              
             _authHelper.Signin(authViewModel);
             return operation.Succedded();

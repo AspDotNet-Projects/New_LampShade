@@ -69,9 +69,14 @@ namespace ServiceHost
             services.AddAuthorization(option =>
             {
                 option.AddPolicy("AdminArea",
-                    builder => builder.RequireRole(new List<string> {Roles.Administrator, Roles.SystemUser}));
+                    builder => builder.RequireRole(new List<string> {Roles.Administrator, Roles.contentUploader}));
                 option.AddPolicy("Shop",
                     builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+                option.AddPolicy("Discount",
+                    builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+                option.AddPolicy("Account",
+                    builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+
 
             });
 
@@ -80,6 +85,10 @@ namespace ServiceHost
                 {
                     option.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
                     option.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+                    option.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discouont");
+                    option.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
+
+
 
 
                 });
