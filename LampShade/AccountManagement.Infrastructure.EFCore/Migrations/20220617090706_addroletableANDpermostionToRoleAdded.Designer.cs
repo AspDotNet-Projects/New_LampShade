@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20220611182049_RoleAdd")]
-    partial class RoleAdd
+    [Migration("20220617090706_addroletableANDpermostionToRoleAdded")]
+    partial class addroletableANDpermostionToRoleAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,6 +94,39 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>
+                {
+                    b.OwnsMany("AccountManagement.Domain.RoleAgg.Permissions", "Permissions", b1 =>
+                        {
+                            b1.Property<long>("ID")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint")
+                                .UseIdentityColumn();
+
+                            b1.Property<string>("Code")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Name")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<long>("RoleId")
+                                .HasColumnType("bigint");
+
+                            b1.HasKey("ID");
+
+                            b1.HasIndex("RoleId");
+
+                            b1.ToTable("RolePermissions");
+
+                            b1.WithOwner("Role")
+                                .HasForeignKey("RoleId");
+
+                            b1.Navigation("Role");
+                        });
+
+                    b.Navigation("Permissions");
                 });
 
             modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>

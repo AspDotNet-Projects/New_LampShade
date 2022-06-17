@@ -17,6 +17,18 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+
+            //تعیین ارتباط ببین دو جدول 
+            //ابتدا باید اونو اینجوری 
+            //builder.OwnsMany<Permissions>(.......).....
+            //نوشت تا تمام پرارامتر ها رو بیاره
+            builder.OwnsMany(x => x.Permissions, navigationBuilder =>
+            {
+                navigationBuilder.HasKey(x => x.ID);
+                navigationBuilder.ToTable("RolePermissions");
+                navigationBuilder.WithOwner(x => x.Role);
+            });
+
         }
     }
 }

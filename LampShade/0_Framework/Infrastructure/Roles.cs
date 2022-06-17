@@ -3,8 +3,9 @@
     public static class Roles
     {
         public const string Administrator = "1";
-        public const string SystemUser = "2";
-        public const string contentUploader= "10002";
+        public const string contentUploader = "2";
+        public const string SystemUser = "3";
+        
 
         public static string GetRoleBy(long id)
         {

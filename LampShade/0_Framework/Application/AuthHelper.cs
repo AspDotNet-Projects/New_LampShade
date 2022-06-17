@@ -86,6 +86,8 @@ namespace _0_Framework.Application
 
         public void Signin(AuthViewModel account)
         {
+            if(string.IsNullOrWhiteSpace(account.ProfilePhoto))
+             account.ProfilePhoto = "ProfilePhotos/DefualtProfile.jpg";
             //var permissions = JsonConvert.SerializeObject(account.Permissions);
             //داده های که در توکن نگهداری میشه برای استفاده از آنها در کلیم ذخیره میشن
             //که در واقع سکیوریتی دیتاهای ما هستند.
@@ -99,6 +101,7 @@ namespace _0_Framework.Application
                 new Claim("Username", account.UserName), // Or Use ClaimTypes.NameIdentifier
                 //new Claim("permissions", permissions),
                 new Claim("Mobile", account.Mobile),
+               
                 new Claim("ProfilePhoto", account.ProfilePhoto)
             };
             //که بایدپکیج زیر نصب شود 
@@ -111,7 +114,7 @@ namespace _0_Framework.Application
                 //که خصوصیات دیگری هم وجود داره مثل اگه اشتیباه بود به چه مسیری بره و یا ...
                 ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1)
             };
-
+            
             //این متد کوکی را در ریسپانس ذخیره میکنه
             _contextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
