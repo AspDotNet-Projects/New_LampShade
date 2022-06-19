@@ -36,7 +36,10 @@ namespace AccountManagement.Application
             if (_roleRepository.Exists(x => x.Name == command.Name && x.Id!=command.Id))
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
 
-            role.Edit(command.Name,new List<Permissions>());
+            var permissions = new List<Permissions>();
+            command.permissions.ForEach(code=>permissions.Add(new Permissions(code.ToString())));
+
+            role.Edit(command.Name,permissions);
             _roleRepository.SaveChange();
 
             return operation.Succedded();

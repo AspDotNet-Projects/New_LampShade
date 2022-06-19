@@ -5,6 +5,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
+                command
                 <h3 class="panel-title">ویرایش نقش @Model.command.Name</h3>
             </div>
             <div class="panel-body">
@@ -22,14 +23,12 @@
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3">انتخاب دسترسی ها</label>
                                     <div class="col-md-12">
-                                        <select asp-for="Command.Permissions" asp-items="Model.Permissions" class="multi-select" multiple="multiple" id="my_multi_select3">
+                                        <select asp-for="command.permissions" asp-items="Model.Permissions" class="multi-select" multiple="multiple" id="my_multi_select3">
                                         </select>
                                     </div>
-                                    <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id" />
+                                    <input type="hidden" asp-for="command.Id" value="@Model.command.Id" />
                                 </div>
-                                <input type="hidden" value="@Model.command.Id" asp-for="command.Id" />
                             </div>
-
                             <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
                             <a asp-page="./Index" class="btn btn-dark waves-effect waves-light m-b-5">بازگشت</a>
                         </form>
@@ -39,7 +38,6 @@
         </div>
     </div>
 </div>
-
 @section Css{
     <link href="~/AdminTheme/assets/jquery-multi-select/multi-select.css" rel="stylesheet" type="text/css" />
 }
