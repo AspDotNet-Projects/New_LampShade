@@ -16,8 +16,6 @@ namespace InventoryManagement.Configuration.Permissions
                         new PermissionDto(31,"ListInventory"),
                         new PermissionDto(32,"CreateInventory"),
                         new PermissionDto(33,"EditInventory"),
-
-
                     }
                 }
             };
