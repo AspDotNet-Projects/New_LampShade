@@ -15,7 +15,7 @@ namespace ShopManagement.Configuration.Permissions
                         new PermissionDto(ShopPermissions.ListProducts,"ListProducts"),
                         new PermissionDto(ShopPermissions.SearchProducts,"SearchProducts"),
                         new PermissionDto(ShopPermissions.CreateProducts,"CreateProduct"),
-                        new PermissionDto(ShopPermissions.EditProducts,"EditProducts"),
+                        new PermissionDto(ShopPermissions.EditProduct,"EditProduct"),
 
 
                        }

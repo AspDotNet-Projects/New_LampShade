@@ -38,7 +38,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
         ///+
         /// 
-        [NeedPermission(ShopPermissions.ListProducts)]
+        [NeedsPermission(ShopPermissions.ListProducts)]
         public void OnGet(ProductSearchModel searchModel)
         {
             Productcategories = new SelectList(_productCategoryApplication.GetProductcategory_selectlist(), "Id", "Name");
@@ -57,6 +57,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
             return Partial("./Create", command);
         }
 
+        [NeedsPermission(ShopPermissions.CreateProducts)]
         public JsonResult OnPostCreate(CreateProduct command)
         {
             var result = _productApplication.Create(command);
@@ -69,7 +70,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
             product.Categories = _productCategoryApplication.GetProductcategory_selectlist();
             return Partial("./Edit", product);
         }
-
+        
+        [NeedsPermission(ShopPermissions.EditProduct)]
         public JsonResult OnPostEdit(EditProduct command)
             {
             var result = _productApplication.Edit(command);

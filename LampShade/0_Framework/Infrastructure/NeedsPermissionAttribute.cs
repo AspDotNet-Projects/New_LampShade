@@ -2,11 +2,11 @@
 
 namespace _0_Framework.Infrastructure
 {
-    public class NeedPermissionAttribute:Attribute
+    public class NeedsPermissionAttribute : Attribute
     {
         public int Permission { get; set; }
 
-        public NeedPermissionAttribute(int permission)
+        public NeedsPermissionAttribute(int permission)
         {
             Permission = permission;
         }

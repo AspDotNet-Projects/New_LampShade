@@ -6,7 +6,7 @@
         public const int ListProducts = 10;
         public const int SearchProducts = 11;
         public const int CreateProducts = 12;
-        public const int EditProducts = 13;
+        public const int EditProduct = 13;
 
 
         //ProductCategory

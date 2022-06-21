@@ -40,6 +40,19 @@ namespace _0_Framework.Application
             return result;
         }
 
+        public List<int> GetPermission()
+        {
+            //اگه احراز هویت نشده بود لیست رو خالی برگردون
+            if (!IsAuthenticated())
+                return new List<int>();
+
+            var permission= _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permisssins")
+                ?.Value;
+            ///DeserializeObject
+            /// در واقع لیستی  از اعداد رو به لسیستی از زشتهها تبدیل میکنه 
+            return JsonConvert.DeserializeObject<List<int>>(permission);
+        }
+
         public List<int> GetPermissions()
         {
             if (!IsAuthenticated())
@@ -90,6 +103,7 @@ namespace _0_Framework.Application
             /// باید از کلاس
             /// newtonsoft
             /// باشد
+            /// برای اینکه لیست عددی رو به رشته تبدیل کنیم  
             var permission = JsonConvert.SerializeObject(account.Permissions);
 
             if(string.IsNullOrWhiteSpace(account.ProfilePhoto))
@@ -106,7 +120,8 @@ namespace _0_Framework.Application
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.UserName), // Or Use ClaimTypes.NameIdentifier
                 //new Claim("permissions", permissions),
-                new Claim("Mobile", account.Mobile),
+                new Claim("Mobile", account.Mobile), 
+                //فراخوانی دسترسی ها از دیتا بیس و ذخیره دسترسی ها در توکن 
                 new Claim("Permissions",permission),
                
                 new Claim("ProfilePhoto", account.ProfilePhoto)

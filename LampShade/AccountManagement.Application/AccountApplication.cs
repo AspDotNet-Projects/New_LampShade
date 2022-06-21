@@ -101,8 +101,7 @@ namespace AccountManagement.Application
             (bool verified,bool needsUpgrade) result=_passwordHasher.Check(account.Password, command.Password);
             if(!result.verified)
                 return operation.Failed(ApplicationMesseges.WrongUserPass);
-           
-            
+            //با این کار دسترسی ها به همراه سایر اطلاعت در توکن ذخیره می شه وقابل استفاده میشمه
             var permission = _roleRepository.Get(account.RoleId)
                 .Permissions
                 .Select(x => x.Code)
