@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _0_Framework.Application;
 using AccountManagement.Applicatoin.Contracts.Account;
 using AccountManagement.Domain.AccountAgg;
+using AccountManagement.Domain.RoleAgg;
 using Microsoft.AspNetCore.WebUtilities;
 
 namespace AccountManagement.Application
@@ -12,13 +14,15 @@ namespace AccountManagement.Application
         private readonly IPasswordHasher _passwordHasher;
         private readonly IAccountRepository _acountRepositroy;
         private readonly IAuthHelper _authHelper;
+        private readonly IRoleRepository _roleRepository;
 
-        public AccountApplication(IAccountRepository acountRepositroy, IPasswordHasher passwordHasher, IFileUploader fileUploader, IAuthHelper authHelper)
+        public AccountApplication(IAccountRepository acountRepositroy, IPasswordHasher passwordHasher, IFileUploader fileUploader, IAuthHelper authHelper, IRoleRepository roleRepository)
         {
             _acountRepositroy = acountRepositroy;
             _passwordHasher = passwordHasher;
             _fileUploader = fileUploader;
             _authHelper = authHelper;
+            _roleRepository = roleRepository;
         }
 
         public OperationResult Register(RegisterAccount command)
@@ -97,9 +101,15 @@ namespace AccountManagement.Application
             (bool verified,bool needsUpgrade) result=_passwordHasher.Check(account.Password, command.Password);
             if(!result.verified)
                 return operation.Failed(ApplicationMesseges.WrongUserPass);
-
+           
+            
+            var permission = _roleRepository.Get(account.RoleId)
+                .Permissions
+                .Select(x => x.Code)
+                .ToList();
+            
             var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Username,
-                account.Fullname, account.Mobile,account.ProfilePhoto);    
+                account.Fullname, account.Mobile,account.ProfilePhoto,permission);    
              
             _authHelper.Signin(authViewModel);
             return operation.Succedded();

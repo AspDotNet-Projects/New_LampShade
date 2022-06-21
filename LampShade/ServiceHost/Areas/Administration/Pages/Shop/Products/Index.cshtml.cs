@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contract.Product;
 using ShopManagement.Application.Contract.ProductCategory;
+using ShopManagement.Configuration.Permissions;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 {
@@ -34,7 +36,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         /// zaman load safhe searchModel Null hast var All barmigarde dar ----------> ProductCategoryRepository
         /// -------      if (!string.IsNullOrWhiteSpace(searchModel.Name))
         ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
-        /// 
+        ///
+        [NeedPermission(ShopPermissions.ListProducts)]
         public void OnGet(ProductSearchModel searchModel)
         {
             Productcategories = new SelectList(_productCategoryApplication.GetProductcategory_selectlist(), "Id", "Name");

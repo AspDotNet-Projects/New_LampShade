@@ -86,6 +86,12 @@ namespace _0_Framework.Application
 
         public void Signin(AuthViewModel account)
         {
+            ///JsonConvert
+            /// باید از کلاس
+            /// newtonsoft
+            /// باشد
+            var permission = JsonConvert.SerializeObject(account.Permissions);
+
             if(string.IsNullOrWhiteSpace(account.ProfilePhoto))
              account.ProfilePhoto = "ProfilePhotos/DefualtProfile.jpg";
             //var permissions = JsonConvert.SerializeObject(account.Permissions);
@@ -101,6 +107,7 @@ namespace _0_Framework.Application
                 new Claim("Username", account.UserName), // Or Use ClaimTypes.NameIdentifier
                 //new Claim("permissions", permissions),
                 new Claim("Mobile", account.Mobile),
+                new Claim("Permissions",permission),
                
                 new Claim("ProfilePhoto", account.ProfilePhoto)
             };

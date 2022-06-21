@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
@@ -21,13 +22,16 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
         public EditRole GetDetails(long id)
         {
-            return _accountContext.Roles.Select(x => new EditRole
+            var role= _accountContext.Roles.Select(x => new EditRole
             {
                 Id = x.Id,
                 Name = x.Name,
                 Mappedpermissions = MapPermisstins(x.Permissions)
                 }).AsNoTracking()
                 .FirstOrDefault(x=>x.Id==id);
+            
+            //role.permissions = role.Mappedpermissions.Select(x => x.Code).ToList();
+            return role;
         }
 
         private static List<PermissionDto> MapPermisstins(IEnumerable<Permissions> permissions)
