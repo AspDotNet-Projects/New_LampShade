@@ -36,7 +36,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         /// zaman load safhe searchModel Null hast var All barmigarde dar ----------> ProductCategoryRepository
         /// -------      if (!string.IsNullOrWhiteSpace(searchModel.Name))
         ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
-        ///
+        ///+
+        /// 
         [NeedPermission(ShopPermissions.ListProducts)]
         public void OnGet(ProductSearchModel searchModel)
         {
