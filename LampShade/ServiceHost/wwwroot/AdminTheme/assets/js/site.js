@@ -1,31 +1,15 @@
 ﻿var SinglePage = {};
 
-///SinglePage.LoadModal  is fuction
-//اکه کال بشه 
 SinglePage.LoadModal = function () {
-    //window.location.hash
-    //یعنی بعد از یو آر ال هرچی بیاد میشه هش . مثل
-    //https://localhost:5001/Administration/Shop/ProductCategories#Create
-    //#ShowModal ----->منظور ما هست
     var url = window.location.hash.toLowerCase();
-    //showmodalاگز هش  با
-    //شروزع نشده بود برو بیرون
     if (!url.startsWith("#showmodal")) {
         return;
     }
-    //در غیر اینصورت 
-    //#ShowModal/Create
-    //اسپلیت میکنه 
-    //و میرسه به /Create
     url = url.split("showmodal=")[1];
     $.get(url,
         null,
-        //یک اج تی ام ال پیج میمده به ما
         function (htmlPage) {
-            //حالا هش تغییر میکنه در خطوط پایین تر ما گفنیم که اکه هش تغییر کنه 
-            //حالا شو مودال رو صدا بزن
             $("#ModalContent").html(htmlPage);
-            //این چهار خط باعث میشه که کلاینت ساید بشه ولیدیتور هست
             const container = document.getElementById("ModalContent");
             const forms = container.getElementsByTagName("form");
             const newForm = forms[forms.length - 1];
@@ -44,7 +28,6 @@ function hideModal() {
     $("#MainModal").modal("hide");
 }
 
-//اگه شو مودال تغییر کنه حالا لود مدال رو تغییر بده
 $(document).ready(function () {
     window.onhashchange = function () {
         SinglePage.LoadModal();
@@ -52,67 +35,37 @@ $(document).ready(function () {
     $("#MainModal").on("shown.bs.modal",
         function () {
             window.location.hash = "##";
-            //برای اینکه تاریخ به صورت خودکار در فیلد پر شود
-            $('.PersianDateInput').persianDatepicker({
-
+            $('.persianDateInput').persianDatepicker({
                 format: 'YYYY/MM/DD',
                 autoClose: true
             });
         });
 
-//اگر کاربر رویداد ساب میت رو انجام داد مکه فقط مروبوط به ایجاد محصول هست
-//و این شرط زیر برقرار بود
-    //form[data - ajax= "true"]
-    //که در فرم ایحاد گروه محصول دیتا ای جکس رو ترو کردیم
     $(document).on("submit",
         'form[data-ajax="true"]',
-    //    function (e)
-    //ما داریم به ورودی یک آتچکت می دیم
         function (e) {
-            //اگه اتفاقی بیافته و فرم اجرا نشه این خط باعث میشه کل فرم اجرا نشه
-            //و درواقع مقادیر پیش فرض فرم را کمسل میککنه
             e.preventDefault();
-            //اون فرم رو بگیر
             var form = $(this);
-            //اتریبیوت فرم رو بگیر که ما در فر ایجاد گروه محصول پست گذاشتیم
             const method = form.attr("method").toLocaleLowerCase();
-            //اکشن آن فرم هم هست
-            //asp-page="./Index" asp-page-handler="Create"
-            //یعنی رویدادپست برای آن باید نوشت
             const url = form.attr("action");
-            //اتفاقی که قرار است بعد ارز ارسال فرم رخ می دهد
             var action = form.attr("data-action");
 
-            //اگه متد گت بود
-            //const data = form.serializeArray();
-            //به فرم تمام تکست نگاه کن
             if (method === "get") {
-                //ما تا اینجا فثط تکست ارسال می کردیم 
-                //اگه بخواهیم شی هم ارسال کنیم یا همان فایل آپلود را ازسال کنیم
-                //دیگر نمی توانیم از
-                //form.serializeArray();
-                //استفاده کنیم
                 const data = form.serializeArray();
                 $.get(url,
                     data,
                     function (data) {
                         CallBackHandler(data, action, form);
                     });
-            }
-            ///اگه متد گت نبود یعنی پست بود این کارها  رو بکن
-            else {
-                //که در وقع یک فرم می گیرد با تمام آیتم ها    
+            } else {
                 var formData = new FormData(this);
                 $.ajax({
                     url: url,
                     type: "post",
-                    //چهار خط زیر برای ارسال اطلاعات به جز تکست به فرم هست
                     data: formData,
                     enctype: "multipart/form-data",
                     dataType: "json",
-                    //که دیتای که میگیره رو پردازش نکنه
                     processData: false,
-                    //که هیچ ایرادی به دیتای ارسالی نگیرید
                     contentType: false,
                     success: function (data) {
                         CallBackHandler(data, action, form);
@@ -190,8 +143,6 @@ function checkSlugDuplication(url, dist) {
     });
 }
 
-
-//برای پر کردن خودککار متا دسکریپتیون از روی دسکریپتیون
 function fillField(source, dist) {
     const value = $('#' + source).val();
     $('#' + dist).val(value);
@@ -233,14 +184,10 @@ function handleAjaxCall(method, url, data) {
     }
 }
 
-///ولیدیشن سمت کلایننت که دقییقا این متد باید همین نام باشه
 jQuery.validator.addMethod("maxFileSize",
     function (value, element, params) {
         var size = element.files[0].size;
-        //برای تبدیل به مگابایت
-        //debugger;
-        //اگه بخواهیم در جی کوئری یک تریس انجام بریم از این طریق میشه انجام داد.
-        var maxSize = 3 * 1024 *1024;
+        var maxSize = 3 * 1024 * 1024;
         if (size > maxSize)
             return false;
         else {
@@ -249,19 +196,15 @@ jQuery.validator.addMethod("maxFileSize",
     });
 jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
 
-
-jQuery.validator.addMethod("fileExtentionlimite",
-    function (value, element, params) {
-        var extention = "jpg|jpeg|png";
-        var extentionfile = value.split(".").pop();
-        var FileTypeInSearch = extention.includes(extentionfile);
-        /*debugger;*/
-        if (FileTypeInSearch === false)
-            return false;
-        else {
-            return true;
-        }
-    });
-jQuery.validator.unobtrusive.adapters.addBool("fileExtentionlimite");
-
-
+//jQuery.validator.addMethod("maxFileSize",
+//    function (value, element, params) {
+//        var size = element.files[0].size;
+//        var maxSize = 3 * 1024 * 1024;
+//        debugger;
+//        if (size > maxSize)
+//            return false;
+//        else {
+//            return true;
+//        }
+//    });
+//jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");

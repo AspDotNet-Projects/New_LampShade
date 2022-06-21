@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using _0_Framework.Infrastructure;
+using AccountManagement.Domain.RoleAgg;
 using DiscountManagement.Application.Contract.ColleagueDiscount;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,6 +10,7 @@ using ShopManagement.Application.Contract.Product;
 
 namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscounts
 {
+   [Authorize(Roles = Roles.Administrator)]
     public class IndexModel : PageModel
     {
         [TempData]
