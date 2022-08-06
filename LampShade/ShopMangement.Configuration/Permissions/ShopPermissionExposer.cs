@@ -12,6 +12,7 @@ namespace ShopManagement.Configuration.Permissions
                 {
                     "Products",new List<PermissionDto>
                        {
+                           //پاراممتر اول کد و پارامتر دوم هم خخود دسترسی
                         new PermissionDto(ShopPermissions.ListProducts,"ListProducts"),
                         new PermissionDto(ShopPermissions.SearchProducts,"SearchProducts"),
                         new PermissionDto(ShopPermissions.CreateProducts,"CreateProduct"),

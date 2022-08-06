@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contract.ProductCategory;
+using ShopManagement.Configuration.Permissions;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
@@ -48,6 +50,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             return new JsonResult(result);
         }
 
+        
         public IActionResult OnGetEdit(long id)
         {
             var productCategory = _productCategories.GetDatails(id);

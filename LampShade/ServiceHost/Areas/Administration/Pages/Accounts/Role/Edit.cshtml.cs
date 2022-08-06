@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using _0_Framework.Infrastructure;
-using AccountManagement.Application;
 using AccountManagement.Applicatoin.Contracts.Role;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -49,6 +48,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
                         };
 
                         if (command.Mappedpermissions.Any(x => x.Code == permission.Code))
+                            //age ture beshe miad to box samte resti
                             item.Selected = true;
 
                         Permissions.Add(item);

@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagement.Configuration.Permissions
 {
-    public class InventoryPermissions
+    public static  class InventoryPermissions
     {
         public const int ListInventory = 50;
         public const int SearchInventory = 51;
