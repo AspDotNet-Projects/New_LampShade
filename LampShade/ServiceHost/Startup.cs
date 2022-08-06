@@ -72,27 +72,23 @@ namespace ServiceHost
                     builder => builder.RequireRole(new List<string> {Roles.Administrator, Roles.contentUploader}));
                 option.AddPolicy("Shop",
                     builder => builder.RequireRole(new List<string> { Roles.Administrator }));
-                option.AddPolicy("Discount",
-                    builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+               
                 option.AddPolicy("Account",
                     builder => builder.RequireRole(new List<string> { Roles.Administrator }));
 
 
             });
             //.AddMvcOptions(options=>options.Filters.Add<SecurityPageFilter>())
-            //????? ????? ???? ???? ???? ???? ?? ????????
+            //taeen dastresi be area ya hate mokhtalef
+            //emal polict roye folder ha ba in kar darim roye folder ha polict mazanim
             services.AddRazorPages()
                 .AddMvcOptions(options=>options.Filters.Add<SecurityPageFilter>())
                 .AddRazorPagesOptions(option=>
                 {
                     option.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
                     option.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
-                    option.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discouont");
                     option.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
-
-
-
-
+                    
                 });
                 
 

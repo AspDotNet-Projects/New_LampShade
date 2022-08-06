@@ -22,7 +22,7 @@ namespace AccountManagement.Domain.AccountAgg
             RoleId = roleId;
             //برای اینکه اگه کاربر ثبت نام کرد به صورت پیش فرض کاربر سیستم تعریفش کنیم
             if (roleId == 0)
-                RoleId = 2;
+                RoleId = 3;
             
                 
            
