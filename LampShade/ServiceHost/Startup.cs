@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using _0_Framework.Application;
 using AccountManagement.Configuration;
-using BlogMangement.Infrastructure.Configuration;
 using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Configuration;
@@ -16,6 +15,8 @@ using ShopManagement.Configuration;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using _0_Framework.Infrastructure;
+using BlogManagement.Configuration;
+using MenuManagement.Configuration;
 
 namespace ServiceHost
 {
@@ -39,7 +40,7 @@ namespace ServiceHost
             CommentManagementBootstrapper.Configur(services, connectionstring);
             BlogManagementBootstrapper.Configure(services, connectionstring);
             AccountManagementBootstrapper.Configure(services,connectionstring);
-
+            MenuManagementBootstrapper.configur(services);
             //»—«? «?‰òÂ œ— Â‰ê«„ «Ã—« Ê ·Êœ ‘œ‰ ’›ÕÂ keyword, metadescription „ﬁ«œ?— øøø ”Ê«· Å— ‰‘Êœ òœ “?— —« »Â ﬁ”„  startup «÷«›Â „? ò‰?„
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
 

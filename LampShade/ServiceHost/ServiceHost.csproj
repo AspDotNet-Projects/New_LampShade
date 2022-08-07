@@ -12,10 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
-    <ProjectReference Include="..\BlogMangement.Infrastructure.Configuration\BlogManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\BlogMangement.Infrastructure.Configuration\BlogManagement.Configuration.csproj" />
     <ProjectReference Include="..\CommentManagement.Configuration\CommentManagement.Configuration.csproj" />
     <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement.Configuration\InventoryManagement.Configuration.csproj" />
+    <ProjectReference Include="..\MenuManagement.Configuration\MenuManagement.Configuration.csproj" />
     <ProjectReference Include="..\ShopMangement.Configuration\ShopManagement.Configuration.csproj" />
   </ItemGroup>
 
