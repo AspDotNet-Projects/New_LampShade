@@ -11,6 +11,7 @@ namespace DiscountManagement.Configuration.Permissions
             return new Dictionary<string, List<PermissionDto>>
             {
                 {
+
                     "CustomerDiscount", new List<PermissionDto>
                     {
                         new PermissionDto(DiscountPermissions.listCustomerDiscount, "listCustomerDiscount"),
