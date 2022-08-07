@@ -28,7 +28,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         /// zaman load safhe searchModel Null hast var All barmigarde dar ----------> ProductCategoryRepository
         /// -------      if (!string.IsNullOrWhiteSpace(searchModel.Name))
         ///              query = query.Where(x => x.Name.Contains(searchModel.Name));
-        /// 
+        ///
+        [NeedsPermission(ShopPermissions.ListProductCategories)]
         public void OnGet(ProductCategorySearchModel searchModel)
         {
 
@@ -43,7 +44,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         {
             return Partial("./Create", new CreateProductCategory());
         }
-
+        [NeedsPermission(ShopPermissions.ListProductCategories)]
         public JsonResult OnPostCreate(CreateProductCategory command)
         {
             var result = _productCategories.Create(command);
@@ -57,6 +58,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             return Partial("./Edit", productCategory);
         }
 
+        [NeedsPermission(ShopPermissions.EditProductCategory)]
         public JsonResult OnPostEdit(EditeProductCategory command)
         {
             var result = _productCategories.Edite(command);

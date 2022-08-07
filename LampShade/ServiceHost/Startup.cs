@@ -80,6 +80,7 @@ namespace ServiceHost
 
             });
             //.AddMvcOptions(options=>options.Filters.Add<SecurityPageFilter>())
+            //jahat estefade securityPagefilter 
             //taeen dastresi be area ya hate mokhtalef
             //emal polict roye folder ha ba in kar darim roye folder ha polict mazanim
             services.AddRazorPages()

@@ -45,7 +45,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 
             Products = _productApplication.Search(searchModel);
         }
-        
+
         /// <summary>
         /// Baraye ShowModal
         /// </summary>
@@ -64,13 +64,14 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
             return new JsonResult(result);
         }
 
+      
         public IActionResult OnGetEdit(long id)
         {
             var product = _productApplication.Getdetails(id);
             product.Categories = _productCategoryApplication.GetProductcategory_selectlist();
             return Partial("./Edit", product);
         }
-        
+
         [NeedsPermission(ShopPermissions.EditProduct)]
         public JsonResult OnPostEdit(EditProduct command)
             {

@@ -12,13 +12,17 @@ namespace ServiceHost
 {
     public class SecurityPageFilter : IPageFilter
     {
+
         private readonly IAuthHelper _authHelper;
 
         public SecurityPageFilter(IAuthHelper authHelper)
         {
             _authHelper = authHelper;
         }
-
+        /// <summary>
+        /// یعنی بعد از اینمکه اجرا شد 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnPageHandlerSelected(PageHandlerSelectedContext context)
         {
            
@@ -38,7 +42,8 @@ namespace ServiceHost
                 return;
            
 
-            if(!_authHelper.GetPermission().All(x=>x!=handlerPermission.Permission))
+            var permissionInfo= _authHelper.GetPermission();
+            if (permissionInfo.All(x => x != handlerPermission.Permission))
                 context.HttpContext.Response.Redirect("/Account");
 
         }

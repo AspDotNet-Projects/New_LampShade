@@ -46,22 +46,22 @@ namespace _0_Framework.Application
             if (!IsAuthenticated())
                 return new List<int>();
 
-            var permission= _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permisssins")
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
                 ?.Value;
             ///DeserializeObject
             /// در واقع لیستی  از اعداد رو به لسیستی از زشتهها تبدیل میکنه 
-            return JsonConvert.DeserializeObject<List<int>>(permission);
-        }
-
-        public List<int> GetPermissions()
-        {
-            if (!IsAuthenticated())
-                return new List<int>();
-
-            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
-                ?.Value;
             return JsonConvert.DeserializeObject<List<int>>(permissions);
         }
+
+        //public List<int> GetPermissions()
+        //{
+        //    if (!IsAuthenticated())
+        //        return new List<int>();
+
+        //    var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
+        //        ?.Value;
+        //    return JsonConvert.DeserializeObject<List<int>>(permissions);
+        //}
 
         public long CurrentAccountId()
         {
@@ -122,8 +122,8 @@ namespace _0_Framework.Application
                 //new Claim("permissions", permissions),
                 new Claim("Mobile", account.Mobile), 
                 //فراخوانی دسترسی ها از دیتا بیس و ذخیره دسترسی ها در توکن 
-                new Claim("Permissions",permission),
-               
+                new Claim("permissions", permission),
+
                 new Claim("ProfilePhoto", account.ProfilePhoto)
             };
             //که بایدپکیج زیر نصب شود 

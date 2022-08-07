@@ -33,15 +33,15 @@ namespace AccountManagement.Application
             var role = _roleRepository.Get(command.Id);
             if (role == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
-            if (_roleRepository.Exists(x => x.Name == command.Name && x.Id!=command.Id))
+
+            if (_roleRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
 
             var permissions = new List<Permissions>();
-            command.permissions.ForEach(code=>permissions.Add(new Permissions(code)));
+            command.permissions.ForEach(code => permissions.Add(new Permissions(code)));
 
-            role.Edit(command.Name,permissions);
+            role.Edit(command.Name, permissions);
             _roleRepository.SaveChange();
-
             return operation.Succedded();
         }
 

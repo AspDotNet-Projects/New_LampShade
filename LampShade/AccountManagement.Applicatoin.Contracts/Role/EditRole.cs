@@ -7,5 +7,6 @@ namespace AccountManagement.Applicatoin.Contracts.Role
     {
         public long Id { get; set; }
         public List<PermissionDto> Mappedpermissions { get; set; }
+       
     }
 }
