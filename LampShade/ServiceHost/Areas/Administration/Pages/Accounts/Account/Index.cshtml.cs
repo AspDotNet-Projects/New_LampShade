@@ -35,35 +35,21 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
             Accounts = _accountApplication.Search(searchModel);
         }
 
-        public IActionResult OnGetCreate()
-        {
-            var command = new RegisterAccount
-            {
-                Roles = _roleApplication.List()
-            };
-            return Partial("./Create", command);
-        }
 
-        public JsonResult OnPostCreate(RegisterAccount command)
-        {
-            var result = _accountApplication.Register(command);
-            return new JsonResult(result);
-        }
-
-        public IActionResult OnGetEdit(long id)
-        {
+        //public IActionResult OnGetEdit(long id)
+        //{
 
             
-            var account = _accountApplication.GetDetails(id);
-            account.Roles =_roleApplication.List();
-            return Partial("./Edit", account);
-        }
+        //    var account = _accountApplication.GetDetails(id);
+        //    account.Roles =_roleApplication.List();
+        //    return Partial("./Edit", account);
+        //}
 
-        public JsonResult OnPostEdit(EditAccount command)
-            {
-            var result = _accountApplication.Edit(command);
-            return new JsonResult(result);
-        }
+        //public JsonResult OnPostEdit(EditAccount command)
+        //    {
+        //    var result = _accountApplication.Edit(command);
+        //    return new JsonResult(result);
+        //}
         public IActionResult OnGetChangePassword(long id)
         {
             var command = new ChangePassword {Id = id};
