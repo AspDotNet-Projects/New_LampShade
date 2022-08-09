@@ -7,21 +7,21 @@ namespace AccountManagement.Domain.RoleAgg
     public class Role : EntityBase
     {
         public string Name { get;private set; }
-        public List<Permissions> Permissions { get; private set; }
+        public List<RollPermissions> Permissions { get; private set; }
         public List<Account> Accounts { get; private set; }
 
         protected Role()
         {
 
         }
-        public Role(string name,List<Permissions> permissions)
+        public Role(string name,List<RollPermissions> permissions)
         {
             Name = name;
             Permissions = permissions;
             Accounts = new List<Account>();
         }
 
-        public void Edit(string name, List<Permissions> permissions)
+        public void Edit(string name, List<RollPermissions> permissions)
         {
             Name = name;
             Permissions = permissions;

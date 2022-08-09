@@ -34,7 +34,7 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             return role;
         }
 
-        private static List<PermissionDto> MapPermisstins(IEnumerable<Permissions> permissions)
+        private static List<PermissionDto> MapPermisstins(IEnumerable<RollPermissions> permissions)
         {
             return permissions.Select(x => new PermissionDto(x.Code,x.Name)).ToList();
         }

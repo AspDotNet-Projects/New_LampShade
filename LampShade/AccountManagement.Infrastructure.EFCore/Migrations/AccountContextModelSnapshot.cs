@@ -91,12 +91,39 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsMany("AccountManagement.Domain.AccountAgg.AccountPermissions", "Permissions", b1 =>
+                        {
+                            b1.Property<long>("ID")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint")
+                                .UseIdentityColumn();
+
+                            b1.Property<long>("AccountId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<int>("Code")
+                                .HasColumnType("int");
+
+                            b1.HasKey("ID");
+
+                            b1.HasIndex("AccountId");
+
+                            b1.ToTable("AccountPermissions");
+
+                            b1.WithOwner("Account")
+                                .HasForeignKey("AccountId");
+
+                            b1.Navigation("Account");
+                        });
+
+                    b.Navigation("Permissions");
+
                     b.Navigation("Role");
                 });
 
             modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>
                 {
-                    b.OwnsMany("AccountManagement.Domain.RoleAgg.Permissions", "Permissions", b1 =>
+                    b.OwnsMany("AccountManagement.Domain.RoleAgg.RollPermissions", "Permissions", b1 =>
                         {
                             b1.Property<long>("ID")
                                 .ValueGeneratedOnAdd()

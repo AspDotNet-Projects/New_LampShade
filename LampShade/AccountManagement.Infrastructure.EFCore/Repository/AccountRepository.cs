@@ -30,10 +30,15 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                 Fullname = x.Fullname,
                 Username = x.Username,
                 RoleId = x.RoleId,
-                Mobile = x.Mobile
-            }).FirstOrDefault(x => x.Id == id);
+                Mobile = x.Mobile,
+                Mappedpermissions = MapPermisstins(x.Permissions)
+            }).AsNoTracking()
+              .FirstOrDefault(x => x.Id == id);
         }
-
+        private static List<PermissionDto> MapPermisstins(IEnumerable<AccountPermissions> permissions)
+        {
+            return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();
+        }
         public List<AccountViewModel> Search(AccountSearchModel searchModel)
         {
             var query = _context.Accounts

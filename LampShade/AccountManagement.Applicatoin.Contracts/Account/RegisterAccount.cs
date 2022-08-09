@@ -27,6 +27,8 @@ namespace AccountManagement.Applicatoin.Contracts.Account
 
         public IFormFile ProfilePhoto { get; set; }
 
+        public List<int> permissions { get; set; }
+
 
     }
 }

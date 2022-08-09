@@ -15,7 +15,7 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
 
             //تعیین ارتباط ببین دو جدول 
             //ابتدا باید اونو اینجوری 
-            //builder.OwnsMany<Permissions>(.......).....
+            //builder.OwnsMany<RollPermissions>(.......).....
             //نوشت تا تمام پرارامتر ها رو بیاره
             builder.OwnsMany(x => x.Permissions, navigationBuilder =>
             {

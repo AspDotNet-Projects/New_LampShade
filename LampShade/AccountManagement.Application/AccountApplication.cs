@@ -37,7 +37,8 @@ namespace AccountManagement.Application
             var path = $"profilephotos";
             var picturepath = _fileUploader.Upload(command.ProfilePhoto, path);
             
-            var account = new Account(command.Fullname, command.Username, password, command.Mobile, command.RoleId,picturepath);
+            var account = new Account(command.Fullname, command.Username, 
+                password, command.Mobile, command.RoleId,picturepath,new List<AccountPermissions>());
             
             _acountRepositroy.Create(account);
             _acountRepositroy.SaveChange();
@@ -61,7 +62,11 @@ namespace AccountManagement.Application
             var path = $"profilephotos";
             var picturepath = _fileUploader.Upload(command.ProfilePhoto, path);
 
-            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, picturepath);
+            var permissions = new List<AccountPermissions>();
+            command.permissions.ForEach(code => permissions.Add(new AccountPermissions(code)));
+
+            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, picturepath,
+                permissions);
             _acountRepositroy.SaveChange();
 
             return operation.Succedded();
@@ -101,14 +106,22 @@ namespace AccountManagement.Application
             (bool verified,bool needsUpgrade) result=_passwordHasher.Check(account.Password, command.Password);
             if(!result.verified)
                 return operation.Failed(ApplicationMesseges.WrongUserPass);
+            
+            
             //با این کار دسترسی ها به همراه سایر اطلاعت در توکن ذخیره می شه وقابل استفاده میشمه
-            var permission = _roleRepository.Get(account.RoleId)
+            var Rolepermission = _roleRepository.Get(account.RoleId)
                 .Permissions
                 .Select(x => x.Code)
                 .ToList();
-            
+
+
+            var AccountPermission = _acountRepositroy.Get(account.Id)
+                .Permissions
+                .Select(x => x.Code)
+                .ToList();
+            Rolepermission.AddRange(AccountPermission);
             var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Username,
-                account.Fullname, account.Mobile,account.ProfilePhoto,permission);    
+                account.Fullname, account.Mobile,account.ProfilePhoto, Rolepermission);    
              
             _authHelper.Signin(authViewModel);
             return operation.Succedded();

@@ -20,6 +20,18 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
             builder.HasOne(x => x.Role)
                 .WithMany(x => x.Accounts)
                 .HasForeignKey(x => x.RoleId);
+            //تعیین ارتباط ببین دو جدول 
+            //ابتدا باید اونو اینجوری 
+            //builder.OwnsMany<RollPermissions>(.......).....
+            //نوشت تا تمام پرارامتر ها رو بیاره
+            builder.OwnsMany(x => x.Permissions, navigationBuilder =>
+            {
+                navigationBuilder.HasKey(x => x.ID);
+                navigationBuilder.ToTable("AccountPermissions");
+                navigationBuilder.Ignore(x => x.Name);
+                navigationBuilder.WithOwner(x => x.Account);
+            });
+
         }
     }
 }

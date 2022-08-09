@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20220617090706_addroletableANDpermostionToRoleAdded")]
-    partial class addroletableANDpermostionToRoleAdded
+    [Migration("20220809111128_add-accountcontext")]
+    partial class addaccountcontext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,23 +93,47 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>
-                {
-                    b.OwnsMany("AccountManagement.Domain.RoleAgg.Permissions", "Permissions", b1 =>
+                    b.OwnsMany("AccountManagement.Domain.AccountAgg.AccountPermissions", "Permissions", b1 =>
                         {
                             b1.Property<long>("ID")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("bigint")
                                 .UseIdentityColumn();
 
-                            b1.Property<string>("Code")
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<long>("AccountId")
+                                .HasColumnType("bigint");
 
-                            b1.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("Code")
+                                .HasColumnType("int");
+
+                            b1.HasKey("ID");
+
+                            b1.HasIndex("AccountId");
+
+                            b1.ToTable("AccountPermissions");
+
+                            b1.WithOwner("Account")
+                                .HasForeignKey("AccountId");
+
+                            b1.Navigation("Account");
+                        });
+
+                    b.Navigation("Permissions");
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>
+                {
+                    b.OwnsMany("AccountManagement.Domain.RoleAgg.RollPermissions", "Permissions", b1 =>
+                        {
+                            b1.Property<long>("ID")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint")
+                                .UseIdentityColumn();
+
+                            b1.Property<int>("Code")
+                                .HasColumnType("int");
 
                             b1.Property<long>("RoleId")
                                 .HasColumnType("bigint");
