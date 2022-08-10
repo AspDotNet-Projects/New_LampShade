@@ -1,4 +1,5 @@
 ﻿@page
+@using _0_Framework.Infrastructure
 @model ServiceHost.Areas.Administration.Pages.Accounts.Account.IndexModel
 @{
 }
@@ -94,10 +95,13 @@
                                            asp-page="Edit" asp-route-Id="@item.Id">
                                             <i class="fa fa-edit"></i> ویرایش
                                         </a>
-                                        <a class="btn btn-pink btn-default waves-effect waves-light m-b-5"
-                                           asp-page="Permission" asp-route-Id="@item.Id">
-                                            <i class="fa fa-edit"></i>دسترسی ها
-                                        </a>
+                                        @if (@item.RoleId != int.Parse(Roles.SystemUser))
+                                        {
+                                            <a class="btn btn-pink btn-default waves-effect waves-light m-b-5"
+                                               asp-page="Permission" asp-route-Id="@item.Id">
+                                                <i class="fa fa-edit"></i>دسترسی ها
+                                            </a>
+                                        }
                                         <a class="btn btn-primary btn-default waves-effect waves-light m-b-5"
                                            href="#showmodal=@Url.Page("./Index", "ChangePassword", new {id = @item.Id})">
                                             <i class="fa fa-key"></i> تغییر رمز
