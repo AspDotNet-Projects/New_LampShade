@@ -36,7 +36,7 @@ namespace AccountManagement.Domain.AccountAgg
         }
 
         public void Edit(string fullname, string username, string mobile,
-            long roleId, string profilePhoto, List<AccountPermissions> permissions)
+            long roleId, string profilePhoto)
         {
             Fullname = fullname;
             Username = username;
@@ -45,9 +45,13 @@ namespace AccountManagement.Domain.AccountAgg
 
             if (!string.IsNullOrWhiteSpace(profilePhoto))
                 ProfilePhoto = profilePhoto;
-            Permissions = permissions;
+            
         }
 
+        public void EditPermission(List<AccountPermissions> permissions)
+        {
+            Permissions = permissions;
+        }
         public void ChangePassword(string password)
         {
             Password = password;

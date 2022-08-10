@@ -62,11 +62,9 @@ namespace AccountManagement.Application
             var path = $"profilephotos";
             var picturepath = _fileUploader.Upload(command.ProfilePhoto, path);
 
-            var permissions = new List<AccountPermissions>();
-            command.permissions.ForEach(code => permissions.Add(new AccountPermissions(code)));
+            
 
-            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, picturepath,
-                permissions);
+            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, picturepath);
             _acountRepositroy.SaveChange();
 
             return operation.Succedded();
@@ -90,6 +88,25 @@ namespace AccountManagement.Application
 
             return operation.Succedded();
             
+        }
+
+        public OperationResult EditPermission(EditAccount command)
+        {
+            var operation = new OperationResult();
+            var account = _acountRepositroy.Get(command.Id);
+            if (account == null)
+                return operation.Failed(ApplicationMesseges.RecoredNotFound);
+
+            if (_acountRepositroy.Exists(x => (x.Username == command.Username || x.Mobile == command.Mobile) && x.Id != command.Id))
+                return operation.Failed(ApplicationMesseges.DuplicatedRecored);
+            
+            var permissions = new List<AccountPermissions>();
+            command.permissions.ForEach(code => permissions.Add(new AccountPermissions(code)));
+
+            account.EditPermission(permissions);
+            _acountRepositroy.SaveChange();
+
+            return operation.Succedded();
         }
 
         public OperationResult Login(Login command)
