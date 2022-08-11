@@ -27,14 +27,14 @@
 
 <body>
     <!--====================  header area ====================-->
-       @await Component.InvokeAsync("Menu")
-<!--====================  End of header area  ====================-->
+    @await Component.InvokeAsync("Menu")
+    <!--====================  End of header area  ====================-->
 
-                  @RenderBody()
+    @RenderBody()
 
-<!--====================  footer area ====================-->
-@await Component.InvokeAsync("Footer")
-<!--====================  End of footer area  ====================-->
+    <!--====================  footer area ====================-->
+    @await Component.InvokeAsync("Footer")
+    <!--====================  End of footer area  ====================-->
 
 
 
@@ -66,8 +66,11 @@
     <!-- Vendor JS -->
     <script src="~/Theme/assets/js/vendors.js"></script>
 
-    <!-- Active JS -->
-    <script src="~/Theme/assets/js/active.js"></script>
+<!-- Active JS -->
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="~/Theme/assets/js/active.js"></script>
+                <script src="~/Theme/assets/js/plugins.js"></script>
+                <script src="~/Theme/assets/js/custom.js"></script>
 
 </body>
 
