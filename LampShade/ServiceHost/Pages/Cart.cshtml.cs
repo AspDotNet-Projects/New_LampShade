@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using _01_LampShadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,18 +15,28 @@ namespace ServiceHost.Pages
     {
         public List<CartItem> CartItems;
         public const string CookieName = "cart-items";
+
+        private readonly IProductQuery _productQuery;
+
+        public CartModel(IProductQuery productQuery)
+        {
+            //baraye jelo giri az error null refrence
+            CartItems = new List<CartItem>();
+            _productQuery = productQuery;
+        }
+
         public void OnGet()
         {
             //JavaScriptSerializer() jahat tabdil cookie string to onject
             var serializer = new JavaScriptSerializer();
             var value = Request.Cookies[CookieName];
-            CartItems = serializer.Deserialize<List<CartItem>>(value);
-            foreach (var item in CartItems)
+            var cartitems = serializer.Deserialize<List<CartItem>>(value);
+            foreach (var item in cartitems)
             {
                 item.TotalItemPrice = item.Count * item.UnitPrice;
             }
 
-
+            CartItems = _productQuery.CheckInventoryStatus(cartitems);
         }
 
         public IActionResult OnGetRemoveFromCart(long id)

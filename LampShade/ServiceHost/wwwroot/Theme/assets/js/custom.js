@@ -16,11 +16,11 @@ function addToCart(id, name, price, picture) {
     //oni ke Id barabar ba productCount , valuesho migire 
     const count = $("#productCount").val();
     //gereftane id product jari
-    const currentProduct = products.find(x => x.id === id);
+    const currentProduct = products.find(x => parseInt(x.id) === parseInt(id));
     //on Id az ghabl vojod dasht
     if (currentProduct !== undefined) {
         //migim age on kala ro az ghabl to listesh dasht age dobare ezefe kard be listesh ezafe kon
-        products.find(x => x.id === id).count = parseInt(currentProduct.count) + parseInt(count);
+        products.find(x => parseInt(x.id) === parseInt(id)).count = parseInt(currentProduct.count) + parseInt(count);
     }
     //age az ghabl vojod nadash  , migirim vaulue hash ro
     else {

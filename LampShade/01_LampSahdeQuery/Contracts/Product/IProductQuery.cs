@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _01_LampSahdeQuery.Contracts.Product;
+using ShopManagement.Application.Contract.Order;
 
 namespace _01_LampShadeQuery.Contracts.Product
 {
@@ -9,6 +10,7 @@ namespace _01_LampShadeQuery.Contracts.Product
         //آخرین محصولات
         List<ProductQueryModel> GetLatestArrivals();
         List<ProductQueryModel> Search(string value);
-        
+        List<CartItem> CheckInventoryStatus(List<CartItem> cartitems);
+
     }
 }

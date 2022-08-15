@@ -145,14 +145,14 @@
 
                                         <p class="single-info">کد محصول: <span class="value">@Model.Product.Code</span> </p>
                                         <p class="single-info">
-                                            @if (Model.Product.IsInStock)
+                                            @*@if (Model.Product.IsInStock)
                                             {
                                                 <span class="text-success">موجود در انبار</span>
                                             }
                                             else
                                             {
                                                 <span class="text-danger">محصول ناموجود</span>
-                                            }
+                                            }*@
                                         </p>
 
                                         <p class="product-description">
@@ -169,9 +169,19 @@
                                                 <input type="number" value="1" min="1" id="productCount">
                                             </div>
                                             <div class="product-buttons">
-                                                <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
-                                                    <i class="ion-bag"></i> افزودن به سبد خرید
-                                                </a>
+                                                @if (@Model.Product.IsInStock)
+                                                {
+                                                    <a  class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
+                                                        <i class="ion-bag"></i> افزودن به سبد خرید
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a style="pointer-events: none; background-color: #f4a460;color: aliceblue" class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
+                                                        <i class="ion-bag"></i> این محصول موجود نمی باشد
+                                                    </a>
+                                                }
+                                                
                                             </div>
                                         </div>
 

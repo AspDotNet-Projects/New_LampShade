@@ -9,6 +9,7 @@ using CommentManagement.Infrastructure.EFCore;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contract.Order;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -219,5 +220,21 @@ namespace _01_LampShadeQuery.Query
             return products;
         }
 
+        public List<CartItem> CheckInventoryStatus(List<CartItem> cartitems)
+        {
+            var inventory = _inventorContext.Inventory.ToList();
+            foreach (var cartitem in cartitems)
+            {
+                if (inventory.Any(x => x.ProductId == cartitem.Id && x.InStock))
+                {
+                    var itemInventory = inventory.Find(x => x.ProductId == cartitem.Id);
+                    if(itemInventory != null)
+                        //age mojodi > darkhast bood
+                    cartitem.IsInStock = itemInventory.CalculateCurrentCount()>=cartitem.Count;
+                }
+            }
+
+            return cartitems;
+        }
     }
 }
