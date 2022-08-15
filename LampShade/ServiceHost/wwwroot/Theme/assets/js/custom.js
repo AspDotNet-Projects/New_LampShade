@@ -88,3 +88,21 @@ function removeFromCart(id) {
 
 
 }
+
+function changecartItemCount(id, totalId, count) {
+    debugger;
+    var products = $.cookie(cookieName);
+    products = JSON.parse(products);
+    //find kardan shomare index sellol mored nazar
+    const productIndex = products.findIndex(x => x.id == id);
+    //meghdar jadid ra set mikonim
+    products[productIndex].count = count;
+    //product mored nazar ro miarim
+    var product = products[productIndex];
+    var newTotalPrice = parseInt(product.unitPrice) * parseInt(count);
+    //dar vaghe vorodi ma haman ID tag totalprice ast
+    $(`#${totalId}`).text(newTotalPrice);
+    $.cookie(cookieName, JSON.stringify(products), { expires: 2, path: "/" });
+    updateCart();
+
+}

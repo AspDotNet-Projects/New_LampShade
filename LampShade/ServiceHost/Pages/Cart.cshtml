@@ -69,11 +69,11 @@
                                         </td>
                                         <td class="pro-quantity">
                                             <div class="quantity-selection">
-                                                <input type="number" value="@item.Count" min="1">
+                                                <input type="number" value="@item.Count" min="1" onchange="changecartItemCount('@item.Id','totalItemPrice-@item.Id',this.value)">
                                             </div>
                                         </td>
                                         <td class="pro-subtotal">
-                                            <span>@item.TotalItemPrice.ToMoney()</span>
+                                            <span id="totalItemPrice-@item.Id">@item.TotalItemPrice.ToMoney()</span>
                                         </td>
                                         <td class="pro-remove">
                                             <a asp-page-handler="RemoveFromCart" asp-route-id="@item.Id">
@@ -94,7 +94,7 @@
                             <div class="col-lg-6 col-12 d-flex">
                                 <div class="cart-summary">
                                     <div class="cart-summary-button">
-                                        <button class="checkout-btn">تکمیل فرآیند خرید</button>
+                                        <a class="checkout-btn" asp-page-handler="GoToCheckOut">تکمیل فرآیند خرید</a>
                                     </div>
                                 </div>
                             </div>

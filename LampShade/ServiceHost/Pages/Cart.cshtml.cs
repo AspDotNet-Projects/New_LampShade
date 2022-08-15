@@ -51,5 +51,24 @@ namespace ServiceHost.Pages
             Response.Cookies.Append(CookieName, serializer.Serialize(cartItems), options);
             return RedirectToPage("/Cart");
         }
+
+        public IActionResult OnGetGoToCheckOut()
+        {
+            var serializer = new JavaScriptSerializer();
+            var value = Request.Cookies[CookieName];
+            var cartitems = serializer.Deserialize<List<CartItem>>(value);
+            foreach (var item in cartitems)
+            {
+                item.TotalItemPrice = item.Count * item.UnitPrice;
+            }
+
+            CartItems = _productQuery.CheckInventoryStatus(cartitems);
+
+            //if (cartitems.Any(x=>!x.IsInStock))
+            //    return RedirectToPage("/Cart");
+            //return RedirectToPage("Checkout");
+
+            return RedirectToPage(cartitems.Any(x => !x.IsInStock) ? "/Cart" : "Checkout");
+        }
     }
 }
