@@ -1,6 +1,7 @@
-﻿const cookieName = "cart-items";
+﻿
+const cookieName = "cart-items";
 
-function addToCart(id, name, price, picture) {
+function addToCart(id, name, price, picture,slug) {
     debugger;
 
     //gereftan cookie be name cart-item 
@@ -29,7 +30,8 @@ function addToCart(id, name, price, picture) {
             name,
             unitPrice: price,
             picture,
-            count
+            count,
+            slug
         }
         //ezafe kardane entekhabe jadid be list ghabli
         products.push(product);
@@ -40,7 +42,7 @@ function addToCart(id, name, price, picture) {
     updateCart();
 }
 
-    function updateCart() {
+function updateCart() {
         let products = $.cookie(cookieName);
         //length tedad item ha ro dare
         products = JSON.parse(products);
@@ -50,26 +52,28 @@ function addToCart(id, name, price, picture) {
         cartItemsWrapper.html('');
         //be ezzaye har product in code haye html ro ezafe kon
         products.forEach(x => {
-            const product = `<div class="single-cart-item">
-                            <a href="javascript:void(0)" class="remove-icon" onclick="removeFromCart('${x.id}')">
+            const products = `<div class="single-cart-item">
+                            <a class="remove-icon" onclick="removeFromCart('${x.id}')">
                                 <i class="ion-android-close"></i>
                             </a>
                             <div class="image">
-                                <a href="single-product.html">
+                                <a asp-page="/product" asp-route-id=${x.slug} >
                                     <img src="/ProductPictures/${x.picture}"
-                                         class="img-fluid" alt="">
+                                         class="img-fluid" alt=${x.slug} >
                                 </a>
                             </div>
                             <div class="content">
                                 <p class="product-title">
-                                    <a href="single-product.html">محصول: ${x.name}</a>
+                                    <a asp-page="/product" asp-route-id="${x.slug}">محصول: ${x.name}</a>
                                 </p>
                                 <p class="count">تعداد: ${x.count}</p>
                                 <p class="count">قیمت واحد: ${x.unitPrice}</p>
                             </div>
                         </div>`;
+            debugger;
+
             //ezaje kardan Item be in tag
-            cartItemsWrapper.append(product);
+            cartItemsWrapper.append(products);
         });
     }
 

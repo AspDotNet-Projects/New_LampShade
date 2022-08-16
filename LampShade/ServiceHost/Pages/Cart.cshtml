@@ -14,7 +14,7 @@
                         <h2 class="breadcrumb-content__title">سبد خرید شما</h2>
                         <ul class="breadcrumb-content__page-map">
                             <li>
-                                <a href="index.html">خانه</a>
+                                <a asp-page="/Index">خانه</a>
                             </li>
                             <li class="active">سبد خرید</li>
                         </ul>
@@ -57,12 +57,12 @@
                                 {
                                     <tr>
                                         <td class="pro-thumbnail">
-                                            <a href="single-product.html">
+                                            <a asp-page="/product" asp-route-id="@item.Slug">
                                                 <img src="~/ProductPictures/@item.Picture" class="img-fluid" alt="@item.Name">
                                             </a>
                                         </td>
                                         <td class="pro-title">
-                                            <a href="single-product.html">@item.Name</a>
+                                            <a asp-page="/product" asp-route-id="@item.Slug">@item.Name</a>
                                         </td>
                                         <td class="pro-price">
                                             <span>@item.UnitPrice.ToMoney()</span>

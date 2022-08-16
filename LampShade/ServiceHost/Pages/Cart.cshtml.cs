@@ -32,9 +32,9 @@ namespace ServiceHost.Pages
             var value = Request.Cookies[CookieName];
             var cartitems = serializer.Deserialize<List<CartItem>>(value);
             foreach (var item in cartitems)
-            {
-                item.TotalItemPrice = item.Count * item.UnitPrice;
-            }
+                //calc total price in Contract 
+                item.CalculateTotalItemPrice();
+            
 
             CartItems = _productQuery.CheckInventoryStatus(cartitems);
         }
@@ -68,7 +68,7 @@ namespace ServiceHost.Pages
             //    return RedirectToPage("/Cart");
             //return RedirectToPage("Checkout");
 
-            return RedirectToPage(cartitems.Any(x => !x.IsInStock) ? "/Cart" : "Checkout");
+            return RedirectToPage(cartitems.Any(x => !x.IsInStock) ? "/Cart" : "/CheckOut");
         }
     }
 }
