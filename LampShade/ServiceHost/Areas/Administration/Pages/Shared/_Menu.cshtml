@@ -1,4 +1,5 @@
-﻿@using MenuManagement.Configuration.Permissions
+﻿@using _0_Framework.Infrastructure
+@using MenuManagement.Configuration.Permissions
  
 @inject _0_Framework.Application.IAuthHelper AuthHelper;
 @{
@@ -35,7 +36,7 @@
                 <li>
                     <a permission="@MenuPermissions.Comments" asp-page="/Comment/Comment/Index" class="waves-effect"><i class="md md-comment"></i><span> کامنت ها </span></a>
                 </li>
-                @if (AuthHelper.CurrentAccountRole() == "1")
+                @if (AuthHelper.CurrentAccountRole() == Roles.Administrator)
                 {
                     <li>
                         <a permission="@MenuPermissions.Inventory" asp-page="/Inventory/Index" class="waves-effect "><i class="md md-store"></i><span> انبارداری </span></a>

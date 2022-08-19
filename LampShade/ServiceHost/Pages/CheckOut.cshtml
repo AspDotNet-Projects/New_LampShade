@@ -1,4 +1,6 @@
 ﻿@page
+@using ShopManagement.Application.Contract.Order
+@using _0_Framework.Application
 @model ServiceHost.Pages.CheckOutModel
 @{
     ViewData["Title"] = "تایید سبد خرید و پرداخت";
@@ -40,40 +42,45 @@
                                             <th class="pro-title">قیمت واحد</th>
                                             <th class="pro-price">تعداد</th>
                                             <th class="pro-quantity">مبلغ کل بدون تخفیف</th>
+                                            <th class="pro-quantity">درصد تخفیف</th>
                                             <th class="pro-subtotal">مبلغ کل تخفیف</th>
                                             <th class="pro-remove">مبلغ پس از تخفیف</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach (var item in Model.Cart.Items)
+                                    {
                                         <tr>
                                             <td class="pro-thumbnail">
-                                                <a href="single-product.html">
-                                                    <img src="assets/img/products/big1-1.jpg" class="img-fluid"
-                                                         alt="Product">
+                                                <a>
+                                                    <img src="~/ProductPictures/@item.Picture" class="img-fluid"
+                                                         alt="@item.Name">
                                                 </a>
                                             </td>
                                             <td class="pro-title">
-                                                <a href="single-product.html">
-                                                    Cillum dolore tortor nisl
-                                                    fermentum
-                                                </a>
+                                                <a>@item.Name</a>
                                             </td>
                                             <td class="pro-price">
-                                                <span>$29.00</span>
+                                                <span>@item.UnitPrice.ToMoney() تومان</span>
                                             </td>
                                             <td class="pro-price">
-                                                <span>10</span>
+                                                <span>@item.Count عدد</span>
                                             </td>
                                             <td class="pro-subtotal">
-                                                <span>$29.00</span>
+                                                <span>@item.TotalItemPrice.ToMoney() تومان</span>
                                             </td>
                                             <td class="pro-subtotal">
-                                                <span>$29.00</span>
+                                                <span>@item.DiscountRate %</span>
                                             </td>
                                             <td class="pro-subtotal">
-                                                <span>$29.00</span>
+                                                <span>@item.DiscouontAmmunt.ToMoney() تومان</span>
+                                            </td>
+                                            <td class="pro-subtotal">
+                                                <span>@item.ItemPayAmount.ToMoney() تومان</span>
                                             </td>
                                         </tr>
+                                    }
+                                   
                                     </tbody>
                                 </table>
                             </div>
@@ -84,9 +91,9 @@
                                 <div class="cart-summary">
                                     <div class="cart-summary-wrap">
                                         <h4>خلاصه وضعیت فاکتور</h4>
-                                        <p>مبلغ نهایی <span>$1250.00</span></p>
-                                        <p>مبلغ تخفیف <span>$00.00</span></p>
-                                        <h2>مبلغ قابل پرداخت <span>$1250.00</span></h2>
+                                        <p>مبلغ نهایی <span>@Model.Cart.TotalAmount.ToMoney() تومان</span></p>
+                                        <p>مبلغ تخفیف <span>@Model.Cart.DiscountAmount.ToMoney() تومان</span></p>
+                                        <h2>مبلغ قابل پرداخت <span>@Model.Cart.PayAmount.ToMoney() تومان</span></h2>
                                     </div>
                                     <div class="cart-summary-button">
                                         <button class="checkout-btn">پرداخت</button>

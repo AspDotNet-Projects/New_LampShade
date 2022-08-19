@@ -34,40 +34,30 @@ namespace _01_LampShadeQuery.Contracts
                 .ToList();
             //gereftan rol mojod
             var currentAccountRoles = _AuthHelper.CurrentAccountRole();
-            if (currentAccountRoles == Roles.Colleague)
+            foreach (var cartitem in cartItems)
             {
-                foreach (var cartitem in cartItems)
+                if (currentAccountRoles == Roles.ColleagueUser)
                 {
                     var colleagueDiscount = colleagueDiscounts.FirstOrDefault(x => x.ProductId == cartitem.Id);
                     //age null bod boro be mahsol badi dar edame foreach
-                    if(colleagueDiscount==null)  continue;
+                    if (colleagueDiscount != null) 
                     cartitem.DiscountRate = colleagueDiscount.DiscountRate;
-                    cartitem.DiscouontAmmunt = ((cartitem.TotalItemPrice * cartitem.DiscountRate)/100);
-                    cartitem.ItemPayAmount = cartitem.TotalItemPrice - cartitem.DiscouontAmmunt;
-                    //ezafe kardan Item ha be list
-                    cart.Add(cartitem);
-
                 }
-            }
-            else
-            {
-
-                foreach (var cartitem in cartItems)
+                else
                 {
                     var customerdiscount = customerDiscounts.FirstOrDefault(x => x.ProductId == cartitem.Id);
                     //age null bod boro be mahsol badi dar edame foreach
-                    if (customerdiscount == null) continue;
+                    if (customerdiscount != null) 
                     cartitem.DiscountRate = customerdiscount.DiscountRate;
-                    cartitem.DiscouontAmmunt = ((cartitem.TotalItemPrice * cartitem.DiscountRate) / 100);
-                    cartitem.ItemPayAmount = cartitem.TotalItemPrice - cartitem.DiscouontAmmunt;
-                    //ezafe kardan Item ha be list
-                    cart.Add(cartitem);
-
                 }
+                cartitem.DiscouontAmmunt = ((cartitem.TotalItemPrice * cartitem.DiscountRate) / 100);
+                cartitem.ItemPayAmount = cartitem.TotalItemPrice - cartitem.DiscouontAmmunt;
+                //ezafe kardan Item ha be list
+                cart.Add(cartitem);
             }
-        
-
             return cart;
         }
     }
+
+   
 }

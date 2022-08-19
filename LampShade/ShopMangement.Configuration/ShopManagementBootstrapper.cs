@@ -2,6 +2,7 @@
 using _01_LampSahdeQuery.Contracts.ProductCategory;
 using _01_LampSahdeQuery.Contracts.Slide;
 using _01_LampSahdeQuery.Query;
+using _01_LampShadeQuery.Contracts;
 using _01_LampShadeQuery.Contracts.Product;
 using _01_LampShadeQuery.Query;
 using Microsoft.EntityFrameworkCore;
@@ -49,7 +50,7 @@ namespace ShopManagement.Configuration
 
 
             services.AddTransient<IPermissionExposer,ShopPermissionExposer>();
-
+            services.AddTransient<ICartCalculatorSevice, CartCalculatorSevice>();
 
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionstring));
 
