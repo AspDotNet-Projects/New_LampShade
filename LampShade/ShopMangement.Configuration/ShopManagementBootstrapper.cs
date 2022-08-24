@@ -8,6 +8,7 @@ using _01_LampShadeQuery.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
+using ShopManagement.Application.Contract.Order;
 using ShopManagement.Application.Contract.Product;
 using ShopManagement.Application.Contract.ProductCategory;
 using ShopManagement.Application.Contract.ProductPicture;
@@ -51,6 +52,8 @@ namespace ShopManagement.Configuration
 
             services.AddTransient<IPermissionExposer,ShopPermissionExposer>();
             services.AddTransient<ICartCalculatorSevice, CartCalculatorSevice>();
+
+            services.AddTransient<IOrderApplication, OrderApplication>();
 
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionstring));
 

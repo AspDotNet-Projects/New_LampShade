@@ -10,7 +10,7 @@ namespace ShopManagement.Domain.OrderAgg
         public long AccountId { get; set; }
         public double TotalAmount { get; private set; }
         public double DiscountAmount{ get; private set; }
-        public double PayAmouont { get; private set; }
+        public double PayAmount { get; private set; }
         
         //pardakht shodde ya na
         public bool IsPaid { get; private set; }
@@ -30,7 +30,7 @@ namespace ShopManagement.Domain.OrderAgg
             TotalAmount = totalAmount;
        
             DiscountAmount = discountAmount;
-            PayAmouont = payAmouont;
+            PayAmount = payAmouont;
             IssueTrackingNo = issueTrackingNo;
             Items = items;
             IsCanceled = false;
