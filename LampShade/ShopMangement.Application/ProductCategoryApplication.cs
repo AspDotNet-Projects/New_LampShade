@@ -34,7 +34,7 @@ namespace ShopManagement.Application
                 var productcategory = new ProductCategory(Command.Name, Command.Description, pictureName, Command.PictureAlt, Command.PictureTitle, Command.Keywords, Command.MetaDescription
                     , Slug);
                 _productCategoryRepository.Create(productcategory);
-                _productCategoryRepository.SaveChange();
+                _productCategoryRepository.SaveChanges();
 
                 return operationresult.Succedded();
 
@@ -60,7 +60,7 @@ namespace ShopManagement.Application
             productcategory.Edite(Command.Name,Command.Description, pictureName
             , Command.PictureAlt,Command.PictureTitle,Command.Keywords
             ,Command.MetaDescription,Slug);
-            _productCategoryRepository.SaveChange();
+            _productCategoryRepository.SaveChanges();
 
             return operationresult.Succedded();
 

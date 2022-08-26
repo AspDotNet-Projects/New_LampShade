@@ -38,7 +38,7 @@ namespace _0_Framework.Infrastructure
             return _context.Set<T>().Any(expression);
         }
 
-        public void SaveChange()
+        public void SaveChanges()
         {
             _context.SaveChanges();
         }

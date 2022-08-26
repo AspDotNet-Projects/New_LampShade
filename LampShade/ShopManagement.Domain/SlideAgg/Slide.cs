@@ -16,7 +16,10 @@ namespace ShopManagement.Domain.SlideAgg
     public string BtnText { get; private set; }
     public string Btncolor { get; private set; }
     public bool IsRemoved { get; private set; }
+     public Slide()
+        {
 
+        }
     public Slide(string picture, string pictureAlt, string pictureTitle,
         string heading, string title, string text, string link,string btnText, 
         string btncolor)

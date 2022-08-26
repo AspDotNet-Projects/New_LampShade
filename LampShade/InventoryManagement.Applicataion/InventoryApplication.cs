@@ -21,7 +21,7 @@ namespace InventoryManagement.Applicataion
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
             var inventory = new Inventory(command.ProductId, command.UnitePrice);
             _inventoryRepository.Create(inventory);
-            _inventoryRepository.SaveChange();
+            _inventoryRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -35,7 +35,7 @@ namespace InventoryManagement.Applicataion
             if (_inventoryRepository.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
             inventory.Edit(command.ProductId,command.UnitePrice);
-            _inventoryRepository.SaveChange();
+            _inventoryRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -48,7 +48,7 @@ namespace InventoryManagement.Applicataion
 
             const long operatorid = 1;
             inventory.Increese(command.Count,operatorid,command.Description);
-            _inventoryRepository.SaveChange();
+            _inventoryRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -63,7 +63,7 @@ namespace InventoryManagement.Applicataion
                 var inventory = _inventoryRepository.GetBy(item.ProdductId);
                 inventory.Reduce(item.Count,operatorid,item.Description,item.OrderId);
             }
-            _inventoryRepository.SaveChange();
+            _inventoryRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -78,7 +78,7 @@ namespace InventoryManagement.Applicataion
             //orderid=0
             //چون انبار دار داره انحام میده
             inventory.Reduce(command.Count,operatorid,command.Description,0);
-            _inventoryRepository.SaveChange();
+            _inventoryRepository.SaveChanges();
             return operation.Succedded();
         }
 

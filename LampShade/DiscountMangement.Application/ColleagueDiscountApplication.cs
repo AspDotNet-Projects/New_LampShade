@@ -23,7 +23,7 @@ namespace DiscountManagement.Application
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
             var colleagueDiscount = new ColleagueDiscount(command.ProductId, command.DiscountRate);
             _colleagueDiscountRepository.Create(colleagueDiscount);
-            _colleagueDiscountRepository.SaveChange();
+            _colleagueDiscountRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -40,7 +40,7 @@ namespace DiscountManagement.Application
                 return operation.Failed(ApplicationMesseges.DuplicatedRecored);
 
             colleagueDiscount.Edit(command.ProductId,command.DiscountRate);
-            _colleagueDiscountRepository.SaveChange();
+            _colleagueDiscountRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -55,7 +55,7 @@ namespace DiscountManagement.Application
             
 
             colleagueDiscount.Remove();
-            _colleagueDiscountRepository.SaveChange();
+            _colleagueDiscountRepository.SaveChanges();
             return operation.Succedded();
 
         }
@@ -71,7 +71,7 @@ namespace DiscountManagement.Application
 
 
             colleagueDiscount.Restore();
-            _colleagueDiscountRepository.SaveChange();
+            _colleagueDiscountRepository.SaveChanges();
             return operation.Succedded();
         }
 

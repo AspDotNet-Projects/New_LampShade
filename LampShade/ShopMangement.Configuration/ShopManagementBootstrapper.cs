@@ -14,6 +14,7 @@ using ShopManagement.Application.Contract.ProductCategory;
 using ShopManagement.Application.Contract.ProductPicture;
 using ShopManagement.Application.Contract.Slide;
 using ShopManagement.Configuration.Permissions;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
@@ -39,6 +40,9 @@ namespace ShopManagement.Configuration
             services.AddTransient<IProductRepository, ProductRepository>();
 
 
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderApplication, OrderApplication>();
+
             services.AddTransient<IProductPictureApplication,ProductPictureApplication>();
             services.AddTransient<IProductPictureRepository, ProductPictureRepository>();
 
@@ -49,11 +53,13 @@ namespace ShopManagement.Configuration
             services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
             services.AddTransient<IProductQuery, ProductQuery>();
 
+            services.AddSingleton<ICartService, CartService>();
+
 
             services.AddTransient<IPermissionExposer,ShopPermissionExposer>();
             services.AddTransient<ICartCalculatorSevice, CartCalculatorSevice>();
 
-            services.AddTransient<IOrderApplication, OrderApplication>();
+            
 
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionstring));
 

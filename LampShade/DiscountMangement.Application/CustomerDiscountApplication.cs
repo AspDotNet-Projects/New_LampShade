@@ -26,7 +26,7 @@ namespace DiscountManagement.Application
             var customerDiscount = new CustomerDiscount(command.ProductId, command.DiscountRate,
                 startdate, enddate, command.Reason);
             _customerDiscountRepository.Create(customerDiscount);
-            _customerDiscountRepository.SaveChange();
+            _customerDiscountRepository.SaveChanges();
             return operation.Succedded();
 
 
@@ -46,7 +46,7 @@ namespace DiscountManagement.Application
             var startdate = command.StartDate.ToGeorgianDateTime();
             var enddate = command.EndDate.ToGeorgianDateTime();
             customerdiscount.Edit(command.ProductId,command.DiscountRate,startdate,enddate,command.Reason);
-            _customerDiscountRepository.SaveChange();
+            _customerDiscountRepository.SaveChanges();
             return operation.Succedded();
 
         }

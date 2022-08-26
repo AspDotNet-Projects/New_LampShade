@@ -25,7 +25,7 @@ namespace ShopManagement.Application
                 , command.PictureTitle, command.Heading, command.Title, 
                 command.Text,command.Link,command.BtnText, command.Btncolor);
             _slideRepository.Create(Slide);
-            _slideRepository.SaveChange();
+            _slideRepository.SaveChanges();
            return operation.Succedded();
         }
 
@@ -38,7 +38,7 @@ namespace ShopManagement.Application
             var pictureName = _fileUploader.Upload(command.Picture, "Slides");
             slide.Edit(pictureName, command.PictureAlt,command.PictureTitle
             ,command.Heading,command.Title,command.Text,command.Link,command.BtnText,command.Btncolor);
-            _slideRepository.SaveChange();
+            _slideRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -49,7 +49,7 @@ namespace ShopManagement.Application
             if (slide == null)
                 operation.Failed(ApplicationMesseges.RecoredNotFound);
             slide.Remove();
-            _slideRepository.SaveChange();
+            _slideRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -60,7 +60,7 @@ namespace ShopManagement.Application
             if (slide == null)
                 operation.Failed(ApplicationMesseges.RecoredNotFound);
             slide.Restore();
-            _slideRepository.SaveChange();
+            _slideRepository.SaveChanges();
             return operation.Succedded();
         }
 

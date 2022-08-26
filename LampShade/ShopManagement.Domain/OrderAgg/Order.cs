@@ -24,20 +24,21 @@ namespace ShopManagement.Domain.OrderAgg
         public long RefId { get; private set; }
         public List<OrderItem> Items { get; private set; }
 
-        public Order(long accountId, double totalAmount, double discountAmount, double payAmouont, string issueTrackingNo, List<OrderItem> items)
+        public Order()
+        {
+
+        }
+        public Order(long accountId, double totalAmount, double discountAmount, double payAmouont)
         {
             AccountId = accountId;
-            TotalAmount = totalAmount;
-       
+            TotalAmount = totalAmount;       
             DiscountAmount = discountAmount;
-            PayAmount = payAmouont;
-            IssueTrackingNo = issueTrackingNo;
-            Items = items;
+            PayAmount = payAmouont;        
             IsCanceled = false;
             IsPaid = false;
             //dar ebteda sefr ast
             RefId = 0;
-            items = new List<OrderItem>();
+            Items = new List<OrderItem>();
         }
 
         public void PaymentSucceeded(long refid)

@@ -2,7 +2,7 @@
 
 namespace ShopManagement.Domain.OrderAgg
 {
-    public abstract class OrderItem : EntityBase
+    public class OrderItem : EntityBase
     {
         public long ProductId { get; private set; }
         public int Count { get; private set; }
@@ -11,13 +11,20 @@ namespace ShopManagement.Domain.OrderAgg
         public long OrderId { get; private set; }
         public Order Order { get; private set; }
 
-        public OrderItem(long productId, int count, double unitPrice, int discountRate, long orderId)
+
+        /// <summary>
+        /// OrderId be sorate auto save mishe chon relation ship daran 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="count"></param>
+        /// <param name="unitPrice"></param>
+        /// <param name="discountRate"></param>
+        public OrderItem(long productId, int count, double unitPrice, int discountRate)
         {
             ProductId = productId;
             Count = count;
             UnitPrice = unitPrice;
             DiscountRate = discountRate;
-            OrderId = orderId;
         }
     }
 }

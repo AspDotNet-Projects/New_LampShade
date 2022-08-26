@@ -41,7 +41,7 @@ namespace BlogManagement.Application
             commnad.MetaDescription, commnad.CanonicalAddress,commnad.CategoryId);
             
             _articleRepository.Create(article);
-            _articleRepository.SaveChange();
+            _articleRepository.SaveChanges();
 
             return operation.Succedded();
         }
@@ -65,7 +65,7 @@ namespace BlogManagement.Application
                 , pictureName, command.PictureAlt, command.PictureTitle, publishdate, slug, command.Keywords,
                 command.MetaDescription, command.CanonicalAddress, command.CategoryId);
 
-           _articleRepository.SaveChange();
+           _articleRepository.SaveChanges();
            return operation.Succedded();
         }
 

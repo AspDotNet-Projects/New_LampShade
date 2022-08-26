@@ -31,7 +31,7 @@ namespace ShopManagement.Application
             var ProductPicture = new ProductPicture(command.ProductId, picturepath, command.PictureAlt,
                 command.PictureTitle);
             _productPictureRepository.Create(ProductPicture);
-            _productPictureRepository.SaveChange();
+            _productPictureRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -48,7 +48,7 @@ namespace ShopManagement.Application
             productpictre .Edit(command.ProductId, picturepath, command.PictureAlt,
                 command.PictureTitle);
             
-            _productPictureRepository.SaveChange();
+            _productPictureRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -61,7 +61,7 @@ namespace ShopManagement.Application
            
             productpictre.Remove();
 
-            _productPictureRepository.SaveChange();
+            _productPictureRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -74,7 +74,7 @@ namespace ShopManagement.Application
 
             productpictre.Restore();
 
-            _productPictureRepository.SaveChange();
+            _productPictureRepository.SaveChanges();
             return operation.Succedded();
         }
 

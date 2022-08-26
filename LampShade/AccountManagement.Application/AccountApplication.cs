@@ -41,7 +41,7 @@ namespace AccountManagement.Application
                 password, command.Mobile, command.RoleId,picturepath,new List<AccountPermissions>());
             
             _acountRepositroy.Create(account);
-            _acountRepositroy.SaveChange();
+            _acountRepositroy.SaveChanges();
            
             return operation.Succedded();
         }
@@ -65,7 +65,7 @@ namespace AccountManagement.Application
             
 
             account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, picturepath);
-            _acountRepositroy.SaveChange();
+            _acountRepositroy.SaveChanges();
 
             return operation.Succedded();
         }
@@ -84,7 +84,7 @@ namespace AccountManagement.Application
             var password = _passwordHasher.Hash(command.Password);
             
             account.ChangePassword(password);
-            _acountRepositroy.SaveChange();
+            _acountRepositroy.SaveChanges();
 
             return operation.Succedded();
             
@@ -104,7 +104,7 @@ namespace AccountManagement.Application
             command.permissions.ForEach(code => permissions.Add(new AccountPermissions(code)));
 
             account.EditPermission(permissions);
-            _acountRepositroy.SaveChange();
+            _acountRepositroy.SaveChanges();
 
             return operation.Succedded();
         }

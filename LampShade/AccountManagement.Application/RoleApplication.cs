@@ -22,7 +22,7 @@ namespace AccountManagement.Application
 
             var role = new Role(command.Name,new List<RollPermissions>());
             _roleRepository.Create(role);
-            _roleRepository.SaveChange();
+            _roleRepository.SaveChanges();
 
             return operation.Succedded();
         }
@@ -41,7 +41,7 @@ namespace AccountManagement.Application
             command.permissions.ForEach(code => permissions.Add(new RollPermissions(code)));
 
             role.Edit(command.Name, permissions);
-            _roleRepository.SaveChange();
+            _roleRepository.SaveChanges();
             return operation.Succedded();
         }
 

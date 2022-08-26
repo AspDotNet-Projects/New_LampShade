@@ -37,7 +37,7 @@ namespace ShopManagement.Application
                 command.PictureAlt,command.PictureTitle,command.CategoryId,
                 slug, command.Keywords,command.MetaDescription);
             _productRepository.Create(product);
-            _productRepository.SaveChange();
+            _productRepository.SaveChanges();
             return operation.Succedded();
 
         }
@@ -61,7 +61,7 @@ namespace ShopManagement.Application
                 command.ShortDescription, command.Description, picturepath,
                 command.PictureAlt, command.PictureTitle, command.CategoryId,
                 slug, command.Keywords, command.MetaDescription);
-            _productRepository.SaveChange();
+            _productRepository.SaveChanges();
             return operation.Succedded();
 
         }

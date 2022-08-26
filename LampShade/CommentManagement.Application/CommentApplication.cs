@@ -20,7 +20,7 @@ namespace CommentManagement.Application
             var comment = new Comment(command.Name, command.Email,command.Website,
                 command.Message, command.OwnerRecordId,command.Type,command.ParentId);
             _commentRepository.Create(comment);
-            _commentRepository.SaveChange();
+            _commentRepository.SaveChanges();
             return operation.Succedded();
         }
 
@@ -33,7 +33,7 @@ namespace CommentManagement.Application
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
             comment.Confirm();
-            _commentRepository.SaveChange();
+            _commentRepository.SaveChanges();
             return operation.Succedded();
 
         }
@@ -47,7 +47,7 @@ namespace CommentManagement.Application
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
             comment.Cancel();
-            _commentRepository.SaveChange();
+            _commentRepository.SaveChanges();
             return operation.Succedded();
         }
 
