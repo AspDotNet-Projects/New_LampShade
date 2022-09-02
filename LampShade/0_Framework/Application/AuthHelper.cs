@@ -36,6 +36,7 @@ namespace _0_Framework.Application
             result.RoleId = long.Parse(claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value);
             result.FullName = claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value;
             result.ProfilePhoto = claims.FirstOrDefault(x => x.Type == "ProfilePhoto").Value;
+            result.Mobile= claims.FirstOrDefault(x => x.Type == "Mobile").Value;
             result.Role = Roles.GetRoleBy(result.RoleId);
             return result;
         }

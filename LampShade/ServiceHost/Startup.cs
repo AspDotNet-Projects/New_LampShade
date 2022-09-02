@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using ShopManagement.Configuration;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using _01_LampShadeQuery.Contracts;
 using BlogManagement.Configuration;
@@ -50,6 +51,7 @@ namespace ServiceHost
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddTransient<IAuthHelper, AuthHelper>();
+            services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
            
             services.AddRazorPages();
 
