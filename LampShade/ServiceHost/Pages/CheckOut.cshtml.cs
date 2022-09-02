@@ -15,7 +15,7 @@ namespace ServiceHost.Pages
     /// <summary>
     /// hatman login karde bashe
     /// </summary>
-   
+    [Authorize]
     public class CheckOutModel : PageModel
     {
         public Cart Cart;
