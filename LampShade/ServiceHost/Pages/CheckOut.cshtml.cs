@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using _0_Framework.Application;
 using _0_Framework.Application.ZarinPal;
 using _01_LampShadeQuery.Contracts;
@@ -39,6 +41,7 @@ namespace ServiceHost.Pages
             _orderApplication = orderApplication;
             _zarinPalFactory = zarinPalFactory;
             _authHelper = authHelper;
+            Cart = new Cart();
         }
 
         public void OnGet()
@@ -46,6 +49,9 @@ namespace ServiceHost.Pages
             //JavaScriptSerializer() jahat tabdil cookie string to onject
             var serializer = new JavaScriptSerializer();
             var value = Request.Cookies[CookieName];
+
+            if (value == null)
+                 RedirectToPage("/Index");
             var cartitems = serializer.Deserialize<List<CartItem>>(value);
             foreach (var item in cartitems)
                 //calc total price in Contract 
@@ -82,7 +88,23 @@ namespace ServiceHost.Pages
         public IActionResult OnGetCallBack([FromQuery] string authority, [FromQuery] string status,
             [FromQuery] long oId)
         {
-            return null;
+            var orderAmount = _orderApplication.GetAmountBy(oId);
+            var verificationResponse = _zarinPalFactory.CreateVerificationRequest(authority, orderAmount.ToString(CultureInfo.InvariantCulture));
+
+            var result = new PaymentResult();
+            if (status == "OK" && verificationResponse.Status == 100)
+            {
+                var issueTrackingNo=_orderApplication.PaymentSuccedded(oId, verificationResponse.RefID);
+                Response.Cookies.Delete("cart-items");
+                result = result.Succeeded("Å—œ«Œ  »« „Ê›ﬁ?  «‰Ã«„ ‘œ.", issueTrackingNo);
+                return RedirectToPage("/PaymentResult",result);
+            }
+
+            
+                result = result.Failed(
+                    "Å—œ«Œ  »« „Ê›ﬁ?  «‰Ã«„ ‰‘œ. œ— ’Ê—  ò”— ÊÃÂ «“ Õ”«» °„»·€ œ— „œ  24 ”«⁄  »Â Õ”«» ‘„« Ê«—?“ ŒÊ«Âœ ‘œ.");
+                return RedirectToPage("/PaymentResult", result);
+           
         }
     }
 }
