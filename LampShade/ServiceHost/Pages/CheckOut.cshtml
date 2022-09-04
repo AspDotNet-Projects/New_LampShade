@@ -1,6 +1,7 @@
 ﻿@page
 @using _0_Framework.Application
 @using ShopManagement.Application.Contract
+@using ShopManagement.Infrastructure.EFCore
 @model ServiceHost.Pages.CheckOutModel
 @{
     ViewData["Title"] = "تایید سبد خرید و پرداخت";
@@ -88,14 +89,15 @@
                                 <div class="col-lg-6 col-12 d-flex">
                                     <div class="checkout-payment-method">
                                         <h4>نحوه پرداخت</h4>
-                                        @*@foreach (var method in PaymentMethod.GetList())
+                                        @foreach (var method in PaymentMethod.GetList())
                                         {
                                             <div class="single-method">
+                                                @*//// aage avalin Item barabar bod ba item ma check beshe*@
                                                 <input type="radio" id="payment_@method.Id" name="paymentMethod" value="@method.Id" @(PaymentMethod.GetList().First().Id == method.Id ? "checked" : "")>
                                                 <label for="payment_@method.Id">@method.Name</label>
-                                                <p data-method="@method.Id" style="display:@(PaymentMethod.GetList().First().Id == method.Id ? "block" : "none")">@method.Description</p>
+                                                <p data-method="@method.Id" style="display: @(PaymentMethod.GetList().First().Id == method.Id ? "block" : "none")">@method.Description</p>
                                             </div>
-                                        }*@
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-12 d-flex">

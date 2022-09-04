@@ -21,7 +21,7 @@ namespace ShopManagement.Application
         public long PlaceOrder(Cart cart)
         {
             var currentaccountId = _authHelper.CurrentAccountId();
-            var order = new Order(currentaccountId, cart.TotalAmount, cart.DiscountAmount, cart.PayAmount);
+            var order = new Order(currentaccountId,cart.PaymentMethod, cart.TotalAmount, cart.DiscountAmount, cart.PayAmount);
 
             foreach (var cartItem in cart.Items)
             {

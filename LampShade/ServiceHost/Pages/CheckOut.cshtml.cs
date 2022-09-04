@@ -64,9 +64,10 @@ namespace ServiceHost.Pages
             _cartService.Set(Cart);
         }
 
-        public IActionResult OnPostPay()
+        public IActionResult OnPostPay(int paymentMethod)
         {
             var cart = _cartService.Get();
+            cart.SetPaymentMethod(paymentMethod);
             var result = _productQuery.CheckInventoryStatus(cart.Items);
             //age har kodam dar anbar nabod false beshe
             //Or   if (result.Any(x => x.IsInStock == false))
@@ -75,14 +76,23 @@ namespace ServiceHost.Pages
 
             var orderID = _orderApplication.PlaceOrder(cart);
 
-            var accountUserName = _authHelper.CurrentAccountInfo().UserName;
-            var mobile = _authHelper.CurrentAccountInfo().Mobile;
+            if (cart.PaymentMethod == 1)
+            {
+                var accountUserName = _authHelper.CurrentAccountInfo().UserName;
+                var mobile = _authHelper.CurrentAccountInfo().Mobile;
 
-            var paymentResponse = _zarinPalFactory.CreatePaymentRequest(cart.PayAmount.ToString(), mobile, "", "?????? ?? ???? ???? www.CG.ir ????? ?? ???.",
-                orderID);
+                var paymentResponse = _zarinPalFactory.CreatePaymentRequest(cart.PayAmount.ToString(), mobile, "",
+                    ValidationMesseges.InfoPay, orderID);
 
-            return Redirect(
-                $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}");
+                return Redirect(
+                    $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}");
+            }
+            else
+            {
+                var paymentResult = new PaymentResult();
+                return RedirectToPage("/PaymentResult",
+                    paymentResult.Succeeded("”›«—‘ ‘„« »« „Ê›ﬁ?  À»  ‘œ. Å” «“  „«” ò«—‘‰«”«‰ „« Ê Å—œ«Œ  ÊÃÂ° ”›«—‘ «—”«· ŒÊ«Âœ ‘œ.", null));
+            }
         }
 
         public IActionResult OnGetCallBack([FromQuery] string authority, [FromQuery] string status,
@@ -96,13 +106,12 @@ namespace ServiceHost.Pages
             {
                 var issueTrackingNo=_orderApplication.PaymentSuccedded(oId, verificationResponse.RefID);
                 Response.Cookies.Delete("cart-items");
-                result = result.Succeeded("Å—œ«Œ  »« „Ê›ﬁ?  «‰Ã«„ ‘œ.", issueTrackingNo);
+                result = result.Succeeded(ValidationMesseges.SucceddedPay, issueTrackingNo);
                 return RedirectToPage("/PaymentResult",result);
             }
 
             
-                result = result.Failed(
-                    "Å—œ«Œ  »« „Ê›ﬁ?  «‰Ã«„ ‰‘œ. œ— ’Ê—  ò”— ÊÃÂ «“ Õ”«» °„»·€ œ— „œ  24 ”«⁄  »Â Õ”«» ‘„« Ê«—?“ ŒÊ«Âœ ‘œ.");
+                result = result.Failed(ValidationMesseges.FailedPay);
                 return RedirectToPage("/PaymentResult", result);
            
         }
