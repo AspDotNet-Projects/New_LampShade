@@ -14,6 +14,8 @@ namespace ServiceHost.Pages
         public void OnGet(PaymentResult result)
         {
             Result = result;
+            if(string.IsNullOrWhiteSpace(result.IssueTrackingNo))
+                   Response.Cookies.Delete("cart-items");
         }
     }
 }

@@ -91,7 +91,7 @@ namespace ServiceHost.Pages
             {
                 var paymentResult = new PaymentResult();
                 return RedirectToPage("/PaymentResult",
-                    paymentResult.Succeeded("”›«—‘ ‘„« »« „Ê›ﬁ?  À»  ‘œ. Å” «“  „«” ò«—‘‰«”«‰ „« Ê Å—œ«Œ  ÊÃÂ° ”›«—‘ «—”«· ŒÊ«Âœ ‘œ.", null));
+                    paymentResult.Succeeded(ValidationMesseges.CashPay, null));
             }
         }
 
