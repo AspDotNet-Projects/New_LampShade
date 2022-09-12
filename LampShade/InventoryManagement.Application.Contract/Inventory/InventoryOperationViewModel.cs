@@ -5,7 +5,7 @@
         public long Id { get;  set; }
         public long Count { get; set; }
         public bool Operation { get;  set; }
-        public long OperationId { get;  set; }
+        public long OperatorId { get;  set; }
         public string Operator{ get; set; }
         public string OperationDate { get;  set; }
         public long CurrentCount { get;  set; }

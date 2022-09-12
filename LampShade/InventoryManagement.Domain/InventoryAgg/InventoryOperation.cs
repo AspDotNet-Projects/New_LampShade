@@ -21,7 +21,7 @@ namespace InventoryManagement.Domain.InventoryAgg
         /// <summary>
         /// نوع عملیات اینترنتی بوده یا کارمند ما انجام داده
         /// </summary>
-        public long OperationId { get; private set; }
+        public long OperatorId { get; private set; }
 
         public DateTime OperationDate { get; private set; }
         /// <summary>
@@ -34,12 +34,12 @@ namespace InventoryManagement.Domain.InventoryAgg
         public Inventory Inventory { get;private set; }
         static InventoryOperation() { }
 
-        public InventoryOperation(bool operation, long count, long operationId,
+        public InventoryOperation(bool operation, long count, long operatorId,
             long currentCount, string description, long orderId, long inventoryId)
         {
             Operation = operation;
             Count = count;
-            OperationId = operationId;
+            OperatorId = operatorId;
             CurrentCount = currentCount;
             Description = description;
             OrderId = orderId;

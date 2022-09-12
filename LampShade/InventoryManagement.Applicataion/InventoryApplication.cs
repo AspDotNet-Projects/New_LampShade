@@ -3,16 +3,20 @@ using _0_Framework.Application;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 
-namespace InventoryManagement.Applicataion
+namespace InventoryManagement.Application
 {
     public class InventoryApplication:IInventoryApplication
     {
+
+        private readonly IAuthHelper _authHelper;
         private readonly IInventoryRepository _inventoryRepository;
 
-        public InventoryApplication(IInventoryRepository inventoryRepository)
+        public InventoryApplication(IInventoryRepository inventoryRepository, IAuthHelper authHelper)
         {
             _inventoryRepository = inventoryRepository;
+            _authHelper = authHelper;
         }
+
 
         public OperationResult Create(CreateInventory command)
         {
@@ -56,11 +60,11 @@ namespace InventoryManagement.Applicataion
         {
             //ذخبره به صورت لیستی
             var operation = new OperationResult();
-            const long operatorid = 1;
+            var operatorid = _authHelper.CurrentAccountId();
 
             foreach (var item in command)
             {
-                var inventory = _inventoryRepository.GetBy(item.ProdductId);
+                var inventory = _inventoryRepository.GetBy(item.ProductId);
                 inventory.Reduce(item.Count,operatorid,item.Description,item.OrderId);
             }
             _inventoryRepository.SaveChanges();
@@ -74,7 +78,7 @@ namespace InventoryManagement.Applicataion
             if (inventory == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            const long operatorid = 1;
+            var operatorid = _authHelper.CurrentAccountId();
             //orderid=0
             //چون انبار دار داره انحام میده
             inventory.Reduce(command.Count,operatorid,command.Description,0);
