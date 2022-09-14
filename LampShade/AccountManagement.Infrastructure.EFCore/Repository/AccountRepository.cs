@@ -35,6 +35,16 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             }).AsNoTracking()
               .FirstOrDefault(x => x.Id == id);
         }
+
+        public List<AccountViewModel> GetAccounts()
+        {
+            return _context.Accounts.Select(x => new AccountViewModel
+            {
+                Id = x.Id,
+                Fullname = x.Fullname
+            }).ToList();
+        }
+
         private static List<PermissionDto> MapPermisstins(IEnumerable<AccountPermissions> permissions)
         {
             return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();

@@ -50,7 +50,7 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            const long operatorid = 1;
+            var operatorid = _authHelper.CurrentAccountId();
             inventory.Increese(command.Count,operatorid,command.Description);
             _inventoryRepository.SaveChanges();
             return operation.Succedded();

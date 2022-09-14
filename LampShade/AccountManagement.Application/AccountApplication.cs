@@ -162,5 +162,10 @@ namespace AccountManagement.Application
         {
             _authHelper.Signout();
         }
+
+        public List<AccountViewModel> GetAccounts()
+        {
+            return _acountRepositroy.GetAccounts();
+        }
     }
 }

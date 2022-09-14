@@ -11,8 +11,10 @@ namespace AccountManagement.Applicatoin.Contracts.Account
         OperationResult EditPermission(EditAccount command);
         OperationResult Login(Login command);
         EditAccount GetDetails(long id);
+
         List<AccountViewModel> Search(AccountSearchModel searchModel);
         void Logout();
+        List<AccountViewModel> GetAccounts();
 
     }
 }
