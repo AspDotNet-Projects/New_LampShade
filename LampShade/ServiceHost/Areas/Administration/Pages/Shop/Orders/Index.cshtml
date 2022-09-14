@@ -30,8 +30,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.IsCanceled"></label>
-                        <input asp-for="SearchModel.IsCanceled" value=""/>
+                        <label  asp-for="SearchModel.IsCanceled">جستجو در لغو شده ها</label>
+                        <input class="form-control" asp-for="SearchModel.IsCanceled" />
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                     <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<div class="row" id="ProductCategoriesDiv" permission="@ShopPermissions.ListProductCategories">
+<div class="row" id="ProductCategoriesDiv" >
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -88,14 +88,19 @@
                                         {
                                             <span class="text-success">پرداخت شده</span>
                                         }
+                                        @if(!item.IsCanceled && !item.IsPaid)
+                                        {
+                                            <span class="text-warning">در انتظار پرداخت</span>
+
+                                        }
                                     </td>
                                     <td>
                                        @if (item.IsPaid == false)
                                        {
-                                           <a  class="btn btn-success pull-right m-rl-5" asp-page-handler="Confirm">
+                                           <a  class="btn btn-success pull-right m-rl-5" asp-page-handler="Confirm" asp-route-Id="@item.Id">
                                                <i class="fa fa-check"></i> تایید
                                            </a>
-                                           <a  class="btn btn-danger pull-right m-rl-5" asp-page-handler="Cancel">
+                                           <a  class="btn btn-danger pull-right m-rl-5" asp-page-handler="Cancel" asp-route-Id="@item.Id">
                                                <i class="fa fa-close"></i> لغو
                                            </a>
                                        }

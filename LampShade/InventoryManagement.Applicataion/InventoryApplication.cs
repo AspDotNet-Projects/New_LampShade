@@ -3,20 +3,16 @@ using _0_Framework.Application;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 
-namespace InventoryManagement.Application
+namespace InventoryManagement.Applicataion
 {
     public class InventoryApplication:IInventoryApplication
     {
-
-        private readonly IAuthHelper _authHelper;
         private readonly IInventoryRepository _inventoryRepository;
 
-        public InventoryApplication(IInventoryRepository inventoryRepository, IAuthHelper authHelper)
+        public InventoryApplication(IInventoryRepository inventoryRepository)
         {
             _inventoryRepository = inventoryRepository;
-            _authHelper = authHelper;
         }
-
 
         public OperationResult Create(CreateInventory command)
         {
@@ -50,7 +46,7 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            var operatorid = _authHelper.CurrentAccountId();
+            const long operatorid = 1;
             inventory.Increese(command.Count,operatorid,command.Description);
             _inventoryRepository.SaveChanges();
             return operation.Succedded();
@@ -60,7 +56,7 @@ namespace InventoryManagement.Application
         {
             //ذخبره به صورت لیستی
             var operation = new OperationResult();
-            var operatorid = _authHelper.CurrentAccountId();
+            const long operatorid = 1;
 
             foreach (var item in command)
             {
@@ -78,7 +74,7 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMesseges.RecoredNotFound);
 
-            var operatorid = _authHelper.CurrentAccountId();
+            const long operatorid = 1;
             //orderid=0
             //چون انبار دار داره انحام میده
             inventory.Reduce(command.Count,operatorid,command.Description,0);

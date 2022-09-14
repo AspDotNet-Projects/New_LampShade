@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography.Xml;
 using _0_Framework.Infrastructure;
 using AccountManagement.Applicatoin.Contracts.Account;
 using Microsoft.AspNetCore.Mvc;
@@ -27,11 +28,30 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Orders
         }
 
         
-        [NeedsPermission(ShopPermissions.ListProductCategories)]
+ 
         public void OnGet(OrderSearchModel searchModel)
         {
             Accounts =new SelectList(_accountApplication.GetAccounts(),"Id","Fullname");
             Orders = _orderApplication.Search(searchModel);
+        }
+
+        public IActionResult OnGetConfirm(long id)
+        {
+            //refid=0 chon dasti darim anjam midim
+            _orderApplication.PaymentSuccedded(id, 0);
+            return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnGetCancel(long id)
+        {
+            _orderApplication.Cancel(id);
+            return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnGetItems(long id)
+        {
+            var items = _orderApplication.GetItems(id);
+            return Partial("Items", items);
         }
     }
 }

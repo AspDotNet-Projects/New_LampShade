@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InventoryManagement.Infrastructure.EFCore.Repository;
 using InventoryManagement.Application;
 using InventoryManagement.Configuration.Permissions;
+using InventoryManagement.Applicataion;
 
 namespace InventoryManagement.Configuration
 {
