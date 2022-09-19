@@ -27,6 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyHelp", "MyHelp", "{C59E757E-3665-4628-9610-4EBEAACB86BB}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Users\Ali.Pazdar\Desktop\API.png = ..\..\..\..\..\Users\Ali.Pazdar\Desktop\API.png
 		..\..\..\..\..\Desktop\Authentication&Authorization.png = ..\..\..\..\..\Desktop\Authentication&Authorization.png
 	EndProjectSection
 EndProject
@@ -139,7 +140,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MM.Infrastructure", "MM.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MenuManagement.Configuration", "MenuManagement.Configuration\MenuManagement.Configuration.csproj", "{69E6BDAD-8D6C-4F4E-8C0D-30762323092D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.InventoryAcl", "ShopMangement.Infrastructure.InventoryAcl\ShopManagement.Infrastructure.InventoryAcl.csproj", "{11F09BE9-D28E-4E59-B998-9AF405C4C7E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.InventoryAcl", "ShopMangement.Infrastructure.InventoryAcl\ShopManagement.Infrastructure.InventoryAcl.csproj", "{11F09BE9-D28E-4E59-B998-9AF405C4C7E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
