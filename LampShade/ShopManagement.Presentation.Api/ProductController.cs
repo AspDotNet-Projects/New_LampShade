@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using _01_LampSahdeQuery.Contracts.Product;
 using _01_LampShadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ServiceHost.Controllers
+namespace ShopManagement.Presentation.Api
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,7 +17,7 @@ namespace ServiceHost.Controllers
         }
 
         [HttpGet]
-        public List<ProductQueryModel> GetLatestArrivals()
+        public List<_01_LampSahdeQuery.Contracts.Product.ProductQueryModel> GetLatestArrivals()
         {
             return _productQuery.GetLatestArrivals();
         }

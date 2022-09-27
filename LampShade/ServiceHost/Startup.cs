@@ -19,7 +19,8 @@ using _0_Framework.Infrastructure;
 using _01_LampShadeQuery.Contracts;
 using BlogManagement.Configuration;
 using MenuManagement.Configuration;
-
+using ShopManagement.Presentation.Api;
+using InventoryManagement.Presentation.Api;
 
 namespace ServiceHost
 {
@@ -99,7 +100,9 @@ namespace ServiceHost
                     option.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
                     
 
-                });
+                })
+                .AddApplicationPart(typeof(ProductController).Assembly)
+                .AddApplicationPart(typeof(InventoryController).Assembly);
                 
 
 
