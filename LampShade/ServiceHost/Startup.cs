@@ -137,6 +137,7 @@ namespace ServiceHost
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //jahat call kardan Api controller
                 endpoints.MapControllers();
             });
         }
