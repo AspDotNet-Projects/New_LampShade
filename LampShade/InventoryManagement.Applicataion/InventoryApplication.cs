@@ -96,5 +96,6 @@ namespace InventoryManagement.Applicataion
         {
             return _inventoryRepository.GetOperationLog(inventoryid);
         }
+
     }
 }
