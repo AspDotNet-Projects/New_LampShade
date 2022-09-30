@@ -102,8 +102,8 @@ namespace ServiceHost
 
                 })
                 .AddApplicationPart(typeof(ProductController).Assembly)
-                .AddApplicationPart(typeof(InventoryController).Assembly);
-                
+                .AddApplicationPart(typeof(InventoryController).Assembly)
+                .AddNewtonsoftJson();
 
 
         }
