@@ -89,7 +89,10 @@ namespace ServiceHost
 
             //be in Addres Allow cors dadim
             services.AddCors(option => option.AddPolicy("MyPolice",builder=>
-                builder.WithOrigins("https://localhost:1370")));
+                builder.WithOrigins("https://localhost:1370")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                    ));
 
 
 
@@ -142,7 +145,7 @@ namespace ServiceHost
 
             app.UseAuthorization();
 
-            
+            app.UseCors("MyPolice");
 
             app.UseEndpoints(endpoints =>
             {
