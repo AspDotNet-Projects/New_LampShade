@@ -86,6 +86,13 @@ namespace ServiceHost
 
 
             });
+
+            //be in Addres Allow cors dadim
+            services.AddCors(option => option.AddPolicy("MyPolice",builder=>
+                builder.WithOrigins("https://localhost:1370")));
+
+
+
             //.AddMvcOptions(options=>options.Filters.Add<SecurityPageFilter>())
             //jahat estefade securityPagefilter 
             //taeen dastresi be area ya hate mokhtalef
