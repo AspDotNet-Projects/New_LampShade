@@ -25,7 +25,7 @@ using InventoryManagement.Presentation.Api;
 namespace ServiceHost
 {
     public class Startup
-    {
+    {  
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
