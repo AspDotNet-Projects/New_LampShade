@@ -14,6 +14,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+
     },
     "ServiceHost": {
       "commandName": "Project",
@@ -23,5 +24,6 @@
       "dotnetRunMessages": "true",
       "applicationUrl": "https://localhost:1369;http://localhost:1370"
     }
+
   }
 }
