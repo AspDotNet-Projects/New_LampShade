@@ -154,6 +154,7 @@ namespace ServiceHost
                 //jahat call kardan Api controller
                 endpoints.MapControllers();
             }); 
+            //////////////////Tesat
         }
     }
 }
