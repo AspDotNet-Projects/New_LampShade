@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace BlogManagement.Presentation.Api
 {
     public class Startup
-    {
+    { 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -64,7 +64,7 @@ namespace BlogManagement.Presentation.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            }); 
         }
     }
 }
