@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using ShopManagement.Configuration;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using _0_Framework.Application.Email;
 using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using _01_LampShadeQuery.Contracts;
@@ -53,7 +54,8 @@ namespace ServiceHost
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddTransient<IAuthHelper, AuthHelper>();
             services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
-           
+            services.AddTransient<IEmailService, EmailService>();
+
             services.AddRazorPages();
 
 
