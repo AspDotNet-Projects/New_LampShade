@@ -47,7 +47,7 @@ namespace ServiceHost
             MenuManagementBootstrapper.configur(services);
             //»—«? «?‰òÂ œ— Â‰ê«„ «Ã—« Ê ·Êœ ‘œ‰ ’›ÕÂ keyword, metadescription „ﬁ«œ?— øøø ”Ê«· Å— ‰‘Êœ òœ “?— —« »Â ﬁ”„  startup «÷«›Â „? ò‰?„
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
-
+             
             //baraaye inke yekbar sakhte beshe
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddTransient<IFileUploader, FileUploader>();
