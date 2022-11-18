@@ -370,7 +370,7 @@
 
     <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
     <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 
 
@@ -382,13 +382,13 @@
     //کلاس های که
     //PersianDateInput
     //رو داردند
-    $('.PersianDateInput').PersianDatepicker({
-       
-        format: 'YYYY/MM/DD',
-        changeYear: true,
-        changeMonth:true,
-        autoClose:true
-    });
+   
+    $('.PersianDateInput').persianDatepicker({
+            format: 'YYYY/MM/DD',
+            autoClose: true,
+            initialValueType: "persian"
+        });
+
 </script>
 
 <script src="https://cdn.tiny.cloud/1/vz9p79f9kgu1dasq0269ociv23vs5a0lvub0qq3905ztwecx/tinymce/6/tinymce.min.js" 
