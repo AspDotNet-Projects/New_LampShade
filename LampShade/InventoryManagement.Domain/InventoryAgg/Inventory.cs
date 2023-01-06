@@ -9,6 +9,7 @@ namespace InventoryManagement.Domain.InventoryAgg
         public long ProductId { get; private set; }
         public double UnitePrice { get; private set; }
         public bool InStock { get; private set; }
+        
         /// <summary>
         ///  لیستی از قعل و انفعالات انبار را دارد
         /// </summary>

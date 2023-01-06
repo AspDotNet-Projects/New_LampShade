@@ -236,5 +236,26 @@ namespace _01_LampShadeQuery.Query
 
             return cartitems;
         }
+
+        public List<ProductQueryModel> Productcount()
+        {
+            var products = _inventorContext.Inventory
+                .Select(prodct => new ProductQueryModel
+                {
+                    Id = prodct.ProductId,
+                    Count = (int) prodct.CalculateCurrentCount()
+                });
+
+            var inventory = products.OrderByDescending(x => x.Id).ToList();
+            inventory.ForEach(item =>
+            {
+                //? یعنی اگه مفدار نداشت مفدار خالی برگردونه که خطا نده
+                item.Name = _shopContext.Products.FirstOrDefault(x => x.Id == item.Id)?.Name;
+            });
+
+            return inventory;
+        }
+
+
     }
 }

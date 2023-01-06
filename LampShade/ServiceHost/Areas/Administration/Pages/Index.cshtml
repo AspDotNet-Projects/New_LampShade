@@ -1,4 +1,5 @@
 ﻿@page
+@using Newtonsoft.Json
 @model ServiceHost.Areas.Administration.Pages.IndexModel
 @{
     ViewData["Title"] = "صفحه اصلی";
@@ -97,7 +98,6 @@
     </div>
 </div>
 <!-- End row-->
-
 <div class="row">
 
     <div class="col-sm-6">
@@ -108,6 +108,38 @@
                     doughnut Chart
                 </h3>
                 <canvas id="doughnut" width="800" height="600"></canvas>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="portlet">
+
+            <div class="portlet-heading">
+                <h3 class="portlet-title text-dark text-uppercase">
+                    line Chart
+                </h3>
+                <canvas id="line" width="600" height="400"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="portlet">
+
+            <div class="portlet-heading">
+                <h3 class="portlet-title text-dark text-uppercase">
+                    Horizontalbar Chart
+                </h3>
+                <canvas id="Horizontalbar" width="800" height="600"></canvas>
                 
             </div>
 
@@ -163,5 +195,132 @@
 
 </div>
 @section Scripts{
-  <script src="AdminTheme/assets/js/InitChart.js"></script>
+    <script>
+        debugger;
+        const data =@Html.Raw(JsonConvert.SerializeObject(Model.DataSet));
+        const labelss =@Html.Raw(JsonConvert.SerializeObject(Model.DataSet[0].Label));
+        var ctx = document.getElementById("doughnut").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labelss,
+                datasets: data
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+var ctx = document.getElementById("barr").getContext('2d');
+
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labelss,
+        datasets: data
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById("polarArea").getContext('2d');
+var polarAreaChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels: labelss,
+        datasets: data
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+debugger;
+var ctx = document.getElementById("radar").getContext('2d');
+var bubbleAreaChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: labelss,
+        datasets: data
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+        var ctx = document.getElementById("line").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labelss,
+                datasets: data
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Line Chart'
+                    }
+                }
+            }
+        });
+        var ctx = document.getElementById("Horizontalbar").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labelss,
+                datasets: data
+            },
+            options: {
+                indexAxis: 'y',
+                // Elements options apply to all of the options unless overridden in a dataset
+                // In this case, we are setting the border of each horizontal bar to be 2px wide
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Horizontal Bar Chart'
+                    }
+                }
+            },
+        });
+    </script>
 }

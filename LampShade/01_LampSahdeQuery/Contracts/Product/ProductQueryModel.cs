@@ -12,6 +12,7 @@ namespace _01_LampSahdeQuery.Contracts.Product
         public string Name { get; set; }
         public double DoublePrice { get; set; }
         public string Price { get; set; }
+        public int Count { get; set; }
         public string PriceWithDiscount { get; set; }
         public int DiscountRate { get; set; }
         public string Category { get; set; }
@@ -27,6 +28,7 @@ namespace _01_LampSahdeQuery.Contracts.Product
         public bool IsInStock { get; set; }
         public List<CommentQueryModel> Comments { get; set; }
         public List<ProductPictureQueryModel> Pictures { get; set; }
+       
 
 
 
@@ -40,6 +42,7 @@ namespace _01_LampSahdeQuery.Contracts.Product
         public string PictureAlt { get; set; }
         public string PictureTitle { get; set; }
         public bool IsRemoved{ get; set; }
+        
 
     }
 }

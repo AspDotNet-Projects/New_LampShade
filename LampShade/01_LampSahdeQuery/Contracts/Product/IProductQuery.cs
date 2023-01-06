@@ -11,6 +11,7 @@ namespace _01_LampShadeQuery.Contracts.Product
         List<ProductQueryModel> GetLatestArrivals();
         List<ProductQueryModel> Search(string value);
         List<CartItem> CheckInventoryStatus(List<CartItem> cartitems);
+        List<ProductQueryModel> Productcount();
 
     }
 }

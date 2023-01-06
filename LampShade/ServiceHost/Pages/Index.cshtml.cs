@@ -12,6 +12,7 @@ namespace ServiceHost.Pages
     public class IndexModel : PageModel
     {
         private readonly IEmailService _emailService;
+       
 
         public IndexModel(IEmailService emailService)
         {
@@ -20,8 +21,10 @@ namespace ServiceHost.Pages
 
         public void OnGet()
         { 
-            _emailService.SendEmail("Test applicaton Send Email",
-                "تست ایمیل سرور از نرم افزار فروشگاه من که موقتیت آمیز بوده است","pazdar_ali@yahoo.com");
+        //    _emailService.SendEmail($"Test applicaton Send Email Send date:`{DateTime.Now}`",
+        //        "تست ایمیل سرور از نرم افزار فروشگاه من که موقتیت آمیز بوده است","pazdar_ali@yahoo.com");
         }
+
+
     }
 }
