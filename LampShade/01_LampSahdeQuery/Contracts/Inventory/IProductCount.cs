@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _01_LampShadeQuery.Contracts.Inventory
 {
-    class IProductCount
+    public interface IProductCount
     {
+        List<ProductCount> getProductCount();
     }
 }
