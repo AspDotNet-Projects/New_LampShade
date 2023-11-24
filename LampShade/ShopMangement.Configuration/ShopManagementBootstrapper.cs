@@ -5,7 +5,7 @@ using _01_LampSahdeQuery.Query;
 using _01_LampShadeQuery.Contracts;
 using _01_LampShadeQuery.Contracts.Product;
 using _01_LampShadeQuery.Query;
-using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
 using ShopManagement.Application.Contract.Order;
