@@ -34,21 +34,21 @@
             
         </div>
         @* در هر کلاس رو رو کلاس ام دی 6 بیشتر جا نمیگیره *@
-    <div class="row">
+        <div class="row">
 
-        <div class="col-md-12">
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label">گروه محصول</label>
-                @* برای اینکه از تکنولوژی ام وی سی در کانترکت کریت استفاده نکنیم و وابستگی ایجاد نکنیم *@
-                @* از این روش استفاده کردیم *@
-                <select class="form-control" asp-for="CategoryId" 
-                        asp-items='new SelectList(Model.Categories,"Id","Name")'>
-                    <option value="0">گروه محصول</option>
-                </select>
-                <span asp-validation-for="CategoryId" class="error"></span>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label">گروه محصول</label>
+                    @* برای اینکه از تکنولوژی ام وی سی در کانترکت کریت استفاده نکنیم و وابستگی ایجاد نکنیم *@
+                    @* از این روش استفاده کردیم *@
+                    <select class="form-control" asp-for="CategoryId" 
+                            asp-items='new SelectList(Model.Categories,"Id","Name")'>
+                        <option value="0">گروه محصول</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="error"></span>
+                </div>
             </div>
         </div>
-    </div>
         @*row*@
         <div class="row">
             @* کلاس ام دی 12 یعنی یک سطر کامل *@

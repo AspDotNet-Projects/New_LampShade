@@ -7,13 +7,7 @@ function addToCart(id, name, price, picture,slug) {
     //gereftan cookie be name cart-item 
     let products = $.cookie(cookieName);
     //emkan dare asasan cart-item az ghabl vojod nadashte bashe age vojod nadash ono mikone ye Arratye empty
-    if (products === undefined) {
-        products = [];
-    } else {
-        //chon cookie az no e string hast tabdil mikonim be json
-        //item pars product ro tabdil mokone be ye Object
-        products = JSON.parse(products);
-    }
+     
     //oni ke Id barabar ba productCount , valuesho migire 
     const count = $("#productCount").val();
     //gereftane id product jari

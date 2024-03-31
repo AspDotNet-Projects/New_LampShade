@@ -45,12 +45,13 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label asp-for="Command.CategoryId">گروه مقاله</label>
-                                <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ArticleCategories">
-                                    <option value="0">گروه مقاله ...</option>
-                                </select>
-                            </div>
+                           
+                            <label asp-for="Command.CategoryId">گروه محصول  <span id="requierd-validate">*</span></label>
+                            <select id="select-Category" asp-for="Command.CategoryId" asp-items="Model.ArticleCategories">
+                                <option value="0">انتخاب گروه</option>
+                            </select>
+                            <span asp-validation-for="Command.CategoryId" class="error"></span>
+
                         </div>
                     </div>
                     <div class="row">

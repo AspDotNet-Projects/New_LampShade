@@ -50,7 +50,7 @@ namespace ServiceHost.Pages
             var options = new CookieOptions { Expires = DateTime.Now.AddDays(2),IsEssential = true};
             Response.Cookies.Append(CookieName, serializer.Serialize(cartItems), options);
             return RedirectToPage("/Cart");
-        }
+        } 
 
         public IActionResult OnGetGoToCheckOut()
         {
